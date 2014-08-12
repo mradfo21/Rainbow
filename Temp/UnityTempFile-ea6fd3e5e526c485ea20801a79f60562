@@ -1,0 +1,125 @@
+-debug
+-target:library
+-nowarn:0169
+-out:'Temp/Assembly-CSharp-firstpass.dll'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll'
+-define:UNITY_4_5_1
+-define:UNITY_4_5
+-define:UNITY_STANDALONE_OSX
+-define:ENABLE_MICROPHONE
+-define:ENABLE_TEXTUREID_MAP
+-define:ENABLE_UNITYEVENTS
+-define:ENABLE_NEW_HIERARCHY 
+-define:ENABLE_AUDIO_FMOD
+-define:UNITY_STANDALONE
+-define:ENABLE_MONO
+-define:ENABLE_TERRAIN
+-define:ENABLE_SUBSTANCE
+-define:ENABLE_GENERICS
+-define:INCLUDE_WP8SUPPORT
+-define:ENABLE_MOVIES
+-define:ENABLE_WWW
+-define:ENABLE_IMAGEEFFECTS
+-define:ENABLE_WEBCAM
+-define:INCLUDE_METROSUPPORT
+-define:RENDER_SOFTWARE_CURSOR
+-define:ENABLE_NETWORK
+-define:ENABLE_PHYSICS
+-define:ENABLE_CACHING
+-define:ENABLE_CLOTH
+-define:ENABLE_2D_PHYSICS
+-define:ENABLE_GAMECENTER
+-define:ENABLE_SHADOWS
+-define:ENABLE_AUDIO
+-define:ENABLE_NAVMESH_CARVING
+-define:ENABLE_DUCK_TYPING
+-define:ENABLE_SINGLE_INSTANCE_BUILD_SETTING
+-define:ENABLE_PROFILER
+-define:UNITY_EDITOR
+-define:UNITY_EDITOR_OSX
+-define:UNITY_PRO_LICENSE
+'Assets/Plugins/Lightmapping Extended/Editor/ILConfig.cs'
+'Assets/Plugins/Lightmapping Extended/Editor/LMExtendedWindow.cs'
+'Assets/Plugins/Lightmapping Extended/Editor/SavePresetWindow.cs'
+'Assets/Plugins/Lightmapping Extended/Editor/SerializedConfig.cs'
+'Assets/Plugins/RootMotion/FinalIK/BipedIK/BipedIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/BipedIK/BipedIKSolvers.cs'
+'Assets/Plugins/RootMotion/FinalIK/Constraints/Constraint.cs'
+'Assets/Plugins/RootMotion/FinalIK/Constraints/ConstraintPosition.cs'
+'Assets/Plugins/RootMotion/FinalIK/Constraints/ConstraintPositionOffset.cs'
+'Assets/Plugins/RootMotion/FinalIK/Constraints/ConstraintRotation.cs'
+'Assets/Plugins/RootMotion/FinalIK/Constraints/ConstraintRotationOffset.cs'
+'Assets/Plugins/RootMotion/FinalIK/Constraints/Constraints.cs'
+'Assets/Plugins/RootMotion/FinalIK/DoxygenManualFinalIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/Grounder/Grounder.cs'
+'Assets/Plugins/RootMotion/FinalIK/Grounder/GrounderBipedIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/Grounder/GrounderFBBIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/Grounder/GrounderIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/Grounder/GrounderQuadruped.cs'
+'Assets/Plugins/RootMotion/FinalIK/Grounder/Grounding.cs'
+'Assets/Plugins/RootMotion/FinalIK/Grounder/GroundingLeg.cs'
+'Assets/Plugins/RootMotion/FinalIK/Grounder/GroundingPelvis.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Components/AimIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Components/CCDIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Components/FABRIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Components/FABRIKRoot.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Components/FullBodyBipedIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Components/IK.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Components/LimbIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Components/LookAtIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Components/TrigonometricIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/FABRIKChain.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/FBIKChain.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKConstraintBend.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKEffector.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKMapping.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKMappingBone.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKMappingLimb.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKMappingSpine.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolver.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverAim.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverCCD.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverFABRIK.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverFABRIKRoot.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverFullBody.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverFullBodyBiped.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverHeuristic.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverLimb.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverLookAt.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/IKSolverTrigonometric.cs'
+'Assets/Plugins/RootMotion/FinalIK/IK Solvers/SolverManager.cs'
+'Assets/Plugins/RootMotion/FinalIK/InteractionSystem/InteractionEffector.cs'
+'Assets/Plugins/RootMotion/FinalIK/InteractionSystem/InteractionLookAt.cs'
+'Assets/Plugins/RootMotion/FinalIK/InteractionSystem/InteractionObject.cs'
+'Assets/Plugins/RootMotion/FinalIK/InteractionSystem/InteractionSystem.cs'
+'Assets/Plugins/RootMotion/FinalIK/InteractionSystem/InteractionTarget.cs'
+'Assets/Plugins/RootMotion/FinalIK/InteractionSystem/Poser.cs'
+'Assets/Plugins/RootMotion/FinalIK/Rotation Limits/RotationLimit.cs'
+'Assets/Plugins/RootMotion/FinalIK/Rotation Limits/RotationLimitAngle.cs'
+'Assets/Plugins/RootMotion/FinalIK/Rotation Limits/RotationLimitHinge.cs'
+'Assets/Plugins/RootMotion/FinalIK/Rotation Limits/RotationLimitPolygonal.cs'
+'Assets/Plugins/RootMotion/FinalIK/Rotation Limits/RotationLimitSpline.cs'
+'Assets/Plugins/RootMotion/Scripts/BipedLimbOrientations.cs'
+'Assets/Plugins/RootMotion/Scripts/BipedNaming.cs'
+'Assets/Plugins/RootMotion/Scripts/BipedReferences.cs'
+'Assets/Plugins/RootMotion/Scripts/Hierarchy.cs'
+'Assets/Plugins/RootMotion/Scripts/Interp.cs'
+'Assets/Plugins/RootMotion/Scripts/QuaTools.cs'
+'Assets/Plugins/RootMotion/Scripts/V3Tools.cs'
+'Assets/Plugins/RootMotion/Scripts/Warning.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/BlurEffect.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/ColorCorrectionEffect.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/ContrastStretchEffect.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/GlowEffect.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/GrayscaleEffect.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/ImageEffectBase.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/ImageEffects.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/MotionBlur.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/NoiseEffect.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/SSAOEffect.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/SepiaToneEffect.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/TwirlEffect.cs'
+'Assets/Standard Assets/Image Effects (Pro Only)/VortexEffect.cs'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
+-r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Xml.Linq.dll'
