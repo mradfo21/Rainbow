@@ -54,7 +54,7 @@ MonoBehaviour:
   roleCount: 0
   leaderRoleCount: 0
   maxRoles: 10
-  nextTactic: 
+  nextTactic: tactic_scan
   friendsLiving: 0
   friendsLivingRatio: 0
   enemiesKilled: tactic_scan

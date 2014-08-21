@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{4ACA5EE9-A087-FB92-18BF-B662FE92605C}") = "Rainbow", "Assembly-CSharp-firstpass.csproj", "{5A29CB94-BFA3-5919-BBFB-0A674B00C454}"
 EndProject
-Project("{4ACA5EE9-A087-FB92-18BF-B662FE92605C}") = "Rainbow", "Assembly-CSharp.csproj", "{BC0AD7EA-98EB-521A-8ABB-79BE3736CE56}"
-EndProject
 Project("{4ACA5EE9-A087-FB92-18BF-B662FE92605C}") = "Rainbow", "Assembly-CSharp-Editor.csproj", "{7D24290D-E1CC-3016-DFE4-10663E54EF92}"
 EndProject
 Project("{4ACA5EE9-A087-FB92-18BF-B662FE92605C}") = "Rainbow", "Assembly-UnityScript-firstpass.unityproj", "{35C40834-5422-B846-AF5B-769C658B80D0}"
@@ -23,10 +21,6 @@ Global
 		{5A29CB94-BFA3-5919-BBFB-0A674B00C454}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A29CB94-BFA3-5919-BBFB-0A674B00C454}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A29CB94-BFA3-5919-BBFB-0A674B00C454}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC0AD7EA-98EB-521A-8ABB-79BE3736CE56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC0AD7EA-98EB-521A-8ABB-79BE3736CE56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC0AD7EA-98EB-521A-8ABB-79BE3736CE56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC0AD7EA-98EB-521A-8ABB-79BE3736CE56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D24290D-E1CC-3016-DFE4-10663E54EF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D24290D-E1CC-3016-DFE4-10663E54EF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D24290D-E1CC-3016-DFE4-10663E54EF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,7 +41,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																										GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																							GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

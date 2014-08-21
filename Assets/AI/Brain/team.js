@@ -7,7 +7,6 @@ var removeList= new List.<GameObject>();
 var species:String = null;
 var attribs = new Dictionary.<GameObject,attributes>();
 var visions = new Dictionary.<GameObject,vision>();
-
 var enemiesAlive = new Dictionary.<int,GameObject>();
 var enemiesDistance = new List.<GameObject>();
 var enemies = new Dictionary.<int,GameObject>();
@@ -17,9 +16,10 @@ var leader:GameObject = null;
 var debug:boolean = true;
 var currentTactic:GameObject = null;
 var leaderAttributes:attributes;
-
 var reportedEnemiesSighted:boolean = false;
 var reportedEnemiesKilled:boolean = false;
+
+var game:GameObject;
 function CheckLeader(){
 	if (members.Count >= 1){
 		leader = members[0];
@@ -156,8 +156,9 @@ function OnTriggerEnter(col:Collider){
 
 }
 function Start () {
+	game = gameObject.Find("Game");
 	StartCoroutine("RemoveDeadEnemies",1.0);
-
+	game.SendMessage("AddTeam",this.gameObject);
 }
 
 function Update () {

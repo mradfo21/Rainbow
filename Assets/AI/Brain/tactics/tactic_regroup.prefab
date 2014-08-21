@@ -57,7 +57,7 @@ MonoBehaviour:
   friendsLiving: 0
   friendsLivingRatio: 0
   enemiesKilled: 
-  enemyContact: 
+  enemyContact: tactic_scatter
   failure: 
   previousLeader: {fileID: 0}
 --- !u!1001 &100100000
