@@ -111,6 +111,7 @@
      <Compile Include="Assets\Design\Scripts\CameraOrbit.js" />
      <Compile Include="Assets\Design\Scripts\Creator_generic.js" />
      <Compile Include="Assets\Design\Scripts\Creator_team.js" />
+     <Compile Include="Assets\Design\Scripts\DisableControllerByVelocity.js" />
      <Compile Include="Assets\Design\Scripts\gameAttributes.js" />
      <Compile Include="Assets\Design\Scripts\gameData.js" />
      <Compile Include="Assets\Design\Scripts\teams.js" />

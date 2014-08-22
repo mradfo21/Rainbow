@@ -9,6 +9,7 @@ var velocityNoise:float = 0.0;
 private var rollX:float = 0.0;
 private var rollY:float = 0.0;
 private var rollZ:float = 0.0;
+var gameData:gameData;
 
 var zRoll:float = 1;
 var xRoll:float = 1;
@@ -22,8 +23,11 @@ var oscilateAmt:float = 1.0;
 var oscilation:Vector3;
 var rollOscilation:Vector3;
 var noiseOscilation:Vector3;
+var jitterOscilation:Vector3;
 function Start () {
 	StartCoroutine( CalcVelocity() );
+	gameData = new gameData();
+	gameData.Start();
 }
 
 function FixedUpdate(){
@@ -34,23 +38,35 @@ function Update () {
 	cameraTime+= Time.deltaTime;
 
 	// a vector for moving the camera. i kind of dont like this
+	var speedMult = 1;
+	var agentVelocity:float = 0.0;
+	if (gameData.gameAttributes.player){
+      var agent:NavMeshAgent = gameData.gameAttributes.playerAttributes.agent;
+      agentVelocity = agent.velocity.magnitude;
+      speedMult = 1+ agentVelocity*.2;
+	}
 	oscilation.x =  Mathf.Cos(cameraTime*3*(oscilateSpeed  ))* oscilateAmt * vFactor;
 	oscilation.y=   Mathf.Cos(cameraTime*(oscilateSpeed  )) * oscilateAmt * vFactor;
 	oscilation.z=   Mathf.Sin(cameraTime*1.5*(oscilateSpeed  )) * oscilateAmt * vFactor;
 
 	// a vector for the role
-	rollOscilation.x =  Mathf.Cos(cameraTime*3*(rollSpeed  ))* rollMag * vFactor;
-	rollOscilation.y=   Mathf.Cos(cameraTime*1*(rollSpeed  )) * rollMag * vFactor;
-	rollOscilation.z=   Mathf.Sin(cameraTime*1.5*(rollSpeed  )) * rollMag * vFactor;
+	rollOscilation.x =  Mathf.Cos(cameraTime*speedMult*3*(rollSpeed  ))* rollMag * vFactor;
+	rollOscilation.y=   Mathf.Cos(cameraTime*speedMult*1*(rollSpeed  )) * rollMag * vFactor;
+	rollOscilation.z=   Mathf.Sin(cameraTime*speedMult*1.5*(rollSpeed  )) * rollMag * vFactor;
 
 	// a vector for the jitter - i generally downplay this
-	noiseOscilation.x = Mathf.PerlinNoise((cameraTime *4+ vFactor),0.0) - .5;
-	noiseOscilation.y = Mathf.PerlinNoise((cameraTime*4+ vFactor+ 100),0.0) - .5;
-	noiseOscilation.z = Mathf.PerlinNoise((cameraTime*2+ vFactor+ 800),0.0) - .5;
+	var noiseSpeed = 2;
+	noiseOscilation.x = Mathf.PerlinNoise((cameraTime *noiseSpeed+ vFactor),0.0) - .5;
+	noiseOscilation.y = Mathf.PerlinNoise((cameraTime*noiseSpeed+ vFactor+ 100),0.0) - .5;
+	noiseOscilation.z = Mathf.PerlinNoise((cameraTime*(noiseSpeed/2)+ vFactor+ 800),0.0) - .5;
+	
+	jitterOscilation.x = Mathf.PerlinNoise((cameraTime *noiseSpeed *2+ vFactor),-1000.0) - .5;
+	jitterOscilation.y = Mathf.PerlinNoise((cameraTime *noiseSpeed *2+ vFactor+ 600),0.0) - .5;
+	jitterOscilation.z = Mathf.PerlinNoise((cameraTime *(noiseSpeed/2) *2+ vFactor+1200),0.0) - .5;
 
 	// strength of jitter
-	noiseOscilation*= 4 * vFactor;
-
+	noiseOscilation*= 1+(4  * vFactor);
+	jitterOscilation*= (20 * speedMult) * ( (speedMult-1) * 20);
 //	transform.position = transform.parent.position+oscilation;
 
 	rollX+= rollOscilation.x;
@@ -65,7 +81,7 @@ function Update () {
 	var shake:Vector3 = Vector3(angleX,angleY,angleZ);
 	var parentRot:Vector3 = transform.parent.eulerAngles;
 
-	transform.rotation.eulerAngles = parentRot+shake+noiseOscilation;
+	transform.rotation.eulerAngles = parentRot+shake+noiseOscilation + jitterOscilation;
 
 	rollX-=(rollX/damp) *Time.deltaTime;
 	rollY-=(rollY/damp) *Time.deltaTime;
