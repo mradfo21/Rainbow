@@ -8,13 +8,12 @@ var height = 1.1;
 var xSpeed = 250.0;
 var ySpeed = 120.0;
  
-var yMinLimit = -200;
-var yMaxLimit = 800;
+var yMinLimit = -50;
+var yMaxLimit = 200;
 var controller:CharacterController;
 var v:Vector3;
 var vmag:float;
-var vFactor:float;
-var disabled:boolean = false;
+private var vFactor:float;
 private var x = 0.0;
 private var y = 0.0;
  
@@ -89,34 +88,10 @@ function Update () {
         transform.position = (rotation * Vector3(0.0, 0.0, - finalDistance) + posSmooth);
         transform.rotation = rotation;
         transform.position+= collisionTest(goal);
-        //transform.position += (avoidanceForce * Time.deltaTime);
-
-        //var finalPosition:Vector3 = rotation * Vector3(0.0, 0.0, - distance) + posSmooth;
-        //var force:Vector3 = finalPosition - transform.position;
-       // if (vmag > .02 ){
-        //    disable();          
-        //}
-        //if ( Vector3.Distance(transform.position, gameData.gameAttributes.player.transform.position) > distance*2){
-         //   disable();
-        //}
-        //if (disabled == true){
-         //   transform.position = rotation * Vector3(0.0, 0.0, - distance) + posSmooth;
-          //  controller.enabled = false;            
-        //}else{
-          //  controller.Move(force);            
-        //}        
+      
 
     }
 }
-function disable(){
-    CancelInvoke("reenable");
-    Invoke("reenable",.3);
-    disabled = true;
-}
-function reenable(){
-    controller.enabled = true;
-    disabled = false;
-    }
 
 static function ClampAngle (angle : float, min : float, max : float) {
     if (angle < -360)
