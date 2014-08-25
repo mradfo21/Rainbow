@@ -133,7 +133,7 @@ function finished(){
 function failed(){
 	if (failure){
 		nextTacticData[0] = failure;
-		print("this tactic failed. changing");
+		//print("this tactic failed. changing");
 		gameObject.transform.parent.SendMessage("changeState",nextTacticData);
 		Destroy(gameObject);	
 	}
@@ -142,7 +142,7 @@ function assaignRoles(){
 	if (maxRoles > 0){
 		for (var teammate in team.members){
 			if ( teammate == team.leader && leaderRoles.Count > 0){
-				print("leader requested role");
+				//print("leader requested role");
 				createRole(leaderRoles[leaderRoleCount],teammate);
 				leaderRoleCount+=1;
 				if (leaderRoleCount > leaderRoles.Count-1){

@@ -122,7 +122,6 @@ function ClearDeadMembers(){
 		members.Remove(obj);
 	}
 	removeList.Clear();
-	print("team count: "+members.Count);
 	CheckTeamMembers();
 }
 function CheckTeamMembers(){

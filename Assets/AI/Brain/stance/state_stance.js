@@ -21,6 +21,7 @@ var stopTimer:float = 1+ (Random.value*2) ;
 
 	function Enter(){
 		super.Enter();
+		agent.updateRotation = false;
 		id = "stance";
 		attributes.stance = this.GetType().ToString();
 		Invoke("softFinish",.2);
@@ -69,10 +70,10 @@ var stopTimer:float = 1+ (Random.value*2) ;
 		if (attributes.target){
 					var lookAtPos = Vector3(attributes.target.transform.position.x,gameObject.transform.position.y,attributes.target.transform.position.z);
 					var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
-					attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,rotationSpeed);
+					attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,rotationSpeed* 50* Time.deltaTime);
 					var toVector:Vector3 = (attributes.target.transform.parent.transform.position - attributes.gameObject.transform.position).normalized;
 					var rotationFactor = Vector3.Dot(attributes.gameObject.transform.forward,toVector);
-					if (rotationFactor > rotationThreshold || rotationSpeed < rotationThreshold*-1){
+					if (rotationFactor > rotationThreshold || rotationSpeed* 50* Time.deltaTime < rotationThreshold*-1){
 						readyToFire = true;
 					}
 				}
@@ -80,12 +81,12 @@ var stopTimer:float = 1+ (Random.value*2) ;
 	function lookAtTarget(point:Vector3){
 		var lookAtPos = point;
 		var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
-		attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,rotationSpeed);
+		attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,rotationSpeed * 50*Time.deltaTime);
 		}
 	function lookAtTarget(point:Vector3,speed:float){
 		var lookAtPos = point;
 		var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
-		attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,speed);
+		attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,speed* 50*Time.deltaTime);
 		}
 
 

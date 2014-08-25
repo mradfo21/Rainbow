@@ -13,7 +13,7 @@ private var normalizedAge =0.0;
 private var beginClock = false;
 function Start () {
 	endPosition = transform.position;
-	lifespan+= Random.Range(.001,.005);
+	lifespan+= Random.Range(.001,.005) * Time.deltaTime;
 
 }
 

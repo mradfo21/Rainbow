@@ -27,7 +27,7 @@ function changeStateLogic(state:String){
 }
 function changeStateLogic(state:String,data:ArrayList){
 	// this pulls the tactics object from a pre-cached list of tactics... its efficient
-	print("chaning state to "+state);
+	//print("chaning state to "+state);
 	previousTactic = currentTactic;
 	Destroy(previousTacticObj);
 	var obj:GameObject = Instantiate(tactics.GetTactic(state));
