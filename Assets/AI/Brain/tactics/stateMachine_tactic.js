@@ -22,6 +22,13 @@ function changeState(state:String){
 function changeState(data:ArrayList){
 	super.changeState(data);
 }
+function changeState(args:stateArgs){
+	print("sm state: "+args.argState);
+	print("sm vector: "+args.argVector);
+	print("sm boolean: "+args.argBoolean);
+
+	super.changeState(args.decode());
+}
 function changeStateLogic(state:String){
 	super.changeStateLogic(state);
 }

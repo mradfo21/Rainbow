@@ -3,7 +3,6 @@ var team:team;
 var id:String;
 var roles = new List.<GameObject>();
 var leaderRoles= new List.<GameObject>();
-
 var assaignedRoles = new Dictionary.<role,int>();
 var data:ArrayList= null;
 var argVector:Vector3;
@@ -14,7 +13,6 @@ var argGameObject:GameObject;
 var roleCount:int = 0;
 var leaderRoleCount:int = 0;
 var maxRoles:int = 0;
-var LookData:ArrayList = null;
 var nextTactic:String;
 var nextTacticData:ArrayList;
 var membersComplete = new Dictionary.<int,GameObject>();
@@ -26,10 +24,12 @@ var enemiesKilled:String;
 var enemyContact:String;
 var failure:String;
 var previousLeader:GameObject;
+
 function Start () {
 	maxRoles = roles.Count;
 	team = transform.parent.GetComponent("team");
 	team.currentTactic = gameObject;
+	print("tactic DATA: "+data);
 	if (data!= null){
 			id = data[0];
 			argVector = data[1];		
@@ -39,7 +39,7 @@ function Start () {
 			argBoolean = data[5];		
 	}
 	nextTacticData = ConstructBaseData();
-	Invoke("assaignRoles",.1);
+	Invoke("assaignRoles",.03);
 	friendsLiving = team.members.Count;
 
 }

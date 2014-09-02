@@ -1,6 +1,6 @@
 ﻿#pragma strict
 class move extends state_movement{
-	var distanceToCompletion = 4.0;
+	var distanceToCompletion = .5;
 	var point:Vector3 = Vector3.zero;
 	function Start () {
 		super.Start();

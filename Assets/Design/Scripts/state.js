@@ -1,19 +1,19 @@
 ﻿#pragma strict
-protected var navMesh:NavMesh = null;
-protected var attributes:attributes;
+ var navMesh:NavMesh = null;
+ var attributes:attributes;
 var id:String;
 var data:ArrayList = null;
-protected var argVector:Vector3;
-protected var argString:String;
-protected var argFloat:float;
-protected var argBoolean:boolean = false;
-protected var argGameObject:GameObject;
-protected var agent:NavMeshAgent;
+ var argVector:Vector3;
+ var argString:String;
+ var argFloat:float;
+ var argBoolean:boolean = false;
+ var argGameObject:GameObject;
+ var agent:NavMeshAgent;
 var debug:boolean;
-protected var useGameObject:boolean = false;
-protected var relativePoint:Vector3 = Vector3.zero;
+ var useGameObject:boolean = false;
+ var relativePoint:Vector3 = Vector3.zero;
 var blocking:boolean = true;
-protected var poi_data:poi_data = null;
+ var poi_data:poi_data = null;
 function NavMesh(nav:NavMesh){
 	navMesh = nav;
 }

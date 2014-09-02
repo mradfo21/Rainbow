@@ -3,7 +3,8 @@
 // this class controls rotating around the character as he moves
 // it has noise to recreate camera shake
 var distance = 5.0;
-var height = 1.1;
+var bottomHeight:float = 2.0;
+var topHeight:float = 1.0;
 
 var xSpeed = 250.0;
 var ySpeed = 120.0;
@@ -12,6 +13,7 @@ var yMinLimit = -50;
 var yMaxLimit = 200;
 var controller:CharacterController;
 var v:Vector3;
+var distanceToGoal:float;
 var vmag:float;
 private var vFactor:float;
 private var x = 0.0;
@@ -19,7 +21,8 @@ private var y = 0.0;
  
  
 var smoothTime = 0.3;
- 
+var smoothTimeSlowMo = .001;
+
 private var xSmooth = 0.0;
 private var ySmooth = 0.0; 
 private var xVelocity = 0.0;
@@ -50,13 +53,17 @@ function collisionTest(goal:Vector3):Vector3{
         var layerMask = 1 << 12;        
         var hit:RaycastHit;
         var dirToGoal:Vector3 = (transform.position - goal).normalized;
-        var distanceToGoal:float = Vector3.Distance(transform.position,goal);
+        distanceToGoal = Vector3.Distance(transform.position,goal);
         var avoidanceForce:Vector3 = Vector3.zero;
         if (Physics.Raycast(goal,dirToGoal,hit,distanceToGoal,layerMask)){
             Debug.DrawLine(goal,hit.point);
             avoidanceForce =  hit.point - transform.position;
         }
-        return avoidanceForce;    
+        if (distanceToGoal > 5.0){
+            return Vector3.zero;    
+        }else{
+            return avoidanceForce;    
+        }
 }
 function Update () {
 
@@ -68,13 +75,21 @@ function Update () {
             vFactor += Mathf.Clamp(agent.desiredVelocity.magnitude*.1,0,1) * Time.deltaTime;
             vFactor -= (vFactor/1.01) * Time.deltaTime;
 
+            // to compute side offsets
+            //var toGoal:Vector3 = (transform.position - target).normalized;
+            //var facingRatio:float = Vector3.Dot(gameData.gameAttributes.player.transform.forward,toGoal);
+            
+            var finalHeight = Rescale(ySmooth,yMinLimit,yMaxLimit,bottomHeight,topHeight);
+    		target.y += finalHeight;
+            var finalSmoothTime:float = smoothTime;
 
-    		target.y += height;
-
-            if (!Input.GetAxis("ToggleLook")){
+            if (!Input.GetAxis("ToggleLook") && gameData.gameAttributes.inUAV == false){
 
             x += Input.GetAxis("Mouse X") * xSpeed * 0.01;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.01;
+            finalSmoothTime = smoothTime;
+            }else{
+            finalSmoothTime = smoothTimeSlowMo;
             }
 
             xSmooth = Mathf.SmoothDamp(xSmooth, x, xVelocity, smoothTime);
@@ -82,9 +97,11 @@ function Update () {
             ySmooth = ClampAngle(ySmooth, yMinLimit, yMaxLimit);
      
             var rotation = Quaternion.Euler(ySmooth, xSmooth, 0);
-           	posSmooth = Vector3.SmoothDamp(posSmooth,target,posVelocity,smoothTime);
+           	posSmooth = Vector3.SmoothDamp(posSmooth,target,posVelocity,finalSmoothTime);
 
-            var finalDistance = 1.13+(distance*vFactor);
+            //var finalDistance = 1.13+(distance*vFactor);
+            var finalDistance = distance;
+
             transform.position = (rotation * Vector3(0.0, 0.0, - finalDistance) + posSmooth);
             transform.rotation = rotation;
             transform.position+= collisionTest(target);
@@ -100,6 +117,9 @@ static function ClampAngle (angle : float, min : float, max : float) {
     if (angle > 360)
         angle -= 360;
     return Mathf.Clamp (angle, min, max);
+}
+function Rescale (InputValue : float, SourceStart : float, SourceEnd : float, TargetStart : float, TargetEnd : float): float{
+    return Mathf.Lerp(TargetStart,TargetEnd,(InputValue-SourceStart)/(SourceEnd-SourceStart));
 }
 
 function CalcVelocity():IEnumerator

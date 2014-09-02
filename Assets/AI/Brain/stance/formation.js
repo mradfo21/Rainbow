@@ -15,7 +15,8 @@ class formation extends state_stance{
 	function Execute(){
 		super.Execute();
 		if (attributes.leader == true){
-			normalMovement();			
+			sprint();
+			//normalMovement();			
 		}else{
 			if (attributes.teammateTarget){
 					sprint();

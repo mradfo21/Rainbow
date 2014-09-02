@@ -100,6 +100,7 @@ MonoBehaviour:
   leaderAttributes: {fileID: 0}
   reportedEnemiesSighted: 0
   reportedEnemiesKilled: 0
+  game: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,7 +131,6 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: 
   id: tactic
-  lock: 0
   tactics: {fileID: 0}
   currentTactic: {fileID: 0}
   previousTactic: {fileID: 0}
@@ -155,6 +155,7 @@ MonoBehaviour:
   - assault
   - scan
   - regroup
+  - move
   tacticObjects:
   - {fileID: 100000, guid: f591efd96f14e499faa9d793947561a9, type: 2}
   - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
@@ -163,6 +164,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
   - {fileID: 100000, guid: c60ced2fe671349769c48f71f82214f2, type: 2}
   - {fileID: 100000, guid: 3107278ba86c04187b1b171ffd78eaa6, type: 2}
+  - {fileID: 100000, guid: b38af5ea4200d427eab51e7eb8cb80da, type: 2}
   targets: []
   enemyContact: tactic_scatter
   enemiesKilled: 

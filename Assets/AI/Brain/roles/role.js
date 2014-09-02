@@ -1,14 +1,14 @@
 ﻿#pragma strict
 
-var entity:GameObject = null;
-var attributes:attributes;
+ protected var entity:GameObject = null;
+ protected var attributes:attributes;
 
-var lastExecutedStateNum = 0;
-var currentStateNum:int = 0;
-var maxStateNum:int = 0;
+ protected var lastExecutedStateNum = 0;
+ protected var currentStateNum:int = 0;
+ protected var maxStateNum:int = 0;
 var states = new List.<String>();
-var data:ArrayList = null;
-var emitData:ArrayList;
+ var data:ArrayList = null;
+ protected var emitData:ArrayList;
 
 var enemyContact:String;
 

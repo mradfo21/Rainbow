@@ -18,7 +18,7 @@ var currentTactic:GameObject = null;
 var leaderAttributes:attributes;
 var reportedEnemiesSighted:boolean = false;
 var reportedEnemiesKilled:boolean = false;
-
+var averagePosition:Vector3;
 var game:GameObject;
 function CheckLeader(){
 	if (members.Count >= 1){
@@ -30,6 +30,13 @@ function CheckLeader(){
 	}
 }
 
+function findAveragePosition():Vector3{
+	var pos:Vector3 = Vector3.zero;
+	for (i in members){
+		pos+= i.transform.position;
+	}
+	return pos/members.Count;
+}
 function changeStateTeam(from:GameObject,data:ArrayList){
 	// here i cache this information so things like "contact" or
 	// other poi state changes only get sent to the team one time
@@ -177,5 +184,6 @@ function Update () {
 			}
 	}
 	CheckLeader();
+	averagePosition = findAveragePosition();
 
 }

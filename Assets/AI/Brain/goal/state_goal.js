@@ -1,6 +1,5 @@
 ﻿#pragma strict
 class state_goal extends state{
-
 	var stuckTestCurrent:Vector3 = Vector3.zero;
 	var stuck:boolean = false;
 	var stuckCount:int = 0;
@@ -53,6 +52,7 @@ class state_goal extends state{
 
 	function Enter(){
 		super.Enter();
+		print("ENTER CALLED");
 		id = "goal";
 		attributes.goal = this.GetType().ToString();
 		if (attributes.team){
