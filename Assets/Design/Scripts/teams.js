@@ -16,10 +16,8 @@ function Update () {
 		MakePlayer();
 	}
 	if (Input.GetAxisRaw("SwitchTeams") && Time.time > lastPress+.5){
-		print(Input.GetAxisRaw("SwitchTeams"));
 		lastPress = Time.time;
 		teamIndex +=Input.GetAxisRaw("SwitchTeams");
-		print(Input.GetAxisRaw("SwitchTeams"));
 		SwitchTeams();
 	}
 	averagePosition = GetAveragePosition();

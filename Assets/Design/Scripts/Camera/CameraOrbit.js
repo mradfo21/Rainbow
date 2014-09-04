@@ -3,6 +3,7 @@
 // this class controls rotating around the character as he moves
 // it has noise to recreate camera shake
 var distance = 5.0;
+var minimumDistance:float = 2.0;
 var bottomHeight:float = 2.0;
 var topHeight:float = 1.0;
 
@@ -99,11 +100,13 @@ function Update () {
             var rotation = Quaternion.Euler(ySmooth, xSmooth, 0);
            	posSmooth = Vector3.SmoothDamp(posSmooth,target,posVelocity,finalSmoothTime);
 
-            //var finalDistance = 1.13+(distance*vFactor);
-            var finalDistance = distance;
+            var finalDistance = minimumDistance+(distance*vFactor);
+            //var finalDistance = distance;
 
             transform.position = (rotation * Vector3(0.0, 0.0, - finalDistance) + posSmooth);
-            transform.rotation = rotation;
+            
+            transform.LookAt(target);
+            transform.rotation= rotation;
             transform.position+= collisionTest(target);
         }
 }
