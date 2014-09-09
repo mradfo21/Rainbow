@@ -20,6 +20,8 @@ function getScreenPositionClicked(position:Vector3):RaycastHit{
 	Physics.Raycast(ray,hit);
 	return hit;
 }
-
+function Rescale (InputValue : float, SourceStart : float, SourceEnd : float, TargetStart : float, TargetEnd : float): float{
+    return Mathf.Lerp(TargetStart,TargetEnd,(InputValue-SourceStart)/(SourceEnd-SourceStart));
+}
 
 }

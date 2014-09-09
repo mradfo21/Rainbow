@@ -52,7 +52,6 @@ class state_goal extends state{
 
 	function Enter(){
 		super.Enter();
-		print("ENTER CALLED");
 		id = "goal";
 		attributes.goal = this.GetType().ToString();
 		if (attributes.team){

@@ -16,7 +16,6 @@ class moveTo extends state_goal{
 		super.Enter();
 		point = argVector;
 		move = ConstructBaseData();
-		print("ENTERING MOVEto STATE");
 		issueCurrentDestination();
 	}
 
@@ -32,7 +31,6 @@ class moveTo extends state_goal{
 	function issueCurrentDestination():IEnumerator{
 			move[0]="movement_move";
 			move[1]=point;
-			print("SENDING MOVE ORDER");
 			transform.parent.BroadcastMessage("changeState",move);
 			
 	}
