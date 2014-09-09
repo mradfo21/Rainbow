@@ -10,6 +10,8 @@ var visions = new Dictionary.<GameObject,vision>();
 var enemiesAlive = new Dictionary.<int,GameObject>();
 var enemiesDistance = new List.<GameObject>();
 var enemies = new Dictionary.<int,GameObject>();
+var enemiesPermanent = new List.<GameObject>();
+
 var poi = new List.<poi_data>();
 var receivedPOI = new Dictionary.<String,float>();
 var leader:GameObject = null;
@@ -182,6 +184,11 @@ function Update () {
 			for (e in enemies.Values){
 				Debug.DrawLine(transform.position, e.transform.position,Color.red);
 			}
+	}
+	for (enemy in enemies.Values){
+		if (!enemiesPermanent.Contains(enemy)){
+			enemiesPermanent.Add(enemy);
+		}
 	}
 	CheckLeader();
 	averagePosition = findAveragePosition();
