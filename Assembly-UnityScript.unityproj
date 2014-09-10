@@ -130,6 +130,7 @@
      <Compile Include="Assets\Design\Scripts\UI\ui_scaleByDistance.js" />
      <Compile Include="Assets\Design\Scripts\attributes.js" />
      <Compile Include="Assets\Design\Scripts\commands.js" />
+     <Compile Include="Assets\Design\Scripts\cursorToPoint.js" />
      <Compile Include="Assets\Design\Scripts\gameAttributes.js" />
      <Compile Include="Assets\Design\Scripts\gameData.js" />
      <Compile Include="Assets\Design\Scripts\minimalState.js" />

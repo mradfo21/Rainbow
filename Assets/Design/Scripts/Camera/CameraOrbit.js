@@ -60,7 +60,7 @@ function collisionTest(goal:Vector3):Vector3{
             Debug.DrawLine(goal,hit.point);
             avoidanceForce =  hit.point - transform.position;
         }
-        if (distanceToGoal > 5.0){
+        if (distanceToGoal > 15.0){
             return Vector3.zero;    
         }else{
             return avoidanceForce;    
