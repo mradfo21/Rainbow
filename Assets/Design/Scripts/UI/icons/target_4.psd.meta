@@ -1,9 +1,13 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: 084caed14feef4342870f04be2a4b8ac
 =======
 guid: 36b182bac2cf54e73b01c882c2e90d4c
 >>>>>>> origin/Development
+=======
+guid: 36b182bac2cf54e73b01c882c2e90d4c
+>>>>>>> 8781f4f9eeffc3832aa7c9a3ed21267eb6ab9d2c
 TextureImporter:
   fileIDToRecycleName:
     21300000: target_4
