@@ -2650,11 +2650,7 @@ GameObject:
   - 114: {fileID: 11400054}
   - 114: {fileID: 11400092}
   m_Layer: 5
-<<<<<<< HEAD
-  m_Name: targeting_rect
-=======
   m_Name: targeting_mark
->>>>>>> origin/Development
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2693,11 +2689,7 @@ GameObject:
   - 114: {fileID: 11400088}
   - 114: {fileID: 11400094}
   m_Layer: 5
-<<<<<<< HEAD
-  m_Name: targeting_marked
-=======
   m_Name: targeting_seen
->>>>>>> origin/Development
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
