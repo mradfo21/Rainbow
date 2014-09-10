@@ -10035,6 +10035,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 204639484}
   m_RootOrder: 0
+<<<<<<< HEAD
 --- !u!1001 &655359368
 Prefab:
   m_ObjectHideFlags: 0
@@ -10095,6 +10096,8 @@ Prefab:
   m_RootGameObject: {fileID: 1448200117}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+=======
+>>>>>>> origin/Development
 --- !u!1 &658898091
 GameObject:
   m_ObjectHideFlags: 0
