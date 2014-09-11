@@ -6,12 +6,20 @@ var teamIndex:int = 0;
 var lastPress:float = 0.0;
 var gameData:gameData;
 var averagePosition:Vector3 = Vector3.zero;
+var initizalized:boolean = false;
 function Start () {
+
 	gameData = new gameData();
 	gameData.Start();
 }
 
 function Update () {
+	if (initizalized == false){
+		if (SwitchTeams() == true){
+			initizalized = true;
+		}
+
+	}
 	if ( playerTeam.leader){
 		MakePlayer();
 	}
@@ -32,7 +40,7 @@ function GetAveragePosition():Vector3{
 	}
 	return pos/ (teams[gameData.gameAttributes.playerSpecies].Count);
 }
-function SwitchTeams(){
+function SwitchTeams():boolean{
 	var t = List.<team>();
 	if (teams.ContainsKey(gameData.gameAttributes.playerSpecies) == true){
 		t = teams[gameData.gameAttributes.playerSpecies];
@@ -44,8 +52,12 @@ function SwitchTeams(){
 		}
 		playerTeam = t[teamIndex];
 		//teamIndex+=1;
+		gameObject.BroadcastMessage("SwitchedTeams",playerTeam);
+
+		return true;
 	}else{
 		print("this species doesn't exist");
+		return false;
 	}
 }
 
@@ -59,7 +71,8 @@ function AddTeam(team:GameObject) {
 	}
 	if (teams[t.species].Contains(t) == false ){
 		teams[t.species].Add(t);
+		if (t.species == gameData.gameAttributes.playerSpecies){
+			gameObject.BroadcastMessage("AddedTeam",t);
+		}
 	}
-	playerTeam = t;
-	//Invoke("MakePlayer",5.0);
 }

@@ -1,13 +1,11 @@
 ﻿#pragma strict
+var gameData:gameData;
 
 function Start () {
-
+ 	gameData = new gameData();
+	gameData.Start();
 }
 
 function Update () {
-	if (Input.GetButton("ToggleLook")){
-		Time.timeScale = .045;
-	}else{
-		Time.timeScale = 1.0;
+		Time.timeScale = gameData.gameAttributes.timeScale;
 	}
-}

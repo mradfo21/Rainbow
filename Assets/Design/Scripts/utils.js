@@ -24,4 +24,29 @@ function Rescale (InputValue : float, SourceStart : float, SourceEnd : float, Ta
     return Mathf.Lerp(TargetStart,TargetEnd,(InputValue-SourceStart)/(SourceEnd-SourceStart));
 }
 
+function getAttributes(teammate:GameObject):attributes{
+	var attrib:attributes = teammate.transform.parent.GetComponent("attributes");		
+}
+function isOccupiedByTeammate(pos:Vector3,team:team,memberAttributes:attributes):boolean{
+	for (teammate in team.members){
+		var attrib:attributes = getAttributes(teammate);
+		var d:float = Vector3.Distance(memberAttributes.destination,attrib.destination);
+		if (d < .8 && d >.001){
+			return true;
+		}
+	}
+	return false;
+}
+
+function isOccupiedByTeammate(pos:Vector3,radius:float,team:team,memberAttributes:attributes):boolean{
+	for (teammate in team.members){
+		var attrib:attributes = getAttributes(teammate);
+		var d:float = Vector3.Distance(memberAttributes.destination,attrib.destination);
+		if (d < radius && d >.001){
+			return true;
+		}
+	}
+	return false;
+
+	}
 }

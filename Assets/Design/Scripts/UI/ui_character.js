@@ -22,14 +22,18 @@ function Setup(){
 }
 function Update () {
 	//print(attributes);
-	currentTeam = gameData.gameAttributes.playerAttributes.team;
-	playerAttributes = gameData.gameAttributes.playerAttributes;
-	//print(brain);
-	//print(gameData.gameAttributes.playerAttributes.team.enemiesPermanent.Count);
-	//print(gameData.gameAttributes.playerAttributes.team.members);
-	enemiesPermanent = gameData.gameAttributes.playerAttributes.team.enemiesPermanent;
-	if (enemiesPermanent.Contains(brain)){
-		gameObject.BroadcastMessage("isEnemy");
-	}		
+	if (gameData.gameAttributes.player){
+		currentTeam = gameData.gameAttributes.playerAttributes.team;
+		playerAttributes = gameData.gameAttributes.playerAttributes;
+		//print(brain);
+		//print(gameData.gameAttributes.playerAttributes.team.enemiesPermanent.Count);
+		//print(gameData.gameAttributes.playerAttributes.team.members);
+		enemiesPermanent = gameData.gameAttributes.playerAttributes.team.enemiesPermanent;
+		if (enemiesPermanent.Contains(brain)){
+			gameObject.BroadcastMessage("isEnemy");
+		}
+		
+	}
+		
 	
 }

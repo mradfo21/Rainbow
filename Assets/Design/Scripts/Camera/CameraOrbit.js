@@ -36,6 +36,7 @@ var offset:Vector3;
 
 var gameData:gameData;
 var target:Vector3;
+var inPlanning:boolean = false;
 private var goalOffsetForward:Vector3;
 
 function Start () {
@@ -84,7 +85,7 @@ function Update () {
     		target.y += finalHeight;
             var finalSmoothTime:float = smoothTime;
 
-            if (!Input.GetAxis("ToggleLook") && gameData.gameAttributes.inUAV == false){
+            if (gameData.gameAttributes.inPlanning == false && gameData.gameAttributes.inUAV == false){
 
             x += Input.GetAxis("Mouse X") * xSpeed * 0.01;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.01;

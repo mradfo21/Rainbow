@@ -12,9 +12,11 @@ var yMinLimit = -50;
 var yMaxLimit = 200; 
 var smoothTime = 0.3;
 var reset:boolean = false;
+var gameData:gameData;
 
 function Start () {
-
+    gameData = new gameData();
+    gameData.Start();
 }
 
 function Update () {
@@ -25,7 +27,7 @@ function Update () {
         ySmooth = ClampAngle(ySmooth, yMinLimit, yMaxLimit);
         var rotation = Quaternion.Euler(ySmooth, xSmooth, 0);  
 
-    if (Input.GetAxis("ToggleLook")){
+    if (gameData.gameAttributes.inPlanning == true){
         if (reset == true){  	
             x = 0;
             y = 0;

@@ -37,7 +37,7 @@ function FixedUpdate(){
 
 }
 function Update () {
-    if (!Input.GetAxis("ToggleLook")){
+    if (gameData.gameAttributes.inPlanning == false){
 
 		cameraTime+= Time.deltaTime;
 
