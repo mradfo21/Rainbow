@@ -163,6 +163,8 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   coverTarget: {x: 0, y: 0, z: 0}
   coveringFire: 0
+  visionRange_spotted: 50
+  visionRange_attacked: 20
   visionRange: 3000
   follower: {fileID: 0}
   nearestFriend: {fileID: 0}

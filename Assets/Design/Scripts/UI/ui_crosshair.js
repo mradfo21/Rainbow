@@ -15,7 +15,6 @@ function Start () {
 
 function Update () {
 	if (gameData.gameAttributes.player){
-		print("CROSS HAIR OBJ:"+ gameData.gameAttributes.player.gameObject.transform.position);
 		crosshairObj.transform.parent = gameObject.transform;
 		crosshairObj.transform.position = gameData.gameAttributes.player.gameObject.transform.position;
 

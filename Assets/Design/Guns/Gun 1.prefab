@@ -145,11 +145,11 @@ MonoBehaviour:
   bullet: {fileID: 100000, guid: 2340a13f6ac7a41adbe3af2954a09d94, type: 2}
   fire: 0
   fireRate: .0799999982
-  stability: .100000001
+  stability: .0500000007
   shakeSpeed: 10
   fireOffset: {x: 0, y: 0, z: 0}
   alive: 1
-  damage: 12
+  damage: 100
   currentTarget: {x: 0, y: 0, z: 0}
   host: {fileID: 0}
   lastFire: 0

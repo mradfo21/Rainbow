@@ -71,7 +71,7 @@ function Update () {
 
     vmag = v.magnitude;
 
-        if (gameData.gameAttributes.player) {
+        if (gameData.gameAttributes.playerAttributes) {
 
             var agent:NavMeshAgent = gameData.gameAttributes.playerAttributes.agent;
             vFactor += Mathf.Clamp(agent.desiredVelocity.magnitude*.1,0,1) * Time.deltaTime;

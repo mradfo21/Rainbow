@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 33: {fileID: 3300000}
+  - 114: {fileID: 11400018}
   - 23: {fileID: 2300000}
   - 136: {fileID: 13600000}
   - 54: {fileID: 5400000}
@@ -123,7 +124,6 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: 
   id: movement
-  lock: 0
   attributes: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -141,7 +141,6 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: idle
   id: goal
-  lock: 0
   attributes: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
@@ -159,7 +158,6 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: offensive
   id: combat
-  lock: 0
   attributes: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
@@ -230,7 +228,18 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: tactical
   id: stance
-  lock: 0
+  attributes: {fileID: 0}
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1143fa483b09b4dff83b90e6ea26a278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   attributes: {fileID: 0}
 --- !u!136 &13600000
 CapsuleCollider:

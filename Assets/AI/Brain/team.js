@@ -22,10 +22,11 @@ var reportedEnemiesSighted:boolean = false;
 var reportedEnemiesKilled:boolean = false;
 var averagePosition:Vector3;
 var game:GameObject;
+var ready:boolean = false;
 function CheckLeader(){
 	if (members.Count >= 1){
 		leader = members[0];
-		leaderAttributes = leader.transform.parent.gameObject.GetComponent("attributes");
+		leaderAttributes = leader.GetComponent("attributes");
 		leaderAttributes.leader = true;
 	}else{
 		leader = null;
@@ -81,7 +82,6 @@ function CheckForEnemies(){
 	}
 }
 function RemoveDeadEnemies(){
-
 	while (true){
 		enemies.Clear();
 		var toRemove = new List.<int>();
@@ -105,21 +105,21 @@ function RemoveDeadEnemies(){
 
 }
 function CollectVision(){
-	enemiesDistance.Clear();
-	for (v in visions.Keys){
-		for (eKey in visions[v].enemies.Keys){
-			var attrib:attributes = visions[v].enemies[eKey].transform.parent.GetComponent("attributes");
-			if (attrib.alive == true){
-				enemies[eKey] =visions[v].enemies[eKey];
-				enemiesAlive[eKey] =visions[v].enemies[eKey];
-				enemiesDistance.Add(visions[v].enemies[eKey]);				
-			}else{
-				enemies.Remove(eKey);
-			}
+		enemiesDistance.Clear();
+		for (v in visions.Keys){
+			for (eKey in visions[v].enemies.Keys){
+				var attrib:attributes = visions[v].enemies[eKey].transform.parent.GetComponent("attributes");
+				if (attrib.alive == true){
+					enemies[eKey] =visions[v].enemies[eKey];
+					enemiesAlive[eKey] =visions[v].enemies[eKey];
+					enemiesDistance.Add(visions[v].enemies[eKey]);				
+				}else{
+					enemies.Remove(eKey);
+				}
 
+			}
 		}
-	}
-	CheckForEnemies();
+		CheckForEnemies();
 }
 function ClearDeadMembers(){
 	for (var i = 0; i < members.Count; i++){
@@ -135,8 +135,8 @@ function ClearDeadMembers(){
 }
 function CheckTeamMembers(){
 	for (var i = 0; i < members.Count; i++){
-		attribs[members[i]] = members[i].transform.parent.gameObject.GetComponent("attributes");
-		visions[members[i]] = members[i].GetComponent("vision");
+		attribs[members[i]] = members[i].GetComponent("attributes");
+		visions[members[i]] = attribs[members[i]].brain.GetComponent("vision");
 		attribs[members[i]].inTeam = true;
 		attribs[members[i]].team = this;
 		if (i >= 1){
@@ -153,26 +153,29 @@ function CheckTeamMembers(){
 
 	}
 }
-function OnTriggerEnter(col:Collider){
-	var attrib = col.gameObject.transform.parent.gameObject.GetComponent("attributes") as attributes;
-	if ( members.Count <= maxMembers && !members.Contains(col.gameObject) && attrib.inTeam == false && attrib.species == species){
-		members.Add(col.gameObject);
-		CheckTeamMembers();
-		//CheckLeader();		
-	}else{
-	}
-
-}
+//function OnTriggerEnter(col:Collider){
+// this function enables dynamic injection of team members... might not be a good idea for now
+//	var attrib = col.gameObject.transform.parent.gameObject.GetComponent("attributes") as attributes;
+//	if ( members.Count <= maxMembers && !members.Contains(col.gameObject) && attrib.inTeam == false && attrib.species == species){
+//		members.Add(col.gameObject);
+//		CheckTeamMembers();
+//		//CheckLeader();		
+//	}else{
+//	}
+//
+//}
 function Start () {
 	game = gameObject.Find("Game");
 	StartCoroutine("RemoveDeadEnemies",1.0);
-	game.SendMessage("AddTeam",this.gameObject);
+	game.SendMessage("AddTeam",gameObject);
 }
-
-function Update () {
-
+function Setup(){
+	CheckTeamMembers();
+	CheckLeader();
+	ready = true;
+}
+function ManageUnits(){
 	if (members.Count >= 0){
-		//transform.position = GeneratePosition();
 		CollectVision();
 		ClearDeadMembers();
 
@@ -193,4 +196,9 @@ function Update () {
 	CheckLeader();
 	averagePosition = findAveragePosition();
 
+}
+function Update () {
+	if (ready == true){
+		ManageUnits();
+	}
 }

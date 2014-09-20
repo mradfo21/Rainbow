@@ -54,13 +54,13 @@
 			var bulletDest:Vector3;
 			var shootingFriendly:boolean = false;
 			var enemy:boolean = true;
-			if(Physics.Raycast(ray,hit,100)){
+			if(Physics.Raycast(ray,hit,1000)){
 				bulletDest= hit.point;
 				if (hit.collider.gameObject.tag == "character"){
 					enemy = ShotCharacter(hit.collider.gameObject);
 				}
 			}else{
-				bulletDest = ray.GetPoint(100);
+				bulletDest = ray.GetPoint(1000);
 				//notifyFired();
 			}
 			if (enemy == true){

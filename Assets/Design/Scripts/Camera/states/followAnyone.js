@@ -16,7 +16,9 @@ class followAnyone extends state_camera{
 
 	function Execute(){
 		super.Execute();
-		target = gameData.gameAttributes.player.transform.position;
+		if (gameData.gameAttributes.player){
+			target = gameData.gameAttributes.player.transform.position;			
+		}
 	}
 
 	function Exit(){

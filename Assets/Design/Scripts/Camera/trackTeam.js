@@ -7,6 +7,9 @@ function Start () {
 }
 
 function Update () {
-	var seek:Vector3 =  gameData.teams.averagePosition - transform.position;
-	transform.position += seek* Time.deltaTime;
+	if (gameData.gameAttributes.player){
+		var seek:Vector3 =  gameData.teams.averagePosition - transform.position;
+		transform.position += seek* Time.deltaTime;		
+	}
+
 }

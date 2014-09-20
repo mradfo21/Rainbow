@@ -8,7 +8,6 @@ var currentIcon:GameObject;
 function Start () {
 	for (var i =0; i < mapIcon.Count; i++){
 		mapDictionary[mapString[i]] = mapIcon[i];
-		print( mapIcon[i]);
 	}
 
 	currentIcon = GetIcon(mapString[0]);

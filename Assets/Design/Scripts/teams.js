@@ -20,7 +20,7 @@ function Update () {
 		}
 
 	}
-	if ( playerTeam.leader){
+	if ( playerTeam && playerTeam.ready == true){
 		MakePlayer();
 	}
 	if (Input.GetAxisRaw("SwitchTeams") && Time.time > lastPress+.5){
@@ -28,7 +28,9 @@ function Update () {
 		teamIndex +=Input.GetAxisRaw("SwitchTeams");
 		SwitchTeams();
 	}
-	averagePosition = GetAveragePosition();
+	if (playerTeam){
+		averagePosition = GetAveragePosition();		
+	}
 
 }
 function GetAveragePosition():Vector3{
@@ -52,7 +54,7 @@ function SwitchTeams():boolean{
 		}
 		playerTeam = t[teamIndex];
 		//teamIndex+=1;
-		gameObject.BroadcastMessage("SwitchedTeams",playerTeam);
+		gameObject.BroadcastMessage("SwitchedTeams",playerTeam,SendMessageOptions.DontRequireReceiver);
 
 		return true;
 	}else{
@@ -62,17 +64,22 @@ function SwitchTeams():boolean{
 }
 
 function MakePlayer(){
-	gameObject.BroadcastMessage("SetPlayer",playerTeam.leader);
+	print("MAKING PLAYER" + playerTeam);
+	print("LEADER = "+playerTeam.leader);
+	gameObject.BroadcastMessage("SetPlayer",playerTeam.leader,SendMessageOptions.DontRequireReceiver);
 }
 function AddTeam(team:GameObject) {
+	if (gameData){
+	print("RECEIVED TEAM: "+team);
 	var t:team = team.GetComponent("team");
 	if (!teams.ContainsKey(t.species) ){
 		teams[t.species] = new List.<team>();
 	}
-	if (teams[t.species].Contains(t) == false ){
+	if (teams[t.species].Contains(t) == false && t.species){
 		teams[t.species].Add(t);
 		if (t.species == gameData.gameAttributes.playerSpecies){
-			gameObject.BroadcastMessage("AddedTeam",t);
+			gameObject.BroadcastMessage("AddedTeam",t,SendMessageOptions.DontRequireReceiver);
 		}
+	}
 	}
 }

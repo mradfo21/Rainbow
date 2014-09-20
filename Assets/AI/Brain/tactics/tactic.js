@@ -29,7 +29,6 @@ function Start () {
 	maxRoles = roles.Count;
 	team = transform.parent.GetComponent("team");
 	team.currentTactic = gameObject;
-	print("tactic DATA: "+data);
 	if (data!= null){
 			id = data[0];
 			argVector = data[1];		
@@ -102,7 +101,9 @@ function createRole(role:GameObject,entity:GameObject){
 	roleComponent.data = data;
 	
 	for (var c:Transform in entity.transform){
-		Destroy(c.gameObject);
+		// this causes a bug where it deletes the enemies on spawn..
+		// i do think it served a purpose. please debug.
+		//Destroy(c.gameObject);
 	}
 	r.transform.parent = entity.transform;
 }

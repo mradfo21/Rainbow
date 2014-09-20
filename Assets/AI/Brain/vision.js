@@ -16,9 +16,11 @@
 	var agent:NavMeshAgent;
 	var attributes:attributes;
 
+
 	private var broadcastObj:GameObject;
 	private var data = new Array();
 
+	private var targeted = new Dictionary.<GameObject,float>();
 	private var visible = new Dictionary.<int,GameObject>();
 	private var seen = new Dictionary.<int,GameObject>();
 	private var friends = new Dictionary.<int,GameObject>();
@@ -38,7 +40,7 @@
 	}
 	function chooseTarget(){
 		if (targets.Count >0){
-			if(Vector3.Distance(transform.position,targets[0].transform.position) > attributes.visionRange){
+			if(Vector3.Distance(transform.position,targets[0].transform.position) > attributes.visionRange_attacked){
 				attributes.hasTarget = false;
 				attributes.target = null;
 			}else{
@@ -91,12 +93,30 @@
 		}
 	}
 
+	function TransmitSpotted(obj:GameObject){
+		obj.transform.parent.BroadcastMessage("Spotted",gameObject);
+		// place code here for saying to the team "HEY I SPOTTED AN ENEMY"
+	}
+	function FindSpottedEnemies():Dictionary.<int,GameObject>{
+		// this find enemies that are within the spotted range of the attributes
+		var returnList = new Dictionary.<int,GameObject>();
+		for (obj in visible.Keys){
+			if (Vector3.Distance(visible[obj].transform.position,transform.position) < attributes.visionRange_spotted){
+				returnList[obj] = visible[obj];
+				if (targeted.ContainsKey(visible[obj]) == false ){
+					targeted[visible[obj]] = Time.time;
+					TransmitSpotted(visible[obj]);
+				}
+			}
+		}
+		return returnList;
+	}
 
 	function FindSpeciesVisible():IEnumerator{
 		// loops through friendly species
 		// is a friend or enemy and then adds it to allies or enemies
 		while(1){
-		enemies = visible;
+		enemies = FindSpottedEnemies();
 		enemiesToTargets();
 		findFriendlies();
 		yield WaitForSeconds(.2);

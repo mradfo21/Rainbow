@@ -7,8 +7,6 @@ function Start(){
 }
 function Update(){
 	super.Update();
-	if (Input.GetAxis("ToggleLook")){
-	}
 }
 function changeState(state:String){
 	super.changeState(state);

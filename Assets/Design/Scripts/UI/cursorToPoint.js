@@ -26,27 +26,27 @@ function updateRandomOffsets(){
 	}
 } 
 function Update () {
-
 	team = gameData.gameAttributes.playerTeam;
-	var player:GameObject = gameData.gameAttributes.player;
+	if (team){
+		var player:GameObject = gameData.gameAttributes.player;
 
-	var layerMask = 1 << 12;
-	var ray : Ray = Camera.main.ViewportPointToRay (Vector3(0.5,0.5,0));
-	var hit : RaycastHit;
-	var point:Vector3;
-	var navHit:NavMeshHit;
-	if (Physics.Raycast (ray, hit,500,layerMask)){
-		origin = hit.point;
+		var layerMask = 1 << 12;
+		var ray : Ray = Camera.main.ViewportPointToRay (Vector3(0.5,0.5,0));
+		var hit : RaycastHit;
+		var point:Vector3;
+		var navHit:NavMeshHit;
+		if (Physics.Raycast (ray, hit,500,layerMask)){
+			origin = hit.point;
+		}
+		currentTeamCount = team.members.Count;
+		if (currentTeamCount != lastTeamCount){
+				newTeam();
+		}
+		lastTeamCount = team.members.Count;
+		FindTeamPoints();
+		//setIcons(origin);
+		updateIconPositions();
 	}
-	currentTeamCount = team.members.Count;
-	if (currentTeamCount != lastTeamCount){
-			newTeam();
-	}
-	lastTeamCount = team.members.Count;
-	print("NUMBER OF TEAMMATES "+team.members.Count);
-	FindTeamPoints();
-	//setIcons(origin);
-	updateIconPositions();
 }
 function newTeam(){
 	initializeIcons();

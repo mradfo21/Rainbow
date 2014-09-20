@@ -302,10 +302,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  eEnterPlanning: birth
-  eExitPlanning: death
+  eEnterPlanning: 
+  eExitPlanning: 
   eIssuedOrder: 
-  eSwitchedTeam: birth
+  eSwitchedTeam: 
+  eEnterAttack: 
+  eExitAttack: 
+  eEnterMovement: birth
+  eExitMovement: death
   eAddedTeam: 
 --- !u!114 &11400004
 MonoBehaviour:

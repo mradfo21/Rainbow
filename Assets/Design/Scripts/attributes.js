@@ -10,7 +10,7 @@ var team:team;
 var teammateTarget:GameObject;
 var teammateTargetAttributes:attributes;
 var teamSpot:int;
-
+var brain:GameObject;
 var acceleration:float = 1;
 var angularSpeed:float = 20;
 var speed:float = 2.5;
@@ -37,6 +37,9 @@ var destination:Vector3;
 
 var coverTarget:Vector3 = Vector3.zero;
 var coveringFire:boolean = false;
+
+var visionRange_spotted:float = 20.0;
+var visionRange_attacked:float = 10.0;
 var visionRange:float = 14.0;
 var follower:GameObject = null;
 var nearestFriend:GameObject;
@@ -48,13 +51,16 @@ var hasTarget:boolean = false;
 var gun:gun;
 var species:String;
 var targetDistance:float;
-
-
+var accuracy:float = 1.0;
+var damageMod:float = 1.0;
+var stealthiness:float = 1.0;
 private var currentTargetID;
 
 var target:GameObject = null;
 var targetAttributes:attributes;
 var targets = new List.<GameObject>();
+
+var assaignedTarget:GameObject = null;
 
 function Start () {
 	lastHintTimerMax = 40+Random.value*40;

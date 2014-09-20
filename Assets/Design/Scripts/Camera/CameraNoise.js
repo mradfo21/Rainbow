@@ -44,7 +44,7 @@ function Update () {
 		// a vector for moving the camera. i kind of dont like this
 		var speedMult = 1;
 		var agentVelocity:float = 0.0;
-		if (gameData.gameAttributes.player){
+		if (gameData.gameAttributes.playerAttributes){
 	      var agent:NavMeshAgent = gameData.gameAttributes.playerAttributes.agent;
 	      agentVelocity = agent.velocity.magnitude;
 	      speedMult = 1+ agentVelocity*.2;

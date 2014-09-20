@@ -6,6 +6,8 @@ var player:GameObject;
 var playerAttributes:attributes;
 var playerTeam:team;
 var inPlanning:boolean = false;
+var inMovement:boolean = true;
+var inAttack:boolean = false;
 var inUAV:boolean = false;
 var navmesh:NavMesh;
 var timeScale:float =1.0;
@@ -15,11 +17,14 @@ function Start () {
 }
 
 function Update () {
-	playerTeam = playerAttributes.team;
+	if (playerAttributes){
+		playerTeam = playerAttributes.team;
+	}
 }
 
 function SetPlayer(p:GameObject){
-	player = p.transform.parent.gameObject;
+	print("GOT SET PLAYER" + p);
+	player = p.gameObject;
 	playerAttributes = player.GetComponent("attributes");
 }
 

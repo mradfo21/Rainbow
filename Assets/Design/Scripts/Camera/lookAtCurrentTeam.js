@@ -6,7 +6,10 @@ function Start () {
 }
 
 function Update () {
-	if (gameData.gameAttributes.inUAV == false){
-		transform.LookAt(gameData.teams.playerTeam.leader.transform.position);		
+	if (gameData.gameAttributes.playerTeam){
+		if (gameData.gameAttributes.inUAV == false &&gameData.teams.playerTeam.leader ){
+			transform.LookAt(gameData.teams.playerTeam.leader.transform.position);		
+		}		
 	}
+
 }

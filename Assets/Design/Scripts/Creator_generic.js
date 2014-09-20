@@ -6,13 +6,9 @@ var numCopies:int = 0;
 var radius = 1.0;
 var species:String = "";
 var enemySpecies:String = "";
-
+var team:team;
 private var created = new List.<GameObject>();
-var navMesh:NavMesh = null;
 
-function NavMesh(nav:NavMesh){
-	navMesh = nav;
-}
 
 function Start () {
 
@@ -23,49 +19,60 @@ function Start () {
 	}else{
 		InstantiateThing();		
 	}
-
-	Invoke("setupSpecies",1);
+	if (transform.parent.gameObject.name== "TeamSpawner"){
+		handleTeam(transform.parent.gameObject);
+	}
+	Invoke("setupSpecies",1.0);
 }
 function setupSpecies(){
 	for (obj in created){
 		if(species != ""){
 			obj.BroadcastMessage("SetSpecies",species,SendMessageOptions.DontRequireReceiver);		
 			obj.BroadcastMessage("AddFriendlySpecies",species,SendMessageOptions.DontRequireReceiver);
-		
 		}
 		if(enemySpecies != ""){
 			obj.BroadcastMessage("AddEnemySpecies",enemySpecies,SendMessageOptions.DontRequireReceiver);
 		}
 	}
+	if (team){
+		team.Setup();
+	}
 }
+
+function handleTeam(t:GameObject){
+	team = t.GetComponent("team");
+	if (team.species != species){
+		species = team.species;
+	}
+	team.members = created;
+	team.maxMembers = created.Count;
+}	
 function InstantiateThing(){
+	var origin:Vector3 = transform.position;
+	var obj:GameObject;
 	if (parentName == ""){
-	var t = Instantiate(thing,randomPoint(transform.position),Quaternion.identity);
-	if(transform.parent){
-		t.transform.parent = transform.parent;
-		created.Add(t);
-
-
-	}		
+		obj = Instantiate(thing);
+		if(transform.parent){
+			obj.transform.parent = transform.parent;
+			created.Add(obj);
+	}
 	}else{
 		var p:GameObject = gameObject.Find(parentName);
-		var obj = Instantiate(thing,randomPoint(transform.position),Quaternion.identity);
+		obj = Instantiate(thing);
 		obj.transform.parent = p.transform;
 		created.Add(obj);
 
 	}
+	obj.transform.position = randomPoint(origin);		
 }
 
 function randomPoint(originalPoint:Vector3):Vector3{
-		var newPosition:Vector2 = (Random.insideUnitCircle * radius);
-		var newPoint:Vector3 = originalPoint;
-		newPoint.x*= newPosition.x+radius/2;
-		newPoint.z*= newPosition.y+radius/2;
+		var newPoint:Vector3 = Random.insideUnitSphere;
 		var hit:NavMeshHit;
-		if (navMesh.SamplePosition(originalPoint,hit,radius,-1)){
+		if (NavMesh.SamplePosition(originalPoint+newPoint,hit,1,-1)){
 			return hit.position;
 		}else{
-			return originalPoint;
+			return originalPoint+newPoint;
 		}
 
 }
