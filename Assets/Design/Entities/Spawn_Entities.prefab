@@ -41,11 +41,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thing: {fileID: 100006, guid: f80ae2d175e194309a65872fda589165, type: 2}
   parentName: Entities
-  numCopies: 10
+  numCopies: 1
   radius: .5
-  species: robot
-  enemySpecies: human
-  navMesh: {fileID: 0}
+  species: human
+  enemySpecies: robot
+  team: {fileID: 0}
+  useNavMesh: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

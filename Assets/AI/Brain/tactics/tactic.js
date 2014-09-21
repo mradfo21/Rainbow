@@ -96,16 +96,19 @@ function NeedsNewRole(obj:GameObject){
 	}
 }
 function createRole(role:GameObject,entity:GameObject){
-	var r:GameObject = Instantiate(role);
-	var roleComponent:role = r.GetComponent("role");
-	roleComponent.data = data;
-	
-	for (var c:Transform in entity.transform){
-		// this causes a bug where it deletes the enemies on spawn..
-		// i do think it served a purpose. please debug.
-		//Destroy(c.gameObject);
+	var host:GameObject = entity.transform.Find("Brain(Clone)").gameObject;
+	if (host){
+		var r:GameObject = Instantiate(role);
+		var roleComponent:role = r.GetComponent("role");
+		roleComponent.data = data;
+		for (var c:Transform in host.transform){
+			if (team.ready == true){
+				Destroy(c.gameObject);			
+			}
+		}
+		r.transform.parent = host.transform;		
 	}
-	r.transform.parent = entity.transform;
+
 }
 
 function assaignRoles(obj:GameObject){

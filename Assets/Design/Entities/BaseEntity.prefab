@@ -98,13 +98,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fad481b1bbfc450ebeb08a9d85da60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thing: {fileID: 100314, guid: e936fa4cd6e2240629e1fcedfbeabe9e, type: 2}
+  thing: {fileID: 100048, guid: 7a45c0bf5764f48b8b5efc7ae6d6822a, type: 2}
   parentName: 
   numCopies: 0
   radius: 0
   species: 
   enemySpecies: 
-  navMesh: {fileID: 0}
+  team: {fileID: 0}
+  useNavMesh: 0
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,7 +123,8 @@ MonoBehaviour:
   radius: 0
   species: 
   enemySpecies: 
-  navMesh: {fileID: 0}
+  team: {fileID: 0}
+  useNavMesh: 0
 --- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,6 +145,7 @@ MonoBehaviour:
   teammateTarget: {fileID: 0}
   teammateTargetAttributes: {fileID: 0}
   teamSpot: 0
+  brain: {fileID: 0}
   acceleration: 2
   angularSpeed: 200
   speed: 3.5
@@ -174,9 +177,13 @@ MonoBehaviour:
   gun: {fileID: 0}
   species: 
   targetDistance: 0
+  accuracy: 1
+  damageMod: 1
+  stealthiness: 1
   target: {fileID: 0}
   targetAttributes: {fileID: 0}
   targets: []
+  assaignedTarget: {fileID: 0}
 --- !u!195 &19500000
 NavMeshAgent:
   m_ObjectHideFlags: 1

@@ -33,9 +33,7 @@ function ExitPlanning(){
 }
 function IssuedOrder(order:String){
 		if (eIssuedOrder!= Color.clear){
-			print("CHANGING COLOR TO "+eIssuedOrder);
 			renderer.material.SetColor("_TintColor",eIssuedOrder);	
-			print("MAT COLOR IS NOW : "+material.GetColor("_Tint"));
 		}else{
 			renderer.material.SetColor("_TintColor",baseColor);	
 		}

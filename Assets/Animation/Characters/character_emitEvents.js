@@ -50,6 +50,5 @@ function OnMouseEnter(){
 
 function OnMouseExit(){
 	hovering = false;
-	print("EXITING");
 }
 

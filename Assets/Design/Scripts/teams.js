@@ -64,13 +64,10 @@ function SwitchTeams():boolean{
 }
 
 function MakePlayer(){
-	print("MAKING PLAYER" + playerTeam);
-	print("LEADER = "+playerTeam.leader);
 	gameObject.BroadcastMessage("SetPlayer",playerTeam.leader,SendMessageOptions.DontRequireReceiver);
 }
 function AddTeam(team:GameObject) {
 	if (gameData){
-	print("RECEIVED TEAM: "+team);
 	var t:team = team.GetComponent("team");
 	if (!teams.ContainsKey(t.species) ){
 		teams[t.species] = new List.<team>();

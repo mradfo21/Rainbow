@@ -23,7 +23,6 @@ function Update () {
 }
 
 function SetPlayer(p:GameObject){
-	print("GOT SET PLAYER" + p);
 	player = p.gameObject;
 	playerAttributes = player.GetComponent("attributes");
 }

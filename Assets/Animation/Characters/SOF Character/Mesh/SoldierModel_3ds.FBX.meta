@@ -1,0 +1,386 @@
+fileFormatVersion: 2
+guid: cc71e6049f39b2d41b6e32f5c1060349
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: body_0
+    100002: ELEMENT 06
+    100004: ELEMENTS_00
+    100006: ELEMENTS_01
+    100008: ELEMENTS_016
+    100010: ELEMENTS_017
+    100012: ELEMENTS_02
+    100014: ELEMENTS_03
+    100016: ELEMENTS_04
+    100018: ELEMENTS_05
+    100020: ELEMENTS_07
+    100022: ELEMENTS_08_0
+    100024: ELEMENTS_09
+    100026: ELEMENTS_10
+    100028: ELEMENTS_11
+    100030: ELEMENTS_12
+    100032: ELEMENTS_13
+    100034: ELEMENTS_14
+    100036: ELEMENTS_15
+    100038: ELEMENTS_16
+    100040: ELEMENTS_17
+    100042: ELEMENTS_18
+    100044: ELEMENTS_19
+    100046: ELEMENTS_20
+    100048: ELEMENTS_21
+    100050: foulard
+    100052: gps
+    100054: head
+    100056: lens big glasses
+    100058: lens glasses
+    100060: lens ocular
+    100062: low 022
+    100064: low01
+    100066: low02
+    100068: low020
+    100070: low021
+    100072: low19
+    100074: SC:Head
+    100076: SC:HeadTop_End
+    100078: SC:Hips
+    100080: SC:LeftArm
+    100082: SC:LeftFoot
+    100084: SC:LeftForeArm
+    100086: SC:LeftHand
+    100088: SC:LeftHandIndex1
+    100090: SC:LeftHandIndex2
+    100092: SC:LeftHandIndex3
+    100094: SC:LeftHandIndex4
+    100096: SC:LeftHandMiddle1
+    100098: SC:LeftHandMiddle2
+    100100: SC:LeftHandMiddle3
+    100102: SC:LeftHandMiddle4
+    100104: SC:LeftHandPinky1
+    100106: SC:LeftHandPinky2
+    100108: SC:LeftHandPinky3
+    100110: SC:LeftHandPinky4
+    100112: SC:LeftHandRing1
+    100114: SC:LeftHandRing2
+    100116: SC:LeftHandRing3
+    100118: SC:LeftHandRing4
+    100120: SC:LeftHandThumb1
+    100122: SC:LeftHandThumb2
+    100124: SC:LeftHandThumb3
+    100126: SC:LeftHandThumb4
+    100128: SC:LeftLeg
+    100130: SC:LeftShoulder
+    100132: SC:LeftToe_End
+    100134: SC:LeftToeBase
+    100136: SC:LeftUpLeg
+    100138: SC:Neck
+    100140: SC:RightArm
+    100142: SC:RightFoot
+    100144: SC:RightForeArm
+    100146: SC:RightHand
+    100148: SC:RightHandIndex1
+    100150: SC:RightHandIndex2
+    100152: SC:RightHandIndex3
+    100154: SC:RightHandIndex4
+    100156: SC:RightHandMiddle1
+    100158: SC:RightHandMiddle2
+    100160: SC:RightHandMiddle3
+    100162: SC:RightHandMiddle4
+    100164: SC:RightHandPinky1
+    100166: SC:RightHandPinky2
+    100168: SC:RightHandPinky3
+    100170: SC:RightHandPinky4
+    100172: SC:RightHandRing1
+    100174: SC:RightHandRing2
+    100176: SC:RightHandRing3
+    100178: SC:RightHandRing4
+    100180: SC:RightHandThumb1
+    100182: SC:RightHandThumb2
+    100184: SC:RightHandThumb3
+    100186: SC:RightHandThumb4
+    100188: SC:RightLeg
+    100190: SC:RightShoulder
+    100192: SC:RightToe_End
+    100194: SC:RightToeBase
+    100196: SC:RightUpLeg
+    100198: SC:Spine
+    100200: SC:Spine1
+    100202: SC:Spine2
+    100204: //RootNode
+    100206: watch
+    100208: wire
+    400000: body_0
+    400002: ELEMENT 06
+    400004: ELEMENTS_00
+    400006: ELEMENTS_01
+    400008: ELEMENTS_016
+    400010: ELEMENTS_017
+    400012: ELEMENTS_02
+    400014: ELEMENTS_03
+    400016: ELEMENTS_04
+    400018: ELEMENTS_05
+    400020: ELEMENTS_07
+    400022: ELEMENTS_08_0
+    400024: ELEMENTS_09
+    400026: ELEMENTS_10
+    400028: ELEMENTS_11
+    400030: ELEMENTS_12
+    400032: ELEMENTS_13
+    400034: ELEMENTS_14
+    400036: ELEMENTS_15
+    400038: ELEMENTS_16
+    400040: ELEMENTS_17
+    400042: ELEMENTS_18
+    400044: ELEMENTS_19
+    400046: ELEMENTS_20
+    400048: ELEMENTS_21
+    400050: foulard
+    400052: gps
+    400054: head
+    400056: lens big glasses
+    400058: lens glasses
+    400060: lens ocular
+    400062: low 022
+    400064: low01
+    400066: low02
+    400068: low020
+    400070: low021
+    400072: low19
+    400074: SC:Head
+    400076: SC:HeadTop_End
+    400078: SC:Hips
+    400080: SC:LeftArm
+    400082: SC:LeftFoot
+    400084: SC:LeftForeArm
+    400086: SC:LeftHand
+    400088: SC:LeftHandIndex1
+    400090: SC:LeftHandIndex2
+    400092: SC:LeftHandIndex3
+    400094: SC:LeftHandIndex4
+    400096: SC:LeftHandMiddle1
+    400098: SC:LeftHandMiddle2
+    400100: SC:LeftHandMiddle3
+    400102: SC:LeftHandMiddle4
+    400104: SC:LeftHandPinky1
+    400106: SC:LeftHandPinky2
+    400108: SC:LeftHandPinky3
+    400110: SC:LeftHandPinky4
+    400112: SC:LeftHandRing1
+    400114: SC:LeftHandRing2
+    400116: SC:LeftHandRing3
+    400118: SC:LeftHandRing4
+    400120: SC:LeftHandThumb1
+    400122: SC:LeftHandThumb2
+    400124: SC:LeftHandThumb3
+    400126: SC:LeftHandThumb4
+    400128: SC:LeftLeg
+    400130: SC:LeftShoulder
+    400132: SC:LeftToe_End
+    400134: SC:LeftToeBase
+    400136: SC:LeftUpLeg
+    400138: SC:Neck
+    400140: SC:RightArm
+    400142: SC:RightFoot
+    400144: SC:RightForeArm
+    400146: SC:RightHand
+    400148: SC:RightHandIndex1
+    400150: SC:RightHandIndex2
+    400152: SC:RightHandIndex3
+    400154: SC:RightHandIndex4
+    400156: SC:RightHandMiddle1
+    400158: SC:RightHandMiddle2
+    400160: SC:RightHandMiddle3
+    400162: SC:RightHandMiddle4
+    400164: SC:RightHandPinky1
+    400166: SC:RightHandPinky2
+    400168: SC:RightHandPinky3
+    400170: SC:RightHandPinky4
+    400172: SC:RightHandRing1
+    400174: SC:RightHandRing2
+    400176: SC:RightHandRing3
+    400178: SC:RightHandRing4
+    400180: SC:RightHandThumb1
+    400182: SC:RightHandThumb2
+    400184: SC:RightHandThumb3
+    400186: SC:RightHandThumb4
+    400188: SC:RightLeg
+    400190: SC:RightShoulder
+    400192: SC:RightToe_End
+    400194: SC:RightToeBase
+    400196: SC:RightUpLeg
+    400198: SC:Spine
+    400200: SC:Spine1
+    400202: SC:Spine2
+    400204: //RootNode
+    400206: watch
+    400208: wire
+    2300000: ELEMENT 06
+    2300002: ELEMENTS_00
+    2300004: ELEMENTS_01
+    2300006: ELEMENTS_016
+    2300008: ELEMENTS_017
+    2300010: ELEMENTS_02
+    2300012: ELEMENTS_03
+    2300014: ELEMENTS_04
+    2300016: ELEMENTS_05
+    2300018: ELEMENTS_07
+    2300020: ELEMENTS_08_0
+    2300022: ELEMENTS_09
+    2300024: ELEMENTS_10
+    2300026: ELEMENTS_11
+    2300028: ELEMENTS_12
+    2300030: ELEMENTS_13
+    2300032: ELEMENTS_14
+    2300034: ELEMENTS_15
+    2300036: ELEMENTS_16
+    2300038: ELEMENTS_17
+    2300040: ELEMENTS_18
+    2300042: ELEMENTS_19
+    2300044: ELEMENTS_20
+    2300046: ELEMENTS_21
+    2300048: foulard
+    2300050: gps
+    2300052: lens big glasses
+    2300054: lens glasses
+    2300056: lens ocular
+    2300058: low 022
+    2300060: low01
+    2300062: low02
+    2300064: low020
+    2300066: low021
+    2300068: low19
+    2300070: watch
+    2300072: wire
+    3300000: ELEMENT 06
+    3300002: ELEMENTS_00
+    3300004: ELEMENTS_01
+    3300006: ELEMENTS_016
+    3300008: ELEMENTS_017
+    3300010: ELEMENTS_02
+    3300012: ELEMENTS_03
+    3300014: ELEMENTS_04
+    3300016: ELEMENTS_05
+    3300018: ELEMENTS_07
+    3300020: ELEMENTS_08_0
+    3300022: ELEMENTS_09
+    3300024: ELEMENTS_10
+    3300026: ELEMENTS_11
+    3300028: ELEMENTS_12
+    3300030: ELEMENTS_13
+    3300032: ELEMENTS_14
+    3300034: ELEMENTS_15
+    3300036: ELEMENTS_16
+    3300038: ELEMENTS_17
+    3300040: ELEMENTS_18
+    3300042: ELEMENTS_19
+    3300044: ELEMENTS_20
+    3300046: ELEMENTS_21
+    3300048: foulard
+    3300050: gps
+    3300052: lens big glasses
+    3300054: lens glasses
+    3300056: lens ocular
+    3300058: low 022
+    3300060: low01
+    3300062: low02
+    3300064: low020
+    3300066: low021
+    3300068: low19
+    3300070: watch
+    3300072: wire
+    4300000: head
+    4300002: body_0
+    4300004: ELEMENTS_03
+    4300006: ELEMENTS_02
+    4300008: lens glasses
+    4300010: ELEMENTS_01
+    4300012: ELEMENTS_05
+    4300014: ELEMENTS_07
+    4300016: ELEMENT 06
+    4300018: low 022
+    4300020: lens ocular
+    4300022: lens big glasses
+    4300024: ELEMENTS_04
+    4300026: foulard
+    4300028: watch
+    4300030: gps
+    4300032: ELEMENTS_08_0
+    4300034: ELEMENTS_00
+    4300036: low02
+    4300038: ELEMENTS_10
+    4300040: low01
+    4300042: ELEMENTS_20
+    4300044: ELEMENTS_13
+    4300046: ELEMENTS_14
+    4300048: ELEMENTS_15
+    4300050: ELEMENTS_016
+    4300052: ELEMENTS_17
+    4300054: ELEMENTS_16
+    4300056: ELEMENTS_017
+    4300058: ELEMENTS_18
+    4300060: ELEMENTS_19
+    4300062: ELEMENTS_12
+    4300064: low020
+    4300066: wire
+    4300068: ELEMENTS_11
+    4300070: ELEMENTS_09
+    4300072: low19
+    4300074: low021
+    4300076: ELEMENTS_21
+    9500000: //RootNode
+    13700000: body_0
+    13700002: head
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00600000005
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .493999988
+    foreArmTwist: .465000004
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .140000001
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 980592dd32e834a91898989104701f1b,
+    type: 3}
+  animationType: 3
+  additionalBone: 0
+  userData: 

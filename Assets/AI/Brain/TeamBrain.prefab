@@ -93,6 +93,7 @@ MonoBehaviour:
   removeList: []
   species: robot
   enemiesDistance: []
+  enemiesPermanent: []
   poi: []
   leader: {fileID: 0}
   debug: 0
@@ -100,7 +101,9 @@ MonoBehaviour:
   leaderAttributes: {fileID: 0}
   reportedEnemiesSighted: 0
   reportedEnemiesKilled: 0
+  averagePosition: {x: 0, y: 0, z: 0}
   game: {fileID: 0}
+  ready: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

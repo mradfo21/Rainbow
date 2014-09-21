@@ -18,7 +18,7 @@ function setup(inData:poi_data){
 	list[1] = data.pos;
 	list[4] = data.obj;
 	if (data.team!= null){
-		sendToTeam();		
+		sendToTeam();
 	}else{
 		sendToColliders();		
 	}
@@ -32,6 +32,7 @@ function sendToTeam(){
 
 }
 function sendToColliders(){
+
 	var hitColliders = Physics.OverlapSphere(transform.position,radius);
 	for (var i in hitColliders){
 	if (changeState == true){

@@ -95,7 +95,7 @@ function RemoveDeadEnemies(){
 			enemiesAlive.Remove(dead);
 		}
 		if (enemiesAlive.Count <=0 && reportedEnemiesKilled == false){
-			gameObject.SendMessage("EnemiesKilled",true);
+			gameObject.SendMessage("EnemiesKilled",true,SendMessageOptions.DontRequireReceiver);
 			reportedEnemiesSighted = false;
 			reportedEnemiesKilled = true;
 			enemies.Clear();

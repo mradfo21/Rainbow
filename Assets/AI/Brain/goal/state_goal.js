@@ -21,7 +21,7 @@ class state_goal extends state{
 	}
 	function isOccupiedByTeammate(pos:Vector3):boolean{
 		for (teammate in attributes.team.members){
-			var attrib:attributes = teammate.transform.parent.GetComponent("attributes");
+			var attrib:attributes = teammate.GetComponent("attributes");
 			var d:float = Vector3.Distance(attributes.destination,attrib.destination);
 			if (d < .8 && d >.001){
 				return true;
@@ -32,7 +32,7 @@ class state_goal extends state{
 	}
 	function isOccupiedByTeammate(pos:Vector3,radius:float):boolean{
 		for (teammate in attributes.team.members){
-			var attrib:attributes = teammate.transform.parent.GetComponent("attributes");
+			var attrib:attributes = teammate.GetComponent("attributes");
 			var d:float = Vector3.Distance(attributes.destination,attrib.destination);
 			if (d < radius && d >.001){
 				return true;
@@ -55,7 +55,7 @@ class state_goal extends state{
 		id = "goal";
 		attributes.goal = this.GetType().ToString();
 		if (attributes.team){
-			leaderAttributes = attributes.team.leader.transform.parent.GetComponent("attributes");				
+			leaderAttributes = attributes.team.leader.GetComponent("attributes");				
 		}
 
 	}

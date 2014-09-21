@@ -7,6 +7,7 @@ var radius = 1.0;
 var species:String = "";
 var enemySpecies:String = "";
 var team:team;
+var useNavMesh:boolean = true;
 private var created = new List.<GameObject>();
 
 
@@ -63,13 +64,16 @@ function InstantiateThing(){
 		created.Add(obj);
 
 	}
+	if (useNavMesh == false){
+		return origin;
+	}
 	obj.transform.position = randomPoint(origin);		
 }
 
 function randomPoint(originalPoint:Vector3):Vector3{
 		var newPoint:Vector3 = Random.insideUnitSphere;
 		var hit:NavMeshHit;
-		if (NavMesh.SamplePosition(originalPoint+newPoint,hit,1,-1)){
+		if (NavMesh.SamplePosition(originalPoint+newPoint,hit,radius,-1)){
 			return hit.position;
 		}else{
 			return originalPoint+newPoint;

@@ -52,7 +52,6 @@ function ExitMovement(){
 
 }
 function IssuedOrder(order:String){
-	print("ISSUED ORDER");
 	animator.SetTrigger(eIssuedOrder);
 }
 function SwitchedTeam(t:team){

@@ -10,12 +10,14 @@ var inverse:boolean = false;
 var pint:boolean = false;
 var agent:NavMeshAgent;
 function Start () {
-	animator = gameObject.GetComponent("Animator");
-	attributes = transform.parent.gameObject.GetComponent("attributes") as attributes;
-	agent = attributes.agent;
+
 }
 
 function Update () {
+
+	animator = gameObject.GetComponent("Animator");
+	attributes = transform.parent.transform.parent.transform.parent.gameObject.GetComponent("attributes") as attributes;
+	agent = attributes.agent;
 
 	speedX = agent.velocity.magnitude * (Vector3.Dot(transform.forward,agent.velocity.normalized));
 	speedZ = agent.velocity.magnitude * (Vector3.Dot(transform.right,agent.velocity.normalized));

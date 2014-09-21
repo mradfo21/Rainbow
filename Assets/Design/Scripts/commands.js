@@ -80,7 +80,6 @@ function Update () {
 		gameObject.BroadcastMessage("EnterPlanning");
 		enterPlanning();
 		toggleMovement();
-		print("OK ENTERING PLAN");
 	}
 	if (Input.GetAxis("TogglePlanning") && gameData.gameAttributes.inPlanning == true && clock >planningNextPress){
 		gameObject.BroadcastMessage("ExitPlanning");	
