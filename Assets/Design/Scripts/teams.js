@@ -67,12 +67,12 @@ function MakePlayer(){
 	gameObject.BroadcastMessage("SetPlayer",playerTeam.leader,SendMessageOptions.DontRequireReceiver);
 }
 function AddTeam(team:GameObject) {
-	if (gameData){
+	if (team){
 	var t:team = team.GetComponent("team");
 	if (!teams.ContainsKey(t.species) ){
 		teams[t.species] = new List.<team>();
 	}
-	if (teams[t.species].Contains(t) == false && t.species){
+	if (teams[t.species].Count == 0 || teams[t.species].Contains(t) == false){
 		teams[t.species].Add(t);
 		if (t.species == gameData.gameAttributes.playerSpecies){
 			gameObject.BroadcastMessage("AddedTeam",t,SendMessageOptions.DontRequireReceiver);

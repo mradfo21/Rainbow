@@ -9,6 +9,8 @@ var currentTeamCount:int;
 var team:team;
 var teamPoints:List.<Vector3>;
 var randomOffsets:List.<Vector3>;
+
+var activated:boolean = false;
 function Start () {
 	gameData = new gameData();
 	gameData.Start();
@@ -16,15 +18,29 @@ function Start () {
 	currentTeamCount = 0;
 
 }
+function EnterPlanning(){
+	updateRandomOffsets();
+}
 function currentIcon(obj:GameObject){
 	icon = obj;
 }
 function updateRandomOffsets(){
-	randomOffsets.Clear();
+	if (randomOffsets.Count > 0){
+		randomOffsets.Clear();		
+	}
 	for (var i =0; i < 300; i++){
 		randomOffsets.Add(Random.insideUnitSphere);
 	}
 } 
+function transmitPoints(){
+	team.movement_positions = teamPoints;			
+}
+
+function IssuedOrder(order:String){
+	transmitPoints();
+	print("updating points");
+}
+
 function Update () {
 	team = gameData.gameAttributes.playerTeam;
 	if (team){
@@ -43,9 +59,11 @@ function Update () {
 				newTeam();
 		}
 		lastTeamCount = team.members.Count;
-		FindTeamPoints();
 		//setIcons(origin);
-		updateIconPositions();
+		if (gameData.gameAttributes.inPlanning == true){
+			FindTeamPoints();
+			updateIconPositions();			
+		}
 	}
 }
 function newTeam(){
@@ -61,6 +79,7 @@ function setIcons(point:Vector3){
 function updateIconPositions(){
 	for (var i =0; i < teamPoints.Count;i++){
 		icons[i].transform.position = teamPoints[i];
+
 	}	
 }
 function initializeIcons(){
@@ -68,6 +87,7 @@ function initializeIcons(){
 		Destroy(ic);
 	}
 	icons.Clear();
+
 	for (member in team.members){
 		var obj:GameObject = Instantiate(icon);
 		obj.transform.parent = gameObject.transform;

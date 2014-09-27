@@ -94,7 +94,7 @@
 	}
 
 	function TransmitSpotted(obj:GameObject){
-		obj.transform.parent.BroadcastMessage("Spotted",gameObject);
+		obj.transform.parent.BroadcastMessage("Spotted",gameObject,SendMessageOptions.DontRequireReceiver);
 		// place code here for saying to the team "HEY I SPOTTED AN ENEMY"
 	}
 	function FindSpottedEnemies():Dictionary.<int,GameObject>{

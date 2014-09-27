@@ -1,6 +1,7 @@
 ﻿#pragma strict
 
 
+var isEnemy:boolean = false;
 var hasDied:boolean = false; 
 var alive:boolean = true;
 var health:float = 100;
@@ -153,5 +154,9 @@ function Died(){
 
 function Attacked(dmg:float){
 	health -= dmg;
+}
+
+function IsEnemy(){
+	isEnemy = true;
 }
 

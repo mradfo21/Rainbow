@@ -23,6 +23,7 @@ var reportedEnemiesKilled:boolean = false;
 var averagePosition:Vector3;
 var game:GameObject;
 var ready:boolean = false;
+var movement_positions:List.<Vector3>;
 function CheckLeader(){
 	if (members.Count >= 1){
 		leader = members[0];
@@ -57,6 +58,7 @@ function changeStateTeam(from:GameObject,data:ArrayList){
 function Contact(pd:poi_data){
 	poi.Add(pd);
 }
+
 function GeneratePosition():Vector3{
 	var n:int = 1;
 	var p:Vector3 = Vector3.zero;
@@ -167,12 +169,13 @@ function CheckTeamMembers(){
 function Start () {
 	game = gameObject.Find("Game");
 	StartCoroutine("RemoveDeadEnemies",1.0);
-	game.SendMessage("AddTeam",gameObject);
 }
 function Setup(){
 	CheckTeamMembers();
 	CheckLeader();
 	ready = true;
+	game.SendMessage("AddTeam",gameObject);
+
 }
 function ManageUnits(){
 	if (members.Count >= 0){
@@ -200,5 +203,9 @@ function ManageUnits(){
 function Update () {
 	if (ready == true){
 		ManageUnits();
+	}
+
+	for (var i = 0; i < movement_positions.Count; i++){
+		Debug.DrawLine(members[i].transform.position,movement_positions[i]);
 	}
 }

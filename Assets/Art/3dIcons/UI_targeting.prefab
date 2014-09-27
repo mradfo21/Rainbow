@@ -52,6 +52,7 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400014}
+  - 114: {fileID: 11400022}
   m_Layer: 5
   m_Name: UI_targeting
   m_TagString: Untagged
@@ -213,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6010e4fa86d0c45cf8e3b5be9dd5ecbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boneID: Head
   attatch: {fileID: 0}
   offset: {x: 0, y: -.5, z: 0}
   screenOffset: 0
@@ -272,6 +274,7 @@ MonoBehaviour:
     Game: {fileID: 0}
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
+    profileManager: {fileID: 0}
   currentTeam: {fileID: 0}
   playerAttributes: {fileID: 0}
   enemiesPermanent: []
@@ -351,6 +354,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11400022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b75ba819b7cc4d49a64a7171cd909c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes: {fileID: 0}
 --- !u!222 &22200000
 CanvasRenderer:
   m_ObjectHideFlags: 1

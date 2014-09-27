@@ -4,7 +4,7 @@ var distanceThreshold:float = 500.0;
 var rotationSpeed:float = .35;
 var rotationThreshold = .05;
 var readyToFire:boolean = false;
-var scanPoint:Vector3 = Vector3.zero;
+var scanPoint:Vector3 = Vector3(1.0,0.0,0.0);
 var scanWaitTime:float = 3.0;
 var stopped:boolean = false;
 var stopTimer:float = 1+ (Random.value*2) ;
@@ -13,6 +13,7 @@ var stopTimer:float = 1+ (Random.value*2) ;
 	}
 	function Start () {
 		super.Start();
+		scanPoint = gameObject.transform.forward;
 	}
 
 	function Update () {

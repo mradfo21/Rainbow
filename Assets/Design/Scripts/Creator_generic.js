@@ -23,7 +23,17 @@ function Start () {
 	if (transform.parent.gameObject.name== "TeamSpawner"){
 		handleTeam(transform.parent.gameObject);
 	}
+	Invoke("setupPositions",.03);
 	Invoke("setupSpecies",1.0);
+}
+function setupPositions(){
+	for (obj in created){
+		if (useNavMesh == false){
+			obj.transform.position = transform.position;			
+		}else{
+			obj.transform.position = randomPoint(transform.position);			
+		}
+	}
 }
 function setupSpecies(){
 	for (obj in created){
@@ -34,6 +44,7 @@ function setupSpecies(){
 		if(enemySpecies != ""){
 			obj.BroadcastMessage("AddEnemySpecies",enemySpecies,SendMessageOptions.DontRequireReceiver);
 		}
+	
 	}
 	if (team){
 		team.Setup();
@@ -63,11 +74,7 @@ function InstantiateThing(){
 		obj.transform.parent = p.transform;
 		created.Add(obj);
 
-	}
-	if (useNavMesh == false){
-		return origin;
-	}
-	obj.transform.position = randomPoint(origin);		
+	}		
 }
 
 function randomPoint(originalPoint:Vector3):Vector3{

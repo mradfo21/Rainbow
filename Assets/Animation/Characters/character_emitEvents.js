@@ -9,7 +9,7 @@ var resetTime:float = .5;
 var wasHovered:boolean = false;
 var hoverTime:float = 0.0;
 function Start () {
-	transmitFrom = transform.parent.transform.parent.gameObject;
+	transmitFrom = transform.parent.gameObject;
  	gameData = new gameData();
 	gameData.Start();
 }

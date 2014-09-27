@@ -96,7 +96,8 @@ function NeedsNewRole(obj:GameObject){
 	}
 }
 function createRole(role:GameObject,entity:GameObject){
-	var host:GameObject = entity.transform.Find("Brain(Clone)").gameObject;
+	var entityAttributes:attributes = entity.GetComponent("attributes");
+	var host:GameObject = entityAttributes.brain;
 	if (host){
 		var r:GameObject = Instantiate(role);
 		var roleComponent:role = r.GetComponent("role");

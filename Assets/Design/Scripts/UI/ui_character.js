@@ -9,31 +9,33 @@ var playerAttributes:attributes;
 var enemiesPermanent:List.<GameObject>;
 var isEnemy:boolean = false;
 function Start () {
-	Invoke("Setup",.1);
+	Invoke("Setup",.5);
 	gameData = new gameData();
 	gameData.Start();
 }
 
 function Setup(){
 	entity= gameObject.transform.parent.transform.parent.gameObject;
-	brain = entity.transform.Find("Brain(Clone)").gameObject; 
-	attributes = entity.GetComponent("attributes");
+	if (entity){
+		brain = entity.transform.Find("Brain(Clone)").gameObject; 
+		attributes = entity.GetComponent("attributes");		
+	}
+
 
 }
 function Update () {
 	//print(attributes);
-	if (gameData.gameAttributes.playerAttributes){
+	if (gameData.gameAttributes.playerAttributes && entity){
 		currentTeam = gameData.gameAttributes.playerAttributes.team;
 		playerAttributes = gameData.gameAttributes.playerAttributes;
 		//print(brain);
 		//print(gameData.gameAttributes.playerAttributes.team.enemiesPermanent.Count);
 		//print(gameData.gameAttributes.playerAttributes.team.members);
-		enemiesPermanent = gameData.gameAttributes.playerAttributes.team.enemiesPermanent;
-		if (enemiesPermanent.Contains(brain)){
+		if (attributes.species == gameData.gameAttributes.playerAttributes.team.species){
 			// here i notify that im an enemy and i keep track if i'm being targetted or marked or whatever, then i broadcast that
 			// so i can play animation events off of it
-			transform.parent.transform.parent.gameObject.BroadcastMessage("isEnemy");
 			isEnemy = true;
+			attributes.isEnemy = true;
 		}
 
 		

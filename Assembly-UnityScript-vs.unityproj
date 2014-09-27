@@ -68,6 +68,7 @@
      <Compile Include="Assets\AI\Brain\goal\idle.js" />
      <Compile Include="Assets\AI\Brain\goal\investigate.js" />
      <Compile Include="Assets\AI\Brain\goal\moveTo.js" />
+     <Compile Include="Assets\AI\Brain\goal\moveToPC.js" />
      <Compile Include="Assets\AI\Brain\goal\scatter.js" />
      <Compile Include="Assets\AI\Brain\goal\stateMachine_goal.js" />
      <Compile Include="Assets\AI\Brain\goal\state_goal.js" />
@@ -135,7 +136,7 @@
      <Compile Include="Assets\Design\Scripts\UI\ui_character.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_colorChangeOnEvent.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_crosshair.js" />
-     <Compile Include="Assets\Design\Scripts\UI\ui_enableIfEnemy.js" />
+     <Compile Include="Assets\Design\Scripts\UI\ui_enableOnEnemy.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_info.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_orientToCenterScreen.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_scaleByDistance.js" />

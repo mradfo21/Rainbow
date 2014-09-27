@@ -55,6 +55,8 @@ function exitPlanning(){
 		gameData.gameAttributes.inAttack = false;
 
 	}
+	gameObject.BroadcastMessage("ExitPlanning");
+
 
 }
 function enterPlanning(){
@@ -67,10 +69,9 @@ function Update () {
 	if (Input.GetButton("IssueOrder") && clock > nextPress && gameData.gameAttributes.inMovement == true){
 		nextPress = clock + resetTime;
 		setupPOI(poi_move);
-		gameObject.BroadcastMessage("IssuedOrder","to be: an order");
-		gameObject.BroadcastMessage("ExitPlanning");	
-
-		Invoke("exitPlanning",.5*gameData.gameAttributes.timeScale);
+		gameObject.BroadcastMessage("IssuedOrder","tactic_pcMove");
+		exitPlanning();
+		//Invoke("exitPlanning",.01);
 
 	}
 	

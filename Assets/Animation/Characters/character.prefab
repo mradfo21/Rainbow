@@ -428,6 +428,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 136: {fileID: 13600000}
   - 114: {fileID: 11400074}
+  - 114: {fileID: 11400080}
   m_Layer: 9
   m_Name: character
   m_TagString: character
@@ -1313,6 +1314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6010e4fa86d0c45cf8e3b5be9dd5ecbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boneID: 
   attatch: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
   screenOffset: .75
@@ -1356,6 +1358,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 100360, guid: 16790d35215dd4baf9e8dd5aad3a4ae2, type: 2}
+--- !u!114 &11400080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebc9096dacbe438e9fa87fa9b074a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hovering: 0
+  transmitFrom: {fileID: 0}
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+  clock: 0
+  nextPress: 0
+  resetTime: .5
+  wasHovered: 0
+  hoverTime: 0
 --- !u!131 &13100000
 GUITexture:
   m_ObjectHideFlags: 1
