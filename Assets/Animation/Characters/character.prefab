@@ -1358,6 +1358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 100360, guid: 16790d35215dd4baf9e8dd5aad3a4ae2, type: 2}
+  useProfile: 1
 --- !u!114 &11400080
 MonoBehaviour:
   m_ObjectHideFlags: 1

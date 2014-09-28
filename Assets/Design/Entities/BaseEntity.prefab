@@ -42,6 +42,7 @@ GameObject:
   - 4: {fileID: 400006}
   - 195: {fileID: 19500000}
   - 114: {fileID: 11400012}
+  - 114: {fileID: 11400002}
   m_Layer: 8
   m_Name: BaseEntity
   m_TagString: Untagged
@@ -106,6 +107,25 @@ MonoBehaviour:
   enemySpecies: 
   team: {fileID: 0}
   useNavMesh: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c3bc3aa3e534cee8388fffc053acb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributes: {fileID: 0}
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+  profile_character: default
+  characterProfile: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97176d6fac3a4583a4c17a964cfc4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isEnemy: 0
   hasDied: 0
   alive: 1
   health: 100

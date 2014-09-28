@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AI\Brain\CharacterProfile.js" />
+     <Compile Include="Assets\AI\Brain\TacticProfile.js" />
+     <Compile Include="Assets\AI\Brain\UseTacticProfile.js" />
      <Compile Include="Assets\AI\Brain\assaignEntityBrain.js" />
      <Compile Include="Assets\AI\Brain\combat\deffensive.js" />
      <Compile Include="Assets\AI\Brain\combat\offensive.js" />
@@ -107,6 +109,7 @@
      <Compile Include="Assets\Animation\Characters\setCanvasCamera.js" />
      <Compile Include="Assets\Animation\Characters\spawn_character.js" />
      <Compile Include="Assets\Animation\Characters\spawn_gun.js" />
+     <Compile Include="Assets\Design\Entities\EntityProfile.js" />
      <Compile Include="Assets\Design\Guns\bullet.js" />
      <Compile Include="Assets\Design\Guns\gun.js" />
      <Compile Include="Assets\Design\Guns\muzzleFlash.js" />

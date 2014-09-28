@@ -202,6 +202,7 @@ MonoBehaviour:
   averagePosition: {x: 0, y: 0, z: 0}
   game: {fileID: 0}
   ready: 0
+  movement_positions: []
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thing: {fileID: 100006, guid: f80ae2d175e194309a65872fda589165, type: 2}
   parentName: Entities
-  numCopies: 1
+  numCopies: 7
   radius: 2
   species: robot
   enemySpecies: human

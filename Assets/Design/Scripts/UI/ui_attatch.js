@@ -5,10 +5,13 @@ var offset:Vector3;
 var screenOffset:float = .75;
 
 function Start () {
-	AttatchToJoint(transform.parent.gameObject,boneID);
+	Invoke("setupAttatch",.1);
 }
 
 
+function setupAttatch(){
+	AttatchToJoint(transform.parent.gameObject,boneID);
+}
 function Update () {
 	var distance:float = 1+Vector3.Distance(Camera.main.transform.position,transform.position)*.15;
 	var coff:Vector3 = -Vector3.Cross(Camera.main.transform.forward,Vector3(0,1,0));

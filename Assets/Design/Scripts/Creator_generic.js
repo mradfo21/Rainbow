@@ -23,8 +23,8 @@ function Start () {
 	if (transform.parent.gameObject.name== "TeamSpawner"){
 		handleTeam(transform.parent.gameObject);
 	}
-	Invoke("setupPositions",.03);
-	Invoke("setupSpecies",1.0);
+	Invoke("setupPositions",.02);
+	Invoke("setupSpecies",.03);
 }
 function setupPositions(){
 	for (obj in created){

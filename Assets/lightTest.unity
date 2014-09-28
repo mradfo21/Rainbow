@@ -461,8 +461,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af57b7852cce6431db13728f25153c45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterProfileNames: []
-  CharacterProfileObjs: []
+  CharacterProfileNames:
+  - default
+  CharacterProfileObjs:
+  - {fileID: 100000, guid: 3ad8d73f77d9f42ee9e271168e7c2a32, type: 2}
+  TacticProfileNames:
+  - default
+  TacticProfileObjs:
+  - {fileID: 100000, guid: cf2ce936c0c6e41f6a6c4ac319ef7e59, type: 2}
 --- !u!1 &104729611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,6 +1092,7 @@ GameObject:
   - 114: {fileID: 552422473}
   - 114: {fileID: 552422472}
   - 114: {fileID: 552422471}
+  - 114: {fileID: 552422479}
   m_Layer: 11
   m_Name: TeamSpawner
   m_TagString: Untagged
@@ -1140,26 +1147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: {fileID: 0}
-  tacticNames:
-  - investigate
-  - enemySighted
-  - patrol
-  - scatter
-  - assault
-  - scan
-  - regroup
-  - move
-  - movePC
-  tacticObjects:
-  - {fileID: 100000, guid: f591efd96f14e499faa9d793947561a9, type: 2}
-  - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
-  - {fileID: 100000, guid: 59d3214ab3aaa44eda584997f716e38f, type: 2}
-  - {fileID: 100000, guid: 99b2ab443001944179f1fc9c1b918ee1, type: 2}
-  - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
-  - {fileID: 100000, guid: c60ced2fe671349769c48f71f82214f2, type: 2}
-  - {fileID: 100000, guid: 3107278ba86c04187b1b171ffd78eaa6, type: 2}
-  - {fileID: 100000, guid: b38af5ea4200d427eab51e7eb8cb80da, type: 2}
-  - {fileID: 100000, guid: 02d74a71f7f6b4c758dae573c9df7d83, type: 2}
+  tacticNames: []
+  tacticObjects: []
   targets: []
   enemyContact: tactic_scatter
   enemiesKilled: 
@@ -1267,6 +1256,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 887408705}
   m_GameObject: {fileID: 552422469}
   m_Mesh: {fileID: 10211, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &552422479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 552422469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669b6a772af1843f493692e4b91b8b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tactics: {fileID: 0}
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+  profile_tactic: default
+  tacticProfile: {fileID: 0}
 --- !u!1 &597085532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,11 +1542,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: tacticNames.Array.size
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: tacticObjects.Array.size
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2208,6 +2216,7 @@ GameObject:
   - 114: {fileID: 1448472307}
   - 114: {fileID: 1448472306}
   - 114: {fileID: 1448472305}
+  - 114: {fileID: 1448472313}
   m_Layer: 11
   m_Name: TeamSpawner
   m_TagString: Untagged
@@ -2262,26 +2271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: {fileID: 0}
-  tacticNames:
-  - investigate
-  - enemySighted
-  - patrol
-  - scatter
-  - assault
-  - scan
-  - regroup
-  - move
-  - movePC
-  tacticObjects:
-  - {fileID: 100000, guid: f591efd96f14e499faa9d793947561a9, type: 2}
-  - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
-  - {fileID: 100000, guid: 59d3214ab3aaa44eda584997f716e38f, type: 2}
-  - {fileID: 100000, guid: 99b2ab443001944179f1fc9c1b918ee1, type: 2}
-  - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
-  - {fileID: 100000, guid: c60ced2fe671349769c48f71f82214f2, type: 2}
-  - {fileID: 100000, guid: 3107278ba86c04187b1b171ffd78eaa6, type: 2}
-  - {fileID: 100000, guid: b38af5ea4200d427eab51e7eb8cb80da, type: 2}
-  - {fileID: 100000, guid: 02d74a71f7f6b4c758dae573c9df7d83, type: 2}
+  tacticNames: []
+  tacticObjects: []
   targets: []
   enemyContact: tactic_scatter
   enemiesKilled: 
@@ -2389,6 +2380,25 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1933714817}
   m_GameObject: {fileID: 1448472303}
   m_Mesh: {fileID: 10211, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1448472313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1448472303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669b6a772af1843f493692e4b91b8b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tactics: {fileID: 0}
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+  profile_tactic: default
+  tacticProfile: {fileID: 0}
 --- !u!1 &1471581672
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,11 +3153,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: tacticNames.Array.size
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: tacticObjects.Array.size
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: m_LocalPosition.x

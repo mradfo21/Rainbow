@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: TacticProfile_default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.1904583, y: .119784474, z: 2.39433622}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8432d6dbfca56401eb2a5e665deaceef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tacticNames:
+  - investigate
+  - enemySighted
+  - patrol
+  - scatter
+  - assault
+  - scan
+  - regroup
+  - move
+  - movePC
+  tacticObjects:
+  - {fileID: 100000, guid: f591efd96f14e499faa9d793947561a9, type: 2}
+  - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
+  - {fileID: 100000, guid: 59d3214ab3aaa44eda584997f716e38f, type: 2}
+  - {fileID: 100000, guid: 99b2ab443001944179f1fc9c1b918ee1, type: 2}
+  - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
+  - {fileID: 100000, guid: c60ced2fe671349769c48f71f82214f2, type: 2}
+  - {fileID: 100000, guid: 3107278ba86c04187b1b171ffd78eaa6, type: 2}
+  - {fileID: 100000, guid: b38af5ea4200d427eab51e7eb8cb80da, type: 2}
+  - {fileID: 100000, guid: 02d74a71f7f6b4c758dae573c9df7d83, type: 2}
+  enemyContact: tactic_scatter
+  enemiesKilled: 
+  enemySighted: 
+  ambient: tactic_patrol
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

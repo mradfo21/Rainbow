@@ -39,13 +39,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b013c2629d5da4365a69f799b54f8f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   speed: 1
   spottedRange: 100
   attackRange: 50
   accuracy: 1
   damageMod: 1
   stealthiness: 1
+  character: {fileID: 100014, guid: b68b26c2316fa41ff8aef4c16dc680a7, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
