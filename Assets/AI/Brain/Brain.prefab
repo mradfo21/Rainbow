@@ -17,6 +17,8 @@ GameObject:
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400020}
+  - 114: {fileID: 11400022}
   - 114: {fileID: 11400008}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400012}
@@ -124,6 +126,12 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: 
   id: movement
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   attributes: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
@@ -141,6 +149,12 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: idle
   id: goal
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   attributes: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
@@ -158,6 +172,12 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: offensive
   id: combat
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   attributes: {fileID: 0}
 --- !u!114 &11400008
 MonoBehaviour:
@@ -226,8 +246,14 @@ MonoBehaviour:
   previousState: 
   currentState: 
   currentStateObj: {fileID: 0}
-  defaultState: tactical
+  defaultState: run
   id: stance
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   attributes: {fileID: 0}
 --- !u!114 &11400018
 MonoBehaviour:
@@ -240,6 +266,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1143fa483b09b4dff83b90e6ea26a278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attributes: {fileID: 0}
+--- !u!114 &11400020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1a5c9ff1fc54e41a0abca0abc85a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousState: 
+  currentState: 
+  currentStateObj: {fileID: 0}
+  defaultState: lookVelocity
+  id: rotation
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
+  attributes: {fileID: 0}
+--- !u!114 &11400022
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ae3ed8e552a477aa02ea19667060eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousState: 
+  currentState: 
+  currentStateObj: {fileID: 0}
+  defaultState: speedSprint
+  id: 
   attributes: {fileID: 0}
 --- !u!136 &13600000
 CapsuleCollider:

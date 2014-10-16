@@ -18,7 +18,7 @@ function Start () {
 	currentTeamCount = 0;
 
 }
-function EnterPlanning(){
+function EnterMovement(){
 	updateRandomOffsets();
 }
 function currentIcon(obj:GameObject){
@@ -60,7 +60,7 @@ function Update () {
 		}
 		lastTeamCount = team.members.Count;
 		//setIcons(origin);
-		if (gameData.gameAttributes.inPlanning == true){
+		if (gameData.gameAttributes.inMovement == true){
 			FindTeamPoints();
 			updateIconPositions();			
 		}

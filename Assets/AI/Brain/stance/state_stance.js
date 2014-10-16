@@ -1,32 +1,38 @@
 ﻿#pragma strict
 class state_stance extends state{
-var distanceThreshold:float = 500.0;
-var rotationSpeed:float = .35;
-var rotationThreshold = .05;
-var readyToFire:boolean = false;
-var scanPoint:Vector3 = Vector3(1.0,0.0,0.0);
-var scanWaitTime:float = 3.0;
-var stopped:boolean = false;
-var stopTimer:float = 1+ (Random.value*2) ;
 
+	var stoppingAgent:boolean = false;
+	var calledStop:boolean = false;
+	var gameData:gameData;
 	function Awake(){
 	}
 	function Start () {
 		super.Start();
-		scanPoint = gameObject.transform.forward;
 	}
 
 	function Update () {
 		super.Update();
+		if (stoppingAgent == true){
+			attributes.agent.velocity /= 1.2;
+			if (attributes.agent.velocity.magnitude < .5){
+				if (calledStop ==false){
+					agentStopped();					
+				}
+			}
+		}
 	}
 
 	function Enter(){
 		super.Enter();
-		agent.updateRotation = false;
+		gameData = new gameData();
+		gameData.Start();
 		id = "stance";
-		attributes.stance = this.GetType().ToString();
 		Invoke("softFinish",.2);
-		scan();
+		attributes.animator.SetFloat("alert",0.0);
+		randomAnimSpeed();
+		Invoke("normalAnimSpeed",.1);
+
+
 	}
 
 	function Execute(){
@@ -34,118 +40,40 @@ var stopTimer:float = 1+ (Random.value*2) ;
 		if (attributes.alive == false){
 			Exit();
 		}
-		scanWaitTime-= Time.deltaTime;
-		if (attributes.target !=null){
-			lookAtTarget();
-			if (readyToFire == true){
-				attributes.readyToFire = true;
-				//fireWeapon();
-			}			
-		}else if (attributes.coveringFire == true){
-			lookAtTarget(attributes.coverTarget,.01+Random.value *.05);
-		}else if (attributes.contact == true){
-			lookAtTarget(attributes.lastContact,.01+Random.value *.05);
-		}else if (attributes.hint == true){
-			lookAtTarget(attributes.lastHint,.03+Random.value *.1);
-		}else{
-			lookAtTarget(scanPoint,.01+Random.value *.05);				
-		}
 	}
 	function Exit(){
 		super.Exit();
 	}
-	function getScanPoint():Vector3{
-		var point:Vector3 = Random.insideUnitSphere * 20;
-		point.y =0;
-		return transform.position + point;
-	}
 
-	function scan(){
-			if (attributes.agent.velocity.magnitude > .5){
-				scanPoint = getScanPoint();
-			}
-			Invoke("scan",2+Random.value*3);
-	}
-	function lookAtTarget(){
-		readyToFire = false;
-		if (attributes.target){
-					var lookAtPos = Vector3(attributes.target.transform.position.x,gameObject.transform.position.y,attributes.target.transform.position.z);
-					var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
-					attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,rotationSpeed* 50* Time.deltaTime);
-					var toVector:Vector3 = (attributes.target.transform.parent.transform.position - attributes.gameObject.transform.position).normalized;
-					var rotationFactor = Vector3.Dot(attributes.gameObject.transform.forward,toVector);
-					if (rotationFactor > rotationThreshold || rotationSpeed* 50* Time.deltaTime < rotationThreshold*-1){
-						readyToFire = true;
-					}
-				}
+	function isPlayer():boolean{
+		if (gameData.gameAttributes.playerAttributes == attributes){
+			return true;
+		}else{
+			return false;
 		}
-	function lookAtTarget(point:Vector3){
-		var lookAtPos = point;
-		var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
-		attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,rotationSpeed * 50*Time.deltaTime);
-		}
-	function lookAtTarget(point:Vector3,speed:float){
-		var lookAtPos = point;
-		var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
-		attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,speed* 50*Time.deltaTime);
-		}
-
-
-	function pauseRun(){
-		Invoke("resumeRun",(1+Random.value*2) );
-		normalMovement();
-
 	}
-	function resumeRun(){
-			stopped = false;
-			stopTimer = 1+ (Random.value*1.5) ;
-			briskMovement();
+	function agentStopped(){
+		calledStop = true;
+		Invoke("resumeMovement",Random.Range(.65,.85));
+	}
+	function stopAgent(){
+		calledStop = false;
+		stoppingAgent = true;
 	}
 
-
-	function pauseMovement(){
-			gameObject.SendMessage("changeState","movement_hold");
-			Invoke("resumeMovement",(3+Random.value*4) );
-	}
 	function resumeMovement(){
-			stopped = false;
-			stopTimer = 1+ (Random.value*3.5) ;
-		if (attributes.movement == "movement_hold"){
-			gameObject.SendMessage("changeState","movement_previous");
-		}
+		stoppingAgent = false;
 	}
 
-	function slowMovement(){
-		attributes.walk();
+	function randomAnimSpeed(){
+		attributes.animator.speed = Random.Range(0,5);
 	}
-	function fastMovement(){
-		attributes.sprint();
-	}
-	function normalMovement(){
-		attributes.jog();
-	}
-	function briskMovement(){
-		attributes.run();
-	}
-	function tacticalMovement(){
-		stopTimer -= Time.deltaTime;
-		if (stopTimer < 0 && stopped == false){
-			pauseRun();
-			stopped = true;		
-		}
-	}
-	function stealthMovement(){
-		normalMovement();
-		print(attributes.movement);
-		stopTimer -= Time.deltaTime;
-		if (stopTimer < 0 && stopped == false){
-			pauseMovement();
-			stopped = true;
-
-		}
-
+	function normalAnimSpeed(){
+		attributes.animator.speed = 1;
 	}
 
-
+	function dampenStop(){
+		print(attributes.agent.remainingDistance);
+	}
 }
 

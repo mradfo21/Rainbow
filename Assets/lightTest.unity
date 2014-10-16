@@ -294,7 +294,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2033588142}
-  m_Father: {fileID: 677254832}
+  m_Father: {fileID: 1724312548}
   m_RootOrder: 0
 --- !u!114 &68081424
 MonoBehaviour:
@@ -321,6 +321,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
 --- !u!1 &93714049
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +335,8 @@ GameObject:
   - 114: {fileID: 93714052}
   - 114: {fileID: 93714051}
   - 114: {fileID: 93714055}
+  - 114: {fileID: 93714056}
+  - 114: {fileID: 93714057}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -378,6 +381,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
 --- !u!114 &93714052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,13 +399,21 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   playerTeam: {fileID: 0}
   nextPress: 0
   resetTime: .5
   layerMask: 0
   poi_move: {fileID: 100000, guid: 2517dda8490fa47c79fde60fe632107f, type: 2}
+  poi_stance_prone: {fileID: 100000, guid: 1d07e64c4f76049db90e930290ae6564, type: 2}
+  poi_stance_crouch: {fileID: 100000, guid: cb475c971fde241c39d56b9126ec852d, type: 2}
+  poi_stance_run: {fileID: 100000, guid: 568717596cc354c4fbf1a170aaee3392, type: 2}
+  poi_stance_sprint: {fileID: 100000, guid: febcd12b05b774025a93f9decedf14a3, type: 2}
+  stanceIndex: 3
   planningNextPress: 0
   planningResetTime: .00100000005
+  stanceNextPress: 0
+  stanceResetTime: 2
   clock: 0
 --- !u!114 &93714053
 MonoBehaviour:
@@ -426,7 +438,12 @@ MonoBehaviour:
   inUAV: 0
   navmesh: {fileID: 0}
   timeScale: 1
-  timeScaleMin: .0250000004
+  timeScaleMin: 1
+  cameras: {fileID: 0}
+  cameraState: 
+  cameraAiming: 0
+  pAim: 0
+  wasJustAiming: 0
 --- !u!114 &93714054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +464,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   averagePosition: {x: 0, y: 0, z: 0}
   initizalized: 0
 --- !u!114 &93714055
@@ -467,8 +485,45 @@ MonoBehaviour:
   - {fileID: 100000, guid: 3ad8d73f77d9f42ee9e271168e7c2a32, type: 2}
   TacticProfileNames:
   - default
+  - player_stealth
   TacticProfileObjs:
   - {fileID: 100000, guid: cf2ce936c0c6e41f6a6c4ac319ef7e59, type: 2}
+  - {fileID: 100000, guid: 92f9c5028429e47379e7d62a7cb18f12, type: 2}
+--- !u!114 &93714056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93714049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fe2b9d1603bc4ce89bb310227d8d9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  camHead: {fileID: 0}
+--- !u!114 &93714057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 93714049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd919b4088d64caeb16f80d63551b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousState: 
+  currentState: 
+  currentStateObj: {fileID: 0}
+  defaultState: actionNeutral
+  id: action
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
 --- !u!1 &104729611
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +572,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   crosshairObj: {fileID: 0}
 --- !u!1 &179034596
 GameObject:
@@ -963,6 +1019,7 @@ Transform:
   m_Children:
   - {fileID: 552422470}
   - {fileID: 1448472304}
+  - {fileID: 979031309}
   m_Father: {fileID: 93714050}
   m_RootOrder: 2
 --- !u!1 &389514315
@@ -1045,7 +1102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &482749989
 Transform:
   m_ObjectHideFlags: 0
@@ -1076,6 +1133,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
 --- !u!1 &552422469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,6 +1188,12 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: 
   id: tactic
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   tactics: {fileID: 0}
   currentTactic: {fileID: 0}
   previousTactic: {fileID: 0}
@@ -1216,6 +1280,7 @@ MonoBehaviour:
   species: human
   enemiesDistance: []
   enemiesPermanent: []
+  stanceIndex: 3
   poi: []
   leader: {fileID: 0}
   debug: 0
@@ -1273,6 +1338,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   profile_tactic: default
   tacticProfile: {fileID: 0}
 --- !u!1 &597085532
@@ -1321,6 +1387,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
 --- !u!1 &647990455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,8 +1461,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 677254832}
   - 114: {fileID: 677254833}
+  - 114: {fileID: 677254834}
   m_Layer: 0
-  m_Name: FollowCam
+  m_Name: Orbit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1411,7 +1479,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 68081423}
+  - {fileID: 1724312548}
   m_Father: {fileID: 911078084}
   m_RootOrder: 0
 --- !u!114 &677254833
@@ -1426,28 +1494,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92f2770a12b3c4477836846045261ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 2
-  minimumDistance: 2
-  bottomHeight: 2.5
-  topHeight: 2
+  distance: 0
+  minimumDistance: 0
+  bottomHeight: 0
+  topHeight: 0
   xSpeed: 250
   ySpeed: 120
-  yMinLimit: -30
-  yMaxLimit: 20
+  yMinLimit: -38
+  yMaxLimit: 38
   controller: {fileID: 0}
   v: {x: 0, y: 0, z: 0}
   distanceToGoal: 0
   vmag: 0
   smoothTime: .200000003
-  smoothTimeSlowMo: .150000006
   offset: {x: 0, y: 0, z: 0}
   gameData:
     Game: {fileID: 0}
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
+  targetOffset: {x: 0, y: 0, z: 0}
   inPlanning: 0
+--- !u!114 &677254834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 677254831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5ddac4dc58b46deab3cf4697ca8e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
 --- !u!1 &787722552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,7 +1668,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: numCopies
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: useNavMesh
@@ -1598,7 +1684,11 @@ Prefab:
       objectReference: {fileID: 100000, guid: 02d74a71f7f6b4c758dae573c9df7d83, type: 2}
     - target: {fileID: 400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.79570007
+      value: -16.6509991
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -15.7670002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dab7355625681456397dd29109b7fe27, type: 2}
@@ -1650,8 +1740,14 @@ MonoBehaviour:
   previousState: 
   currentState: 
   currentStateObj: {fileID: 0}
-  defaultState: followAnyone
+  defaultState: camNeutralRunning
   id: camera
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
 --- !u!1 &934187061
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,6 +1776,261 @@ Transform:
   - {fileID: 647990456}
   m_Father: {fileID: 93714050}
   m_RootOrder: 3
+--- !u!1 &979031308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 979031309}
+  - 33: {fileID: 979031318}
+  - 23: {fileID: 979031317}
+  - 114: {fileID: 979031316}
+  - 54: {fileID: 979031315}
+  - 135: {fileID: 979031314}
+  - 114: {fileID: 979031313}
+  - 114: {fileID: 979031312}
+  - 114: {fileID: 979031311}
+  - 114: {fileID: 979031310}
+  m_Layer: 11
+  m_Name: TeamSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &979031309
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 979031308}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1086021217}
+  m_Father: {fileID: 354694720}
+  m_RootOrder: 2
+--- !u!114 &979031310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 979031308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669b6a772af1843f493692e4b91b8b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tactics: {fileID: 0}
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
+  profile_tactic: default
+  tacticProfile: {fileID: 0}
+--- !u!114 &979031311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: dab7355625681456397dd29109b7fe27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 979031308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531e87393d91b47238972812de78f6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  previousState: 
+  currentState: 
+  currentStateObj: {fileID: 0}
+  defaultState: 
+  id: tactic
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
+  tactics: {fileID: 0}
+  currentTactic: {fileID: 0}
+  previousTactic: {fileID: 0}
+  previousTacticObj: {fileID: 0}
+--- !u!114 &979031312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: dab7355625681456397dd29109b7fe27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 979031308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba10f116490843ec9aafb65b6558873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: {fileID: 0}
+  tacticNames: []
+  tacticObjects: []
+  targets: []
+  enemyContact: tactic_scatter
+  enemiesKilled: 
+  enemySighted: 
+  ambient: tactic_scan
+--- !u!114 &979031313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: dab7355625681456397dd29109b7fe27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 979031308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d762815dbe0f441ca86b9b13f5cdf74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 0}
+  rigid: {fileID: 0}
+  startupWait: 2.5999999
+--- !u!135 &979031314
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 13500000, guid: dab7355625681456397dd29109b7fe27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 979031308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 20
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &979031315
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 5400000, guid: dab7355625681456397dd29109b7fe27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 979031308}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &979031316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: dab7355625681456397dd29109b7fe27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 979031308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ad8f922239f4036a4ded15320d6f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMembers: 12
+  members: []
+  removeList: []
+  species: human
+  enemiesDistance: []
+  enemiesPermanent: []
+  stanceIndex: 3
+  poi: []
+  leader: {fileID: 0}
+  debug: 0
+  currentTactic: {fileID: 0}
+  leaderAttributes: {fileID: 0}
+  reportedEnemiesSighted: 0
+  reportedEnemiesKilled: 0
+  averagePosition: {x: 0, y: 0, z: 0}
+  game: {fileID: 0}
+  ready: 0
+  movement_positions: []
+--- !u!23 &979031317
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: dab7355625681456397dd29109b7fe27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 979031308}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &979031318
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: dab7355625681456397dd29109b7fe27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 979031308}
+  m_Mesh: {fileID: 10211, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1086021216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100002, guid: dab7355625681456397dd29109b7fe27, type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1086021217}
+  - 114: {fileID: 1086021218}
+  m_Layer: 0
+  m_Name: Spawn_Entities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1086021217
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 1086021216}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.4829998, y: 0, z: -16.9769993}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 979031309}
+  m_RootOrder: 0
+--- !u!114 &1086021218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400008, guid: dab7355625681456397dd29109b7fe27,
+    type: 2}
+  m_PrefabInternal: {fileID: 1863741832}
+  m_GameObject: {fileID: 1086021216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fad481b1bbfc450ebeb08a9d85da60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thing: {fileID: 100006, guid: f80ae2d175e194309a65872fda589165, type: 2}
+  parentName: Entities
+  numCopies: 3
+  radius: 2
+  species: robot
+  enemySpecies: human
+  team: {fileID: 0}
+  useNavMesh: 0
 --- !u!1 &1153837911
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,6 +2363,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   xSpeed: 100
   ySpeed: 3
   smoothTime: .300000012
@@ -2040,6 +2392,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
 --- !u!20 &1341972786
 Camera:
   m_ObjectHideFlags: 0
@@ -2254,6 +2607,12 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: 
   id: tactic
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   tactics: {fileID: 0}
   currentTactic: {fileID: 0}
   previousTactic: {fileID: 0}
@@ -2340,6 +2699,7 @@ MonoBehaviour:
   species: enemy
   enemiesDistance: []
   enemiesPermanent: []
+  stanceIndex: 3
   poi: []
   leader: {fileID: 0}
   debug: 0
@@ -2397,6 +2757,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   profile_tactic: default
   tacticProfile: {fileID: 0}
 --- !u!1 &1471581672
@@ -2429,7 +2790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thing: {fileID: 100006, guid: f80ae2d175e194309a65872fda589165, type: 2}
   parentName: Entities
-  numCopies: 4
+  numCopies: 3
   radius: 2
   species: robot
   enemySpecies: human
@@ -2442,7 +2803,7 @@ Transform:
   m_PrefabInternal: {fileID: 887408705}
   m_GameObject: {fileID: 1471581672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.79570007, y: 0, z: 0}
+  m_LocalPosition: {x: -16.6509991, y: 0, z: -15.7670002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 552422470}
@@ -2538,6 +2899,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   icon: {fileID: 100004, guid: 70f49bad520c04030910399eefb89226, type: 2}
   icons: []
   origin: {x: 0, y: 0, z: 0}
@@ -2652,7 +3014,7 @@ GameObject:
   - 114: {fileID: 1571189749}
   - 114: {fileID: 1571189748}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Cam
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2664,8 +3026,8 @@ Transform:
   m_PrefabParentObject: {fileID: 400414, guid: c9c3eddfc94e94331855e87f4c3b33e2, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1571189746}
-  m_LocalRotation: {x: .173648208, y: 0, z: 0, w: .984807789}
-  m_LocalPosition: {x: .75, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2033588142}
@@ -2682,14 +3044,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd05e71c69dd4457fa205c9eea7c2326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 6
+  type: 3
   adaptiveTextureSize: 512
   remapCurve:
     serializedVersion: 2
     m_Curve: []
     m_PreInfinity: 2
     m_PostInfinity: 2
-  exposureAdjustment: 10
+  exposureAdjustment: 2
   middleGrey: .400000006
   white: 2
   adaptionSpeed: 1.5
@@ -2781,7 +3143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7db9ec1392f34265817a55853e6ab07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filterType: 4
+  filterType: 2
   preview: 0
   previewScale: {x: 1, y: 1, z: 1}
   movementScale: 0
@@ -2790,7 +3152,7 @@ MonoBehaviour:
   minVelocity: .100000001
   velocityScale: .375
   softZDistance: .00499999989
-  velocityDownsample: 1
+  velocityDownsample: 4
   excludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3032,6 +3394,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7515194}
   m_RootOrder: 0
+--- !u!1 &1724312547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1724312548}
+  - 114: {fileID: 1724312549}
+  m_Layer: 0
+  m_Name: Offset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1724312548
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1724312547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 68081423}
+  m_Father: {fileID: 677254832}
+  m_RootOrder: 0
+--- !u!114 &1724312549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1724312547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac3e3ac92af934fa8aaccbbe59fe3bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1740957919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,10 +3479,86 @@ MonoBehaviour:
   parentName: Entities
   numCopies: 4
   radius: 2
-  species: robot
-  enemySpecies: human
+  species: human
+  enemySpecies: robot
   team: {fileID: 0}
   useNavMesh: 0
+--- !u!1001 &1863741832
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 354694720}
+    m_Modifications:
+    - target: {fileID: 11400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: tacticNames.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: tacticObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: numCopies
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: useNavMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: tacticNames.Array.data[8]
+      value: movePC
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: tacticObjects.Array.data[8]
+      value: 
+      objectReference: {fileID: 100000, guid: 02d74a71f7f6b4c758dae573c9df7d83, type: 2}
+    - target: {fileID: 400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 7.4829998
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -16.9769993
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: dab7355625681456397dd29109b7fe27, type: 2}
+  m_RootGameObject: {fileID: 979031308}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &1898708135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3222,6 +3701,14 @@ Prefab:
     - target: {fileID: 100000, guid: dab7355625681456397dd29109b7fe27, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: species
+      value: human
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: dab7355625681456397dd29109b7fe27, type: 2}
+      propertyPath: enemySpecies
+      value: robot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dab7355625681456397dd29109b7fe27, type: 2}
@@ -3380,7 +3867,7 @@ GameObject:
   - 4: {fileID: 2033588142}
   - 114: {fileID: 2033588143}
   m_Layer: 0
-  m_Name: Camera_Main
+  m_Name: Noise
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3418,6 +3905,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
   zRoll: 2
   xRoll: 3
   yRoll: 2

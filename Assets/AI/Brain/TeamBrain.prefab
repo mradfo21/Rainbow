@@ -194,7 +194,7 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
-  profile_tactic: default
+  profile_tactic: player_stealth
   tacticProfile: {fileID: 0}
 --- !u!135 &13500000
 SphereCollider:

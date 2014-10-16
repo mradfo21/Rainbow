@@ -12,6 +12,7 @@ var enemiesDistance = new List.<GameObject>();
 var enemies = new Dictionary.<int,GameObject>();
 var enemiesPermanent = new List.<GameObject>();
 
+var stanceIndex:int = 3;
 var poi = new List.<poi_data>();
 var receivedPOI = new Dictionary.<String,float>();
 var leader:GameObject = null;

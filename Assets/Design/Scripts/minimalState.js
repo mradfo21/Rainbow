@@ -1,18 +1,17 @@
 ﻿#pragma strict
 
 class minimalState extends state{
-	var game:GameObject;
-	var gameData:gameData;
+	 var gameData:gameData;
+
 	function Start(){
-		gameData = new gameData();
-		gameData.Start();
 	}
 	function Update(){
 
 	}
 
 	function Enter(){
-	
+		gameData = new gameData();
+		gameData.Start();
 	}
 	function Execute(){
 

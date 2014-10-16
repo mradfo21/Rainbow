@@ -20,6 +20,8 @@ function Start () {
 }
 
 function Update () {
+        //var angle:float = Quaternion.Angle(gameData.gameAttributes.player.transform.rotation,transform.rotation);
+
         x += Input.GetAxis("Mouse X") * xSpeed * 0.01;
         y -= Input.GetAxis("Mouse Y") * ySpeed * 0.01;
         xSmooth = Mathf.SmoothDamp(xSmooth, x, xVelocity, smoothTime);
@@ -27,7 +29,7 @@ function Update () {
         ySmooth = ClampAngle(ySmooth, yMinLimit, yMaxLimit);
         var rotation = Quaternion.Euler(ySmooth, xSmooth, 0);  
 
-    if (gameData.gameAttributes.inPlanning == true){
+    if (gameData.gameAttributes.inMovement == true){
         if (reset == true){  	
             x = 0;
             y = 0;
@@ -37,8 +39,7 @@ function Update () {
         var rot:Vector3 = transform.parent.rotation.eulerAngles;
         var r:Quaternion;
         r.eulerAngles = Vector3(rot.x+y,rot.y+x,0);
-        transform.rotation = r;
-
+        //transform.rotation = r;            
         reset = false;
     }else{
         if (reset == false){

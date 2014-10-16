@@ -38,7 +38,6 @@ function EnterAttack(){
 
 }
 function ExitAttack(){
-		print("EXIT ATTACK CALLED");
 		animator.SetTrigger(eExitAttack);		
 
 }
@@ -47,7 +46,6 @@ function EnterMovement(){
 
 }
 function ExitMovement(){
-		print("EXIT MOVEMENT CALLED");
 		animator.SetTrigger(eExitMovement);		
 
 }
@@ -55,7 +53,7 @@ function IssuedOrder(order:String){
 	animator.SetTrigger(eIssuedOrder);
 }
 function SwitchedTeam(t:team){
-	print("SWITCHED TEAM");
+	//print("SWITCHED TEAM");
 	animator.SetTrigger(eSwitchedTeam);
 
 }
@@ -65,27 +63,27 @@ function AddedTeam(t:team){
 
 function Targeted(){
 	animator.SetTrigger(eTargeted);
-	print("TARGETED");
+	//print("TARGETED");
 }
 function UnTargeted(){
 	animator.SetTrigger(eUnTargeted);
-	print("UN TARGETED");
+	//print("UN TARGETED");
 }
 
 function Marked(){
 	animator.SetTrigger(eMarked);
-	print("MARKED");
+	//print("MARKED");
 }
 
 function UnMarked(){
 	animator.SetTrigger(eUnMarked);
-	print("UN MARKED");
+	//print("UN MARKED");
 }
 
 function Spotted(){
 	if (beenSpotted == false){
 		animator.SetTrigger(eSpotted);
-		print("SPOTTED");
+		//print("SPOTTED");
 		beenSpotted = true;		
 	}
 

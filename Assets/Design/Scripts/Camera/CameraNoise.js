@@ -37,7 +37,7 @@ function FixedUpdate(){
 
 }
 function Update () {
-    if (gameData.gameAttributes.inPlanning == false){
+    if (gameData.gameAttributes.inMovement == false){
 
 		cameraTime+= Time.deltaTime;
 
@@ -65,7 +65,7 @@ function Update () {
 		jitterOscilation.z = Mathf.PerlinNoise((cameraTime *(vFactor/2) *2+ vFactor+1200),0.0) - .5 * jitterAmt;
 
 
-		noiseOscilation*= 1+(2  * vFactor) * noiseAmt;
+		noiseOscilation*= (1+(2  * noiseAmt))*vFactor ;
 		jitterOscilation*= 5 +(20 * speedMult) * ( (speedMult-1) * 20);
 
 		transform.position = transform.parent.position;

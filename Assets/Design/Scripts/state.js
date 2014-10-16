@@ -1,4 +1,5 @@
 ﻿#pragma strict
+
  var navMesh:NavMesh = null;
  var attributes:attributes;
 var id:String;
@@ -14,6 +15,8 @@ var debug:boolean;
  var relativePoint:Vector3 = Vector3.zero;
 var blocking:boolean = true;
  var poi_data:poi_data = null;
+
+
 function NavMesh(nav:NavMesh){
 	navMesh = nav;
 }
@@ -22,6 +25,7 @@ function Awake(){
 }
 
 function Start () {
+
 }
 
 function Update () {
@@ -30,6 +34,7 @@ function Update () {
 
 
 function Enter(){
+
 	attributes = gameObject.transform.parent.GetComponent("attributes");
 	agent = attributes.agent;
 	if (data!= null){

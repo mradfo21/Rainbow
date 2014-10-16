@@ -4379,7 +4379,7 @@ Animator:
   m_GameObject: {fileID: 100014}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 980592dd32e834a91898989104701f1b, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2f7c5b427b9e849de92e17855833dca0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8b949a2076ef74db7be3a5802cdb093b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4406,6 +4406,10 @@ MonoBehaviour:
   inverse: 0
   pint: 0
   agent: {fileID: 0}
+  currentStance: 2
+  previousStance: 1
+  stanceNum: 0
+  previousStanceNum: 0
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

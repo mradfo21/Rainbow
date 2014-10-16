@@ -17,5 +17,5 @@ function initCharacter(obj:GameObject){
 }
 function SpawnCharacter(obj:GameObject){
 	initCharacter(obj);
-	print("RECEIVED SPAWN ORDER");
+	//print("RECEIVED SPAWN ORDER");
 }

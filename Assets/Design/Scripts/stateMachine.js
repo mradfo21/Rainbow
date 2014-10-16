@@ -7,13 +7,17 @@ var currentStateData:ArrayList = null;
 var currentStateObj:state = null;
 
 var defaultState: String = null;
-
 var id:String=null;
+
+var gameData:gameData;
 function Start () {
 	if (defaultState){
 		changeState(id+"_"+defaultState);
 	}
-	}
+ 	gameData = new gameData();
+	gameData.Start();
+
+}
 
 function Update () {
 	if (currentStateObj){

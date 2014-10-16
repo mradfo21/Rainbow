@@ -54,7 +54,7 @@ class followFriend extends state_goal{
 			move[1] = followPoint;
 			move[5] = false;
 			gameObject.SendMessage("changeState",move,SendMessageOptions.DontRequireReceiver);
-			print("sending a follow command");
+			//print("sending a follow command");
 			yield WaitForSeconds(.5);
 		}
 	}

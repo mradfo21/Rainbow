@@ -427,8 +427,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400002}
   - 136: {fileID: 13600000}
-  - 114: {fileID: 11400074}
   - 114: {fileID: 11400080}
+  - 114: {fileID: 11400078}
+  - 114: {fileID: 11400074}
   m_Layer: 9
   m_Name: character
   m_TagString: character
@@ -1343,9 +1344,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 100048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f693f76e7a043a1941337de6634067, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c28b9e7eb6c2483f94533e6e8455a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  aimObject: {fileID: 100002, guid: 615004757f3e9452c8591b9bb1a5701c, type: 2}
+  attatch: {fileID: 0}
+  boneName: 
+  attributes: {fileID: 0}
+  foundBone: 0
 --- !u!114 &11400076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1359,6 +1365,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 100360, guid: 16790d35215dd4baf9e8dd5aad3a4ae2, type: 2}
   useProfile: 1
+--- !u!114 &11400078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087a5e67090cb40b4827284c2a6eb739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bone: {fileID: 0}
+  gunToSpawn: {fileID: 100002, guid: 6a1d2388adf1b4b4e85fb1bdc53ba37c, type: 2}
+  gunObj: {fileID: 0}
+  gun: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
+  rotOffsetX: -90
+  rotOffsetY: 0
+  rotOffsetZ: 0
+  attributes: {fileID: 0}
+  ready: 0
+  foundBone: 0
 --- !u!114 &11400080
 MonoBehaviour:
   m_ObjectHideFlags: 1

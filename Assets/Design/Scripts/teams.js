@@ -23,11 +23,7 @@ function Update () {
 	if ( playerTeam && playerTeam.ready == true){
 		MakePlayer();
 	}
-	if (Input.GetAxisRaw("SwitchTeams") && Time.time > lastPress+.5){
-		lastPress = Time.time;
-		teamIndex +=Input.GetAxisRaw("SwitchTeams");
-		SwitchTeams();
-	}
+
 	if (playerTeam){
 		averagePosition = GetAveragePosition();		
 	}

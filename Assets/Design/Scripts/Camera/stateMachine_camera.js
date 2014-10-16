@@ -3,9 +3,10 @@ class stateMachine_camera extends stateMachine{
 
 function Start(){
 	super.Start();
+	id = "camera";
 
 }
-function Update(){
+function LateUpdate(){
 	super.Update();
 }
 function changeState(state:String){

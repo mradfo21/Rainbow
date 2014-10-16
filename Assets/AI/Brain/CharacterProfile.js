@@ -19,7 +19,7 @@ function Update () {
 }
 
 function InjectCharacter(host:GameObject){
-	print("sending character command from: "+host +" of " + character);
+	//print("sending character command from: "+host +" of " + character);
 	host.BroadcastMessage("SpawnCharacter",character);
 }
 function InjectAttributes(attributes:attributes){

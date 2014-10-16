@@ -39,13 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eecde15dea68e4a658b99a7afedeb252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 0}
-  attributes: {fileID: 0}
-  lastExecutedStateNum: 0
-  currentStateNum: 0
-  maxStateNum: 0
   states:
-  - stance_tactical
+  - stance_sprint
   - goal_formationLine
   enemyContact: 
 --- !u!1001 &100100000

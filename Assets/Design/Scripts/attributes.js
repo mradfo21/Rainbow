@@ -1,6 +1,6 @@
 ﻿#pragma strict
 
-
+var animator:Animator;
 var isEnemy:boolean = false;
 var hasDied:boolean = false; 
 var alive:boolean = true;
@@ -32,13 +32,13 @@ var readyToFire:boolean = false;
 var stance:String;
 var combat:String;
 var goal:String;
+var rotation:String;
 var movement:String;
 
 var destination:Vector3;
 
 var coverTarget:Vector3 = Vector3.zero;
 var coveringFire:boolean = false;
-
 var visionRange_spotted:float = 20.0;
 var visionRange_attacked:float = 10.0;
 var visionRange:float = 14.0;
@@ -50,11 +50,15 @@ var agent:NavMeshAgent;
 var hasTarget:boolean = false;
 
 var gun:gun;
+var gunBone:GameObject;
 var species:String;
 var targetDistance:float;
 var accuracy:float = 1.0;
 var damageMod:float = 1.0;
 var stealthiness:float = 1.0;
+
+var aimCam:Camera;
+var aimObj:GameObject;
 private var currentTargetID;
 
 var target:GameObject = null;
@@ -70,22 +74,6 @@ function Start () {
 	agent = gameObject.GetComponent("NavMeshAgent");
 }
 
-function stop(){
-	print("stopping agent");
-	agent.Stop();
-}
-function walk(){
-	speed = (Random.value * .5)+ 1.3;
-}
-function jog(){
-	speed = (Random.value * .5)+ 1.5;
-}
-function run(){
-	speed = 3;
-}
-function sprint(){
-	speed = 4.4;
-}
 
 function newTarget(){
 	//print("found a new target");
@@ -105,7 +93,6 @@ function Contact(pd:poi_data){
 	//print("attributes received a contact");
 }
 function Update () {
-
 	lastContactTimer-= Time.deltaTime;
 	lastHintTimer -= Time.deltaTime;
 	if (lastHintTimer <= 0){
@@ -127,12 +114,6 @@ function Update () {
 		}else{
 			targetDistance = Vector3.Distance(transform.position,target.transform.position);			
 		}
-	}
-	if (agent){
-		agent.acceleration = acceleration;
-		agent.angularSpeed = angularSpeed;
-		agent.speed = speed;
-		agent.stoppingDistance = stoppingDistance;
 	}
 	if (health <0){
 		alive = false;
@@ -159,4 +140,5 @@ function Attacked(dmg:float){
 function IsEnemy(){
 	isEnemy = true;
 }
+
 

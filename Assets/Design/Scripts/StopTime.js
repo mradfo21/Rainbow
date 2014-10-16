@@ -8,4 +8,5 @@ function Start () {
 
 function Update () {
 		Time.timeScale = gameData.gameAttributes.timeScale;
+
 	}

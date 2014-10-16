@@ -29,8 +29,8 @@ function GetCharacterProfile(id:String):CharacterProfile{
 }
 
 function GetTacticProfile(id:String):TacticProfile{
-	print(" TACTIC PROFILE REQUESTED ! of : "+id);
-	print(" PROFILE: "+TacticProfileMap[id]);
+	//print(" TACTIC PROFILE REQUESTED ! of : "+id);
+	//print(" PROFILE: "+TacticProfileMap[id]);
 	var profile = TacticProfileMap[id].GetComponent("TacticProfile");
 
 	return profile;

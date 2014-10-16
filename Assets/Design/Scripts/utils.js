@@ -48,5 +48,22 @@ function isOccupiedByTeammate(pos:Vector3,radius:float,team:team,memberAttribute
 	}
 	return false;
 
+}
+
+
+function AttatchToJoint(obj:GameObject,searchName:String):GameObject{
+	for(var child:Transform in obj.transform){
+		print(child.name);
+		if (child.gameObject.name.Contains(searchName) && !child.gameObject.name.Contains("Ctrl")){
+			return child.gameObject;
+		}
+		AttatchToJoint(child.gameObject,searchName);
 	}
 }
+
+
+
+
+
+}
+

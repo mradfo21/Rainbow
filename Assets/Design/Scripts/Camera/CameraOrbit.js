@@ -22,7 +22,6 @@ private var y = 0.0;
  
  
 var smoothTime = 0.3;
-var smoothTimeSlowMo = .001;
 
 private var xSmooth = 0.0;
 private var ySmooth = 0.0; 
@@ -36,6 +35,7 @@ var offset:Vector3;
 
 var gameData:gameData;
 var target:Vector3;
+var targetOffset:Vector3 = Vector3.zero;
 var inPlanning:boolean = false;
 private var goalOffsetForward:Vector3;
 
@@ -47,7 +47,6 @@ function Start () {
 	gameData = new gameData();
 	gameData.Start();
     StartCoroutine("CalcVelocity");
-    controller = gameObject.GetComponent("CharacterController");
 }
 
 function collisionTest(goal:Vector3):Vector3{
@@ -67,9 +66,9 @@ function collisionTest(goal:Vector3):Vector3{
             return avoidanceForce;    
         }
 }
-function Update () {
+function LateUpdate () {
 
-    vmag = v.magnitude;
+        vmag = v.magnitude;
 
         if (gameData.gameAttributes.playerAttributes) {
 
@@ -85,14 +84,10 @@ function Update () {
     		target.y += finalHeight;
             var finalSmoothTime:float = smoothTime;
 
-            if (gameData.gameAttributes.inPlanning == false && gameData.gameAttributes.inUAV == false){
 
-            x += Input.GetAxis("Mouse X") * xSpeed * 0.01;
-            y -= Input.GetAxis("Mouse Y") * ySpeed * 0.01;
+            x += Input.GetAxis("Vertical") * xSpeed * 0.01;
+            y -= Input.GetAxis("Horizontal") * ySpeed * 0.01;
             finalSmoothTime = smoothTime;
-            }else{
-            finalSmoothTime = smoothTimeSlowMo;
-            }
 
             xSmooth = Mathf.SmoothDamp(xSmooth, x, xVelocity, smoothTime);
             ySmooth = Mathf.SmoothDamp(ySmooth, y, yVelocity, smoothTime);
@@ -102,7 +97,6 @@ function Update () {
            	posSmooth = Vector3.SmoothDamp(posSmooth,target,posVelocity,finalSmoothTime);
 
             var finalDistance = minimumDistance+(distance*vFactor);
-            //var finalDistance = distance;
 
             transform.position = (rotation * Vector3(0.0, 0.0, - finalDistance) + posSmooth);
             
@@ -113,7 +107,10 @@ function Update () {
 }
 
 function CameraTarget(goal:Vector3){
-    target = goal;
+    goal.y+=1.8;
+    goal += gameData.gameAttributes.playerAttributes.gameObject.transform.forward*.15;
+    target = goal + targetOffset;        
+
 }
 static function ClampAngle (angle : float, min : float, max : float) {
     if (angle < -360)

@@ -5,63 +5,65 @@ var nextPress:float = 0.0;
 var resetTime:float = .5;
 var layerMask:int;        
 var poi_move:GameObject;
+
+var poi_stance_prone:GameObject;
+var poi_stance_crouch:GameObject;
+var poi_stance_run:GameObject;
+var poi_stance_sprint:GameObject;
+
+var stanceIndex:int = 1;
+
+var stanceMap = new Dictionary.<int,GameObject>();
 var planningNextPress:float = 0.0;
-var planningResetTime:float = 0.001;
+var planningResetTime:float = 0.05;
+
+var stanceNextPress:float = 0.0;
+var stanceResetTime:float = 0.001;
+
 var clock:float = 0.0;
 function Start () {
  	gameData = new gameData();
 	gameData.Start();
     layerMask = 1 << 12;
-    Screen.lockCursor = true;        
+    Screen.lockCursor = true;
 
+    stanceMap[1] = poi_stance_prone;        
+    stanceMap[2] = poi_stance_crouch;        
+    stanceMap[3] = poi_stance_run;        
+    stanceMap[4] = poi_stance_sprint;
+    Invoke("ToggleStance",2);        
 }
 
+function changeAction(state:String){
+	gameObject.SendMessage("changeState","action_"+state,SendMessageOptions.DontRequireReceiver);
+}
+function ToggleStance(){
+		stanceNextPress = clock + stanceResetTime;	
+		gameData.gameAttributes.playerTeam.stanceIndex += Input.GetAxisRaw("ToggleStance");
+		if (stanceIndex > 4){
+			stanceIndex=4;
+		}
+		if (stanceIndex < 1){
+			stanceIndex = 1;
+		}
+		setupPOI_Stance(stanceMap[gameData.gameAttributes.playerTeam.stanceIndex]);
+		
+}
 
 function toggleMovement(){
-		gameObject.BroadcastMessage("EnterMovement");
-		if (gameData.gameAttributes.inAttack == true ){
-			gameObject.BroadcastMessage("ExitAttack");
+		if (gameData.gameAttributes.inMovement== false ){
+			if (gameData.gameAttributes.inAttack == true || gameData.gameAttributes.cameraAiming == true ){
+				setupPOI_Stance(stanceMap[stanceIndex]);
+			}
+			gameData.gameAttributes.inMovement = true;
+			gameObject.BroadcastMessage("EnterMovement");
 
+		}else{
+			gameData.gameAttributes.inMovement = false;
+			gameObject.BroadcastMessage("ExitMovement");
 		}
 		planningNextPress = clock + resetTime;	
-		gameData.gameAttributes.inAttack = false;
-		gameData.gameAttributes.inMovement = true;
-		if (gameData.gameAttributes.inPlanning == false){
-			enterPlanning();
-		}	
-}
-function toggleAttack(){
-		gameObject.BroadcastMessage("EnterAttack");
-		if (gameData.gameAttributes.inMovement == true ){
-			gameObject.BroadcastMessage("ExitMovement");			
-		}
-		planningNextPress = clock + resetTime;	
-		gameData.gameAttributes.inAttack = true;
-		gameData.gameAttributes.inMovement = false;
-		if (gameData.gameAttributes.inPlanning == false){
-			enterPlanning();
-		}		
-}
 
-function exitPlanning(){
-	gameData.gameAttributes.inPlanning = false;
-	gameData.gameAttributes.timeScale = 1.0;
-	if (gameData.gameAttributes.inMovement == true){
-		gameObject.BroadcastMessage("ExitMovement");
-		gameData.gameAttributes.inMovement = false;
-
-	}else if (gameData.gameAttributes.inAttack == true){
-		gameObject.BroadcastMessage("ExitAttack");
-		gameData.gameAttributes.inAttack = false;
-
-	}
-	gameObject.BroadcastMessage("ExitPlanning");
-
-
-}
-function enterPlanning(){
-	gameData.gameAttributes.inPlanning = true;
-	gameData.gameAttributes.timeScale = gameData.gameAttributes.timeScaleMin;
 }
 
 function Update () {
@@ -70,33 +72,54 @@ function Update () {
 		nextPress = clock + resetTime;
 		setupPOI(poi_move);
 		gameObject.BroadcastMessage("IssuedOrder","tactic_pcMove");
-		exitPlanning();
-		//Invoke("exitPlanning",.01);
-
+		toggleMovement();
 	}
 	
-
-	if (Input.GetAxis("TogglePlanning") && gameData.gameAttributes.inPlanning == false && clock >planningNextPress){
+	if (Input.GetButton("ToggleAttack")&& clock >planningNextPress){
+		print("ATTACK TOGGLE");
+		if (gameData.gameAttributes.inAttack == true){
+			changeAction("actionNeutral");			
+		}else{
+			changeAction("actionAim");			
+		}
 		planningNextPress = clock + resetTime;	
-		gameObject.BroadcastMessage("EnterPlanning");
-		enterPlanning();
-		toggleMovement();
 	}
-	if (Input.GetAxis("TogglePlanning") && gameData.gameAttributes.inPlanning == true && clock >planningNextPress){
-		gameObject.BroadcastMessage("ExitPlanning");	
-		planningNextPress = clock + resetTime;	
-		Invoke("exitPlanning",.3*gameData.gameAttributes.timeScale);
+	if (Input.GetButton("ToggleMovement") && clock >planningNextPress){
+		print("ATTACK MOVEMENT");
+		if (gameData.gameAttributes.inMovement == true){
+			changeAction("actionNeutral");			
+		}else{
+			changeAction("actionMovement");			
+		}
+		planningNextPress = clock + resetTime;		
+	}
+	if (Input.GetAxisRaw("ToggleStance") && clock > stanceNextPress){
+		ToggleStance();
+	}
 
+
+	if (Input.GetAxisRaw("SwitchTeams") && clock > stanceNextPress){
+		gameData.teams.teamIndex +=Input.GetAxisRaw("SwitchTeams");
+		gameData.teams.SwitchTeams();
+		Invoke("ToggleStance",.3);
 	}
-	if (Input.GetAxis("ToggleAttack")&&gameData.gameAttributes.inAttack ==false && clock >planningNextPress){
-		toggleAttack();
-	}
-	if (Input.GetAxis("ToggleMovement") &&gameData.gameAttributes.inMovement ==false && clock >planningNextPress){
-		toggleMovement();
-	}
+
 	clock+=Time.unscaledDeltaTime;
 }
 
+
+function setupPOI_Stance(poi:GameObject){
+	var pd:poi_data = new poi_data();
+	var pos:Vector3 = gameData.gameAttributes.playerTeam.leader.transform.position;
+	var obj:GameObject = Instantiate(poi,pos,Quaternion.identity);
+	
+	pd.team = playerTeam;
+	pd.pos = obj.transform.position;	
+	pd.origin = transform.position;	
+	pd.Start();
+	pd.obj = obj;
+	obj.SendMessage("setup",pd);	
+}
 function setupPOI(poi:GameObject){
 	var pd:poi_data = new poi_data();
 	var pos:Vector3 = utils.getPositionScreen().point;
