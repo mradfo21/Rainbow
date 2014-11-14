@@ -15,7 +15,7 @@ function Start () {
 }
 
 function Update () {
-	if (Input.GetButton("IssueOrder") && hovering == true && clock > nextPress && gameData.gameAttributes.inAttack == true){
+	if (Input.GetButton("IssueOrder") && hovering == true && clock > nextPress && gameData.gameAttributes.inAction("Aim") == true){
 		transmitFrom.BroadcastMessage("Marked");
 		nextPress = clock + resetTime;
 
@@ -27,18 +27,18 @@ function Update () {
 
 }
 function enterHovering(){
-	transmitFrom.BroadcastMessage("Targeted");
+	transmitFrom.BroadcastMessage("Targeted",SendMessageOptions.DontRequireReceiver);
 	wasHovered = true;
 
 }
 function exitHovering(){
-	transmitFrom.BroadcastMessage("UnTargeted");	
+	transmitFrom.BroadcastMessage("UnTargeted",SendMessageOptions.DontRequireReceiver);	
 	wasHovered = false;
 
 }
 function OnMouseEnter(){
 
-	if (gameData.gameAttributes.inAttack == true){
+	if (gameData.gameAttributes.inAction("Aim")== true){
 
 		if (wasHovered == false){
 			enterHovering();		

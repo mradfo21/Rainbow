@@ -29,7 +29,7 @@ function Update () {
         ySmooth = ClampAngle(ySmooth, yMinLimit, yMaxLimit);
         var rotation = Quaternion.Euler(ySmooth, xSmooth, 0);  
 
-    if (gameData.gameAttributes.inMovement == true){
+    if (gameData.gameAttributes.inAction("Movement") == true){
         if (reset == true){  	
             x = 0;
             y = 0;

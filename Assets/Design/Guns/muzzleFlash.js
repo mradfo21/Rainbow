@@ -6,9 +6,9 @@ function Start () {
 }
 
 function Update () {
-	renderer.enabled = false;
+	GetComponent.<Renderer>().enabled = false;
 }
 
 function Fired(from:GameObject){
-	renderer.enabled = true;
+	GetComponent.<Renderer>().enabled = true;
 }

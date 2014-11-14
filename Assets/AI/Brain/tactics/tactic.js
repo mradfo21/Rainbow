@@ -175,6 +175,7 @@ public function ConstructBaseData():ArrayList{
 	list.Add(new GameObject());
 	list.Add(false);
 	list.Add(new poi_data());
+	list.Add(new orderData());
 
 	return list;
 }

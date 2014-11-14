@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_4_6_0;UNITY_4_6;UNITY_STANDALONE_OSX;ENABLE_MICROPHONE;ENABLE_TEXTUREID_MAP;ENABLE_UNITYEVENTS;ENABLE_NEW_HIERARCHY ;ENABLE_AUDIO_FMOD;UNITY_STANDALONE;ENABLE_MONO;ENABLE_TERRAIN;ENABLE_SUBSTANCE;ENABLE_GENERICS;INCLUDE_WP8SUPPORT;ENABLE_MOVIES;ENABLE_WWW;ENABLE_IMAGEEFFECTS;ENABLE_4_6_FEATURES;INCLUDE_WP_BLUE_SUPPORT;ENABLE_WEBCAM;INCLUDE_METROSUPPORT;RENDER_SOFTWARE_CURSOR;ENABLE_NETWORK;ENABLE_PHYSICS;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_2D_PHYSICS;ENABLE_GAMECENTER;ENABLE_SHADOWS;ENABLE_AUDIO;ENABLE_NAVMESH_CARVING;ENABLE_DUCK_TYPING;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX;UNITY_PRO_LICENSE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_OBSOLETE_API_UPDATING;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_OSX;UNITY_PRO_LICENSE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -83,6 +83,9 @@
      <Compile Include="Assets\AI\Brain\movement\moveCover.js" />
      <Compile Include="Assets\AI\Brain\movement\stateMachine_movement.js" />
      <Compile Include="Assets\AI\Brain\movement\state_movement.js" />
+     <Compile Include="Assets\AI\Brain\orders.js" />
+     <Compile Include="Assets\AI\Brain\orders_action.js" />
+     <Compile Include="Assets\AI\Brain\orders_movement.js" />
      <Compile Include="Assets\AI\Brain\roles\role.js" />
      <Compile Include="Assets\AI\Brain\rotation\lookCamera.js" />
      <Compile Include="Assets\AI\Brain\rotation\lookRandom.js" />
@@ -105,8 +108,6 @@
      <Compile Include="Assets\AI\Poi\poi_changeState.js" />
      <Compile Include="Assets\AI\Poi\poi_data.js" />
      <Compile Include="Assets\AI\Poi\poi_lifespan.js" />
-     <Compile Include="Assets\AI\Poi\poi_sendAimingMessage.js" />
-     <Compile Include="Assets\AI\Poi\poi_sendCameraMessage.js" />
      <Compile Include="Assets\AI\Poi\poi_sendMessage.js" />
      <Compile Include="Assets\AI\Poi\poi_sendPlayerMessage.js" />
      <Compile Include="Assets\AI\Poi\poi_vision.js" />
@@ -153,9 +154,17 @@
      <Compile Include="Assets\Design\Scripts\Camera\toggleUAV.js" />
      <Compile Include="Assets\Design\Scripts\Camera\trackTeam.js" />
      <Compile Include="Assets\Design\Scripts\Camera\zoomUAV.js" />
+     <Compile Include="Assets\Design\Scripts\Command\stateMachine_command.js" />
+     <Compile Include="Assets\Design\Scripts\Command\states\cmdAim.js" />
+     <Compile Include="Assets\Design\Scripts\Command\states\cmdCharacter.js" />
+     <Compile Include="Assets\Design\Scripts\Command\states\cmdMovement.js" />
+     <Compile Include="Assets\Design\Scripts\Command\states\commands.js" />
+     <Compile Include="Assets\Design\Scripts\Command\states\state_command.js" />
      <Compile Include="Assets\Design\Scripts\Creator_generic.js" />
      <Compile Include="Assets\Design\Scripts\Creator_team.js" />
      <Compile Include="Assets\Design\Scripts\DisableControllerByVelocity.js" />
+     <Compile Include="Assets\Design\Scripts\Orders\stateMachine_order.js" />
+     <Compile Include="Assets\Design\Scripts\Orders\state_order.js" />
      <Compile Include="Assets\Design\Scripts\StopTime.js" />
      <Compile Include="Assets\Design\Scripts\UI\IconList.js" />
      <Compile Include="Assets\Design\Scripts\UI\creator_ui.js" />
@@ -167,16 +176,20 @@
      <Compile Include="Assets\Design\Scripts\UI\ui_character.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_colorChangeOnEvent.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_crosshair.js" />
+     <Compile Include="Assets\Design\Scripts\UI\ui_enableOnAction.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_enableOnEnemy.js" />
+     <Compile Include="Assets\Design\Scripts\UI\ui_icon.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_info.js" />
+     <Compile Include="Assets\Design\Scripts\UI\ui_orderMenu.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_orientToCenterScreen.js" />
      <Compile Include="Assets\Design\Scripts\UI\ui_scaleByDistance.js" />
      <Compile Include="Assets\Design\Scripts\attributes.js" />
      <Compile Include="Assets\Design\Scripts\cameraManager.js" />
-     <Compile Include="Assets\Design\Scripts\commands.js" />
      <Compile Include="Assets\Design\Scripts\gameAttributes.js" />
      <Compile Include="Assets\Design\Scripts\gameData.js" />
      <Compile Include="Assets\Design\Scripts\minimalState.js" />
+     <Compile Include="Assets\Design\Scripts\orderData.js" />
+     <Compile Include="Assets\Design\Scripts\orderManager.js" />
      <Compile Include="Assets\Design\Scripts\profileManager.js" />
      <Compile Include="Assets\Design\Scripts\spawn_team.js" />
      <Compile Include="Assets\Design\Scripts\spawn_ui.js" />
@@ -261,7 +274,7 @@
      <None Include="Assets\teamMovement\BeastSettings.xml" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

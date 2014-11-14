@@ -13,9 +13,6 @@ class camMovementProne extends state_camera{
 	function Enter(){
 		super.Enter();
 
-		gameData.gameAttributes.cameraState = "movementProne";
-		gameData.gameAttributes.cameraAiming = false;
-
 		t_orbitDistance = 1.0;
 		t_orbitMinimumDistance = 1.0;
 		t_bottomHeight = -1.15;

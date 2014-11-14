@@ -124,6 +124,8 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
+    orderManager: {fileID: 0}
   profile_character: default
   characterProfile: {fileID: 0}
 --- !u!114 &11400004
@@ -156,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c97176d6fac3a4583a4c17a964cfc4a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   isEnemy: 0
   hasDied: 0
   alive: 1
@@ -183,6 +186,7 @@ MonoBehaviour:
   stance: 
   combat: 
   goal: 
+  rotation: 
   movement: 
   destination: {x: 0, y: 0, z: 0}
   coverTarget: {x: 0, y: 0, z: 0}
@@ -202,6 +206,8 @@ MonoBehaviour:
   accuracy: 1
   damageMod: 1
   stealthiness: 1
+  aimCam: {fileID: 0}
+  aimObj: {fileID: 0}
   target: {fileID: 0}
   targetAttributes: {fileID: 0}
   targets: []

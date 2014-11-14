@@ -13,10 +13,6 @@ class camNeutralProne extends state_camera{
 	function Enter(){
 		super.Enter();
 
-
-		gameData.gameAttributes.cameraState= "prone";
-		gameData.gameAttributes.cameraAiming = false;
-
 		t_orbitDistance = 1.8;
 		t_orbitMinimumDistance = 1.8;
 		t_bottomHeight = -.8;

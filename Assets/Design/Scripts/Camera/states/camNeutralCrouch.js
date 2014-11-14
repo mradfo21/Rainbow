@@ -13,9 +13,6 @@ class camNeutralCrouch extends state_camera{
 	function Enter(){
 		super.Enter();
 		
-		gameData.gameAttributes.cameraState= "crouch";
-		gameData.gameAttributes.cameraAiming = false;
-
 		t_orbitDistance = 1.7;
 		t_orbitMinimumDistance = 1.7;
 		t_bottomHeight = -.6;

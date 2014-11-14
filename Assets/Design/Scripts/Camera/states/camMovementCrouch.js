@@ -12,8 +12,7 @@ class camMovementCrouch extends state_camera{
 
 	function Enter(){
 		super.Enter();
-		gameData.gameAttributes.cameraState = "movementCrouch";
-		gameData.gameAttributes.cameraAiming = false;
+
 		t_orbitDistance = 1.1;
 		t_orbitMinimumDistance = 1.1;
 		t_bottomHeight = -.4;

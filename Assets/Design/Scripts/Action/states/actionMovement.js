@@ -16,7 +16,6 @@ class actionMovement extends state_action{
 		super.Enter();
 		id = "Movement";
 		gameObject.BroadcastMessage("EnterMovement",SendMessageOptions.DontRequireReceiver);
-		gameData.gameAttributes.inMovement = true;
 
 	}
 
@@ -27,7 +26,6 @@ class actionMovement extends state_action{
 	function Exit(){
 		super.Exit();
 		gameObject.BroadcastMessage("ExitMovement",SendMessageOptions.DontRequireReceiver);
-		gameData.gameAttributes.inMovement = false;
 		Destroy(this);
 	}
 

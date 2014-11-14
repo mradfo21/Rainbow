@@ -86,7 +86,7 @@ class state_camera extends minimalState{
 		s_noiseAmt = noise.noiseAmt;
 		s_noiseSpeed = noise.noiseSpeed;
 
-		s_camFov = cam.fov;
+		s_camFov = cam.fieldOfView;
 		s_camOffset = offset.offset;
 		s_camRot = cam.transform.localRotation.eulerAngles;
 	
@@ -105,7 +105,7 @@ class state_camera extends minimalState{
 		t_noiseAmt = noise.noiseAmt;
 		t_noiseSpeed = noise.noiseSpeed;
 
-		t_camFov = cam.fov;
+		t_camFov = cam.fieldOfView;
 		t_camOffset = offset.offset;
 		t_camRot = cam.transform.rotation.eulerAngles;
 	
@@ -121,7 +121,7 @@ class state_camera extends minimalState{
 				gameObject.BroadcastMessage("CameraTarget",target);						
 			}
 		}
-		
+		if (debug == false){
 		orbit.distance = lerpFloat(s_orbitDistance,t_orbitDistance,speed);
 		orbit.minimumDistance = lerpFloat(s_orbitMinimumDistance,t_orbitMinimumDistance,speed);
 		orbit.bottomHeight = lerpFloat(s_bottomHeight,t_bottomHeight,speed);
@@ -132,11 +132,11 @@ class state_camera extends minimalState{
 		noise.noiseAmt = lerpFloat(s_noiseAmt,t_noiseAmt,speed);
 		noise.rollAmt = lerpFloat(s_rollAmt,t_rollAmt,speed);
 
-		cam.fov = lerpFloat(s_camFov,t_camFov,speed);
+		cam.fieldOfView = lerpFloat(s_camFov,t_camFov,speed);
 		offset.offset = lerpVector(s_camOffset,t_camOffset,speed);
 		var goalRot:Quaternion = Quaternion.Euler(t_camRot);	
 		cam.transform.localRotation = Quaternion.Lerp(cam.transform.localRotation,goalRot,.1);
-
+		}
 	}
 
 	function Exit(){

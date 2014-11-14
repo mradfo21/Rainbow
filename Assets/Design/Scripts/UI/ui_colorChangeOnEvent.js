@@ -9,18 +9,22 @@ var eAddedTeam:Color = Color.clear;
 var material:Material;
 
 function Start () {
-	material = gameObject.renderer.material;
+	material = gameObject.GetComponent.<Renderer>().material;
 	baseColor = material.GetColor("_TintColor");
 }
 
 function Update () {
 
 }
+
+function Reset(){
+		GetComponent.<Renderer>().material.SetColor("_TintColor",baseColor);	
+}
 function EnterPlanning(){
 		if (eEnterPlanning!= Color.clear){
-			renderer.material.SetColor("_TintColor",eEnterPlanning);	
+			GetComponent.<Renderer>().material.SetColor("_TintColor",eEnterPlanning);	
 		}else{
-			renderer.material.SetColor("_TintColor",baseColor);	
+			GetComponent.<Renderer>().material.SetColor("_TintColor",baseColor);	
 		}
 
 }
@@ -33,22 +37,22 @@ function ExitPlanning(){
 }
 function IssuedOrder(order:String){
 		if (eIssuedOrder!= Color.clear){
-			renderer.material.SetColor("_TintColor",eIssuedOrder);	
+			GetComponent.<Renderer>().material.SetColor("_TintColor",eIssuedOrder);	
 		}else{
-			renderer.material.SetColor("_TintColor",baseColor);	
+			GetComponent.<Renderer>().material.SetColor("_TintColor",baseColor);	
 		}
 }
 function SwitchedTeam(t:team){
 		if (eSwitchedTeam!= Color.clear){
-			renderer.material.SetColor("_TintColor",eSwitchedTeam);	
+			GetComponent.<Renderer>().material.SetColor("_TintColor",eSwitchedTeam);	
 		}else{
-			renderer.material.SetColor("_TintColor",baseColor);	
+			GetComponent.<Renderer>().material.SetColor("_TintColor",baseColor);	
 		}
 }
 function AddedTeam(t:team){
 		if (eAddedTeam!= Color.clear){
-			renderer.material.SetColor("_TintColor",eAddedTeam);	
+			GetComponent.<Renderer>().material.SetColor("_TintColor",eAddedTeam);	
 		}else{
-			renderer.material.SetColor("_TintColor",baseColor);	
+			GetComponent.<Renderer>().material.SetColor("_TintColor",baseColor);	
 		}
 }

@@ -13,8 +13,6 @@ class camAimSprint extends state_camera{
 	function Enter(){
 		super.Enter();
 
-		gameData.gameAttributes.cameraState = "aimStand";
-		gameData.gameAttributes.cameraAiming = true;
 
 		t_orbitDistance = 1.0;
 		t_orbitMinimumDistance = 1.0;

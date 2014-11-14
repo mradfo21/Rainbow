@@ -25,6 +25,11 @@ var averagePosition:Vector3;
 var game:GameObject;
 var ready:boolean = false;
 var movement_positions:List.<Vector3>;
+var gameData:gameData;
+
+var orders_movement:orders_movement;
+var orders_action:orders_action;
+
 function CheckLeader(){
 	if (members.Count >= 1){
 		leader = members[0];
@@ -119,7 +124,6 @@ function CollectVision(){
 				}else{
 					enemies.Remove(eKey);
 				}
-
 			}
 		}
 		CheckForEnemies();
@@ -151,9 +155,6 @@ function CheckTeamMembers(){
 			attribs[members[i]].teammateTargetAttributes = null;
 			attribs[members[i]].teamSpot = i;	
 		}
-	
-
-
 	}
 }
 //function OnTriggerEnter(col:Collider){
@@ -170,12 +171,20 @@ function CheckTeamMembers(){
 function Start () {
 	game = gameObject.Find("Game");
 	StartCoroutine("RemoveDeadEnemies",1.0);
+	this.name = this.name +"_"+gameObject.GetInstanceID();
+
+	gameData = new gameData();
+	gameData.Start();
+	orders_movement = gameObject.GetComponent("orders_movement") as orders_movement;
+	orders_action = gameObject.GetComponent("orders_action") as orders_action;
+	
+
 }
 function Setup(){
 	CheckTeamMembers();
 	CheckLeader();
 	ready = true;
-	game.SendMessage("AddTeam",gameObject);
+	gameData.gameAttributes.teams.AddTeam(gameObject);
 
 }
 function ManageUnits(){

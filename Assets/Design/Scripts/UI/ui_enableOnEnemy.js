@@ -8,9 +8,9 @@ function Start () {
 function Update () {
 	if (attributes){
 		if (attributes.isEnemy == true){
-			gameObject.active = false;
+			gameObject.SetActive(false);
 		}else{
-			attributes.active = true;
+			attributes.enabled = true;
 		}
 	}
 }

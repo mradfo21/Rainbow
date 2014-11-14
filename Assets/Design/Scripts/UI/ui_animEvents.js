@@ -17,6 +17,11 @@ var eMarked:String = "";
 var eUnMarked:String = "";
 var eSpotted:String = "";
 
+var orderMenu_Open:String = "";
+var orderMenu_Close:String = "";
+
+var eSelected:String = "";
+var eDeselected:String = "";
 
 var beenSpotted:boolean = false;
 
@@ -27,64 +32,119 @@ function Start () {
 function Update () {
 }
 function EnterPlanning(){
-		animator.SetTrigger(eEnterPlanning);	
+	if (eEnterPlanning != ""){
+		animator.SetTrigger(eEnterPlanning);
+	}	
 
 }
 function ExitPlanning(){
-		animator.SetTrigger(eExitPlanning);		
+	if (eExitPlanning != ""){
+		animator.SetTrigger(eExitPlanning);
+	}		
 }
 function EnterAttack(){
-		animator.SetTrigger(eEnterAttack);		
+	if (eEnterAttack != ""){
+		animator.SetTrigger(eEnterAttack);
+	}		
 
 }
 function ExitAttack(){
-		animator.SetTrigger(eExitAttack);		
+	if (eExitAttack != ""){
+		animator.SetTrigger(eExitAttack);
+	}		
 
 }
 function EnterMovement(){
-		animator.SetTrigger(eEnterMovement);		
+	if (eExitMovement != ""){
+		animator.SetTrigger(eEnterMovement);
+	}		
 
 }
 function ExitMovement(){
-		animator.SetTrigger(eExitMovement);		
+	if (eExitMovement != ""){
+		animator.SetTrigger(eExitMovement);
+	}		
 
 }
 function IssuedOrder(order:String){
-	animator.SetTrigger(eIssuedOrder);
+	if (eIssuedOrder != ""){
+		animator.SetTrigger(eIssuedOrder);
+	}
 }
 function SwitchedTeam(t:team){
 	//print("SWITCHED TEAM");
-	animator.SetTrigger(eSwitchedTeam);
+	if (eSwitchedTeam != ""){
+		animator.SetTrigger(eSwitchedTeam);
+	}
 
 }
 function AddedTeam(t:team){
-	animator.SetTrigger(eAddedTeam);
+	if (eAddedTeam != ""){
+		animator.SetTrigger(eAddedTeam);
+	}
 }
 
 function Targeted(){
-	animator.SetTrigger(eTargeted);
+	if (eTargeted != ""){
+		animator.SetTrigger(eTargeted);
+	}
 	//print("TARGETED");
 }
 function UnTargeted(){
-	animator.SetTrigger(eUnTargeted);
+	if (eUnTargeted != ""){
+		animator.SetTrigger(eUnTargeted);
+	}
 	//print("UN TARGETED");
 }
 
 function Marked(){
-	animator.SetTrigger(eMarked);
+	if (eMarked != ""){
+		animator.SetTrigger(eMarked);
+	}
 	//print("MARKED");
 }
 
 function UnMarked(){
-	animator.SetTrigger(eUnMarked);
+	if (eUnMarked != ""){
+		animator.SetTrigger(eUnMarked);
+	}
 	//print("UN MARKED");
 }
 
+function OrderMenuClose(){
+	if (orderMenu_Close != ""){
+		animator.SetTrigger(orderMenu_Close);
+	}
+	//print("UN MARKED");
+}
+function OrderMenuOpen(){
+	if (orderMenu_Open != ""){
+		animator.SetTrigger(orderMenu_Open);
+	}
+	//print("UN MARKED");
+}
 function Spotted(){
-	if (beenSpotted == false){
-		animator.SetTrigger(eSpotted);
-		//print("SPOTTED");
-		beenSpotted = true;		
+	if (eSpotted != ""){
+		if (beenSpotted == false){
+			animator.SetTrigger(eSpotted);
+			//print("SPOTTED");
+			beenSpotted = true;		
+		}
 	}
 
+}
+
+
+function Selected(){
+	if (eSelected != ""){
+		animator.SetTrigger(eSelected);
+	}
+	//print("UN MARKED");
+}
+
+function Deselected(){
+	if (eDeselected != ""){
+		animator.SetTrigger(eDeselected);
+	}
+	//print("UN MARKED");
 }

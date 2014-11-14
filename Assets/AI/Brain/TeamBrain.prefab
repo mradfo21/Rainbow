@@ -17,6 +17,8 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400008}
+  - 114: {fileID: 11464168}
+  - 114: {fileID: 11447206}
   m_Layer: 11
   m_Name: TeamBrain
   m_TagString: Untagged
@@ -31,13 +33,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.64725566, y: .287063867, z: -6.2569356}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!23 &2300000
-Renderer:
+MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -46,14 +48,21 @@ Renderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
+  m_LightmapIndexDynamic: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_LightmapTilingOffsetDynamic: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 2100000, guid: 595066b2a55d045a1ab73ad9dd1081a5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
-  m_LightProbeAnchor: {fileID: 0}
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_AutoUVMaxDistance: .5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
 --- !u!33 &3300000
@@ -95,6 +104,7 @@ MonoBehaviour:
   species: robot
   enemiesDistance: []
   enemiesPermanent: []
+  stanceIndex: 3
   poi: []
   leader: {fileID: 0}
   debug: 0
@@ -106,6 +116,15 @@ MonoBehaviour:
   game: {fileID: 0}
   ready: 0
   movement_positions: []
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
+    orderManager: {fileID: 0}
+  orders_movement: {fileID: 0}
+  orders_action: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +155,13 @@ MonoBehaviour:
   currentStateObj: {fileID: 0}
   defaultState: 
   id: tactic
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
+    orderManager: {fileID: 0}
   tactics: {fileID: 0}
   currentTactic: {fileID: 0}
   previousTactic: {fileID: 0}
@@ -194,8 +220,48 @@ MonoBehaviour:
     gameAttributes: {fileID: 0}
     teams: {fileID: 0}
     profileManager: {fileID: 0}
-  profile_tactic: player_stealth
+    cameraManager: {fileID: 0}
+    orderManager: {fileID: 0}
+  profile_tactic: default
   tacticProfile: {fileID: 0}
+--- !u!114 &11447206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7b157f8d78a4f9f92ccb969dbe7d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orderIndex: 0
+  orders:
+  - movement1
+  - movement2
+  - movement3
+  - movement4
+  ordersObj: []
+  currentOrder: 
+--- !u!114 &11464168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9a61d94f2ae2446aa2310cfda91fd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orderIndex: 0
+  orders:
+  - action1
+  - action2
+  - action3
+  - action4
+  ordersObj: []
+  currentOrder: 
 --- !u!135 &13500000
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -219,4 +285,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

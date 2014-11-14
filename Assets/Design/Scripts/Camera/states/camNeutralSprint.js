@@ -13,9 +13,6 @@ class camNeutralSprint extends state_camera{
 	function Enter(){
 		super.Enter();
 		
-		gameData.gameAttributes.cameraState = "sprint";
-		gameData.gameAttributes.cameraAiming = false;
-
 		t_orbitDistance = 2.0;
 		t_orbitMinimumDistance = 2.0;
 		t_bottomHeight = -.6;

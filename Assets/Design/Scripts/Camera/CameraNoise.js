@@ -37,7 +37,7 @@ function FixedUpdate(){
 
 }
 function Update () {
-    if (gameData.gameAttributes.inMovement == false){
+    if (gameData.gameAttributes.inAction("Movement") == false){
 
 		cameraTime+= Time.deltaTime;
 

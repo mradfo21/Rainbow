@@ -8,11 +8,11 @@ class run extends state_stance{
 	function Enter(){
 		super.Enter();
 		//attributes.agent.velocity/= 3;
-		if (gameData.gameAttributes.wasJustAiming == true){
-			print("NOT STOPPING. WAS AIMING");
-		}else{
+		//if (gameData.gameAttributes.wasJustAiming == true){
+
+		//}else{
 			stopAgent();
-		}
+		//}
 
 	}
 	function Execute(){

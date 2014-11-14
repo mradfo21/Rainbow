@@ -20,16 +20,16 @@ function Update () {
 		}
 		var obj:GameObject = Instantiate(aimObject);
 		obj.transform.position = Vector3.zero;
-		obj.transform.parent = attatch.transform;
-		//obj.transform.localPosition =Vector3.zero;
-		//obj.transform.rotation.eulerAngles = Vector3.zero;
-		obj.transform.localPosition = Vector3(1,-.35,-1.3);
-		obj.transform.rotation.eulerAngles = Vector3(0,0,0);
-		foundBone = true;
+		if (attatch){
+			obj.transform.parent = attatch.transform;
+			obj.transform.localPosition = Vector3(1,-.35,-1.3);
+			obj.transform.rotation.eulerAngles = Vector3(0,0,0);
+			foundBone = true;
 
-		var cam:Camera = obj.GetComponentInChildren(Camera);
-		attributes.aimCam = cam;
-		attributes.aimObj = obj;
+			var cam:Camera = obj.GetComponentInChildren(Camera);
+			attributes.aimCam = cam;
+			attributes.aimObj = obj;
+		}
 	}
 }
 

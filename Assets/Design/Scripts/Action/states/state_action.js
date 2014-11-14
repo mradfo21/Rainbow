@@ -24,9 +24,11 @@ class state_action extends minimalState{
 
 	function Execute(){
 		super.Execute();
-		stance = gameData.gameAttributes.playerAttributes.stance;
-		DidStanceChange();
-		pstance = stance;
+			if ( gameData.gameAttributes.playerAttributes){
+			stance = gameData.gameAttributes.playerAttributes.stance;
+			DidStanceChange();
+			pstance = stance;
+		}
 	}
 
 	function Exit(){
@@ -35,7 +37,6 @@ class state_action extends minimalState{
 	}
 	function ChangeCamera(stance:String){
 		var s:String = "cam"+ id+ stance;
-		print("cam"+ id+ stance);
 		gameData.cameraManager.camHead.SendMessage("changeState","camera_"+s);
 	}
 	function StanceChanged(){

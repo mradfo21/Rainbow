@@ -16,7 +16,7 @@ var gameData:gameData;
 		scanPoint = gameObject.transform.forward;
 	}
 
-	function FixedUpdate () {
+	function Update () {
 		super.Update();
 	}
 
@@ -28,13 +28,15 @@ var gameData:gameData;
 		id = "rotation";
 		attributes.rotation = this.GetType().ToString();
 		Invoke("softFinish",.2);
-		aiming = gameData.gameAttributes.cameraAiming;
 	}
 
 	function Execute(){
 		// remember to set attributes.readyToFire
 		super.Execute();
-		aiming = gameData.gameAttributes.cameraAiming;
+		transform.rotation  =attributes.gameObject.transform.rotation;
+		transform.position.x = attributes.gameObject.transform.position.x;
+		transform.position.z = attributes.gameObject.transform.position.z;
+		transform.position.y =attributes.gameObject.transform.position.y+1.3;
 
 	}
 	function Exit(){
@@ -61,17 +63,20 @@ var gameData:gameData;
 		}
 	function lookAtTarget(point:Vector3){
 		var lookAtPos = point;
-		var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
-		attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,rotationSpeed * 50*Time.deltaTime);
+		var newRot = Quaternion.LookRotation(lookAtPos-attributes.gameObject.transform.position);
+		attributes.gameObject.transform.rotation = Quaternion.Slerp(attributes.gameObject.transform.rotation,newRot,rotationSpeed * 50*Time.deltaTime);
 		}
 	function lookAtTarget(point:Vector3,speed:float){
 		var lookAtPos = point;
-		var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
-		attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,speed* 50*Time.deltaTime);
+		var newRot = Quaternion.LookRotation(lookAtPos-attributes.gameObject.transform.position);
+		attributes.gameObject.transform.rotation = Quaternion.Lerp(attributes.gameObject.transform.rotation,newRot,speed* 50*Time.deltaTime);
 		}
 	function lookAtVelocity(){
-		if (agent.velocity.magnitude > .1){
-			lookAtTarget(transform.position+agent.velocity,Random.Range(.05,.3));
+		if (agent.velocity.magnitude > .5){
+			//lookAtTarget(attributes.gameObject.transform.position+agent.velocity*100,Random.Range(.1,.3));
+			attributes.gameObject.transform.LookAt(attributes.gameObject.transform.position + agent.velocity);
+		}else{
+			attributes.gameObject.transform.LookAt(attributes.gameObject.transform.position + attributes.gameObject.transform.forward);			
 		}
 	}
 

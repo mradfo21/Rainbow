@@ -1,8 +1,7 @@
-﻿#pragma strict
+#pragma strict
 
 class minimalState extends state{
 	 var gameData:gameData;
-
 	function Start(){
 	}
 	function Update(){
@@ -19,5 +18,9 @@ class minimalState extends state{
 	function Exit(){
 		CancelInvoke();
 
+	}
+
+	function changeState(state:String){
+		gameObject.SendMessage("changeState",id+"_"+state);
 	}
 }

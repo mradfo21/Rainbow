@@ -20,12 +20,10 @@ function Update () {
 		}
 
 	}
-	if ( playerTeam && playerTeam.ready == true){
-		MakePlayer();
-	}
 
 	if (playerTeam){
-		averagePosition = GetAveragePosition();		
+		averagePosition = GetAveragePosition();
+		MakePlayer();		
 	}
 
 }
@@ -54,13 +52,12 @@ function SwitchTeams():boolean{
 
 		return true;
 	}else{
-		print("this species doesn't exist");
 		return false;
 	}
 }
 
 function MakePlayer(){
-	gameObject.BroadcastMessage("SetPlayer",playerTeam.leader,SendMessageOptions.DontRequireReceiver);
+	gameData.gameAttributes.SetPlayer(playerTeam.leader);
 }
 function AddTeam(team:GameObject) {
 	if (team){

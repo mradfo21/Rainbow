@@ -2,7 +2,7 @@
 
 var attributes:attributes;
 function Start () {
-	attributes = transform.parent.GetComponent("attributes");
+	attributes = transform.parent.GetComponent("attributes") as attributes;
 	attributes.brain = gameObject;
 }
 

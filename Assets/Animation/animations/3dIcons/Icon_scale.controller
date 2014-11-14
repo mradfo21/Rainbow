@@ -48,7 +48,7 @@ Transition:
     m_ConditionEvent: birth
     m_EventTreshold: 0
     m_ExitTime: .899999976
-  m_Atomic: 1
+  m_Atomic: 0
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
@@ -103,7 +103,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 8c6865dfabffd4b258f43fd0071878f9, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 0, y: -108, z: 0}
+  m_Position: {x: -48, y: -108, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -144,7 +144,7 @@ StateMachine:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: New Layer
-  m_DefaultState: {fileID: 110217721}
+  m_DefaultState: {fileID: 110200000}
   m_States:
   - {fileID: 110200000}
   - {fileID: 110217721}
@@ -157,6 +157,9 @@ StateMachine:
       second:
       - {fileID: 110100000}
     data:
+      first: {fileID: 110217721}
+      second: []
+    data:
       first: {fileID: 110200000}
       second:
       - {fileID: 110197225}
@@ -165,5 +168,5 @@ StateMachine:
       second:
       - {fileID: 110112464}
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: 48, y: 36, z: 0}
+  m_AnyStatePosition: {x: 84, y: 0, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

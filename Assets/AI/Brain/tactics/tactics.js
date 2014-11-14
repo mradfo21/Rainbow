@@ -38,6 +38,7 @@ function GetTactic(name:String):GameObject{
 		return tactics[name];
 	}else{
 		print("tactic "+name+" doesn't exist");
+		return null;
 	}
 }
 
@@ -69,6 +70,7 @@ public function ConstructBaseData():ArrayList{
 	list.Add(new GameObject());
 	list.Add(false);
 	list.Add(new poi_data());
+	list.Add(new orderData());
 
 	return list;
 }

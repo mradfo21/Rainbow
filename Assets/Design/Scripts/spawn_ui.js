@@ -9,7 +9,7 @@ function Start () {
 		var obj:GameObject = Instantiate(thing);
 		obj.transform.parent = transform.parent;
 		if (enableOnStart == false){
-			obj.active = false;
+			obj.SetActive(false);
 		}
 	}
 }

@@ -26,13 +26,13 @@ class state_stance extends state{
 		super.Enter();
 		gameData = new gameData();
 		gameData.Start();
-		id = "stance";
-		Invoke("softFinish",.2);
-		attributes.animator.SetFloat("alert",0.0);
-		randomAnimSpeed();
-		Invoke("normalAnimSpeed",.1);
-
-
+		if (attributes.animator){
+			id = "stance";
+			Invoke("softFinish",.2);
+			attributes.animator.SetFloat("alert",0.0);
+			randomAnimSpeed();
+			Invoke("normalAnimSpeed",.1);
+		};
 	}
 
 	function Execute(){

@@ -35,7 +35,7 @@ function Update () {
 
 function Enter(){
 
-	attributes = gameObject.transform.parent.GetComponent("attributes");
+	attributes = gameObject.transform.parent.GetComponent("attributes") as attributes;
 	agent = attributes.agent;
 	if (data!= null){
 			argVector = data[1];		
@@ -86,6 +86,7 @@ function ConstructBaseData():ArrayList{
 	list.Add(GameObject());
 	list.Add(false);
 	list.Add(new poi_data());
+	list.Add(new orderData());
 
 
 	return list;
