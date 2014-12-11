@@ -1,11 +1,13 @@
 ﻿#pragma strict
 
 	var rotationOffset:Vector3;
+	var transformOffset:Vector3;
 	var initScale:Vector3;
 	var xOnly:boolean = true;
 
 function Start () {
 	initScale = transform.localScale;
+	transform.position+= transformOffset;
 
 
 }

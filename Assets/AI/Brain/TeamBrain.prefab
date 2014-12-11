@@ -60,6 +60,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_ImportantGI: 0
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -241,7 +242,11 @@ MonoBehaviour:
   - movement2
   - movement3
   - movement4
-  ordersObj: []
+  ordersObj:
+  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
+  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
+  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
+  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
   currentOrder: 
 --- !u!114 &11464168
 MonoBehaviour:
@@ -260,7 +265,11 @@ MonoBehaviour:
   - action2
   - action3
   - action4
-  ordersObj: []
+  ordersObj:
+  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
+  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
+  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
+  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
   currentOrder: 
 --- !u!135 &13500000
 SphereCollider:

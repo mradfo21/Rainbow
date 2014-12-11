@@ -2,26 +2,26 @@
 
 public class orderData{
 
+	var leader:GameObject;
 	var position:Vector3;
 	var team:team;
 	var targets:List.<GameObject> = new List.<GameObject>();
-	var order:String;
 	var code:int;
 	var obj:GameObject;
 	var id:int;
 	var list:ArrayList = new ArrayList();
+	var orderName:String = "an empty order";
 
-	function Setup(inOrder:String,inCode:int){
-		order = inOrder;
-		code = inCode;
+	function Setup(lead:GameObject,pos:Vector3,orderNameIN:String){
 		id = Random.value * 10000000;
+		leader = lead;
+		position = pos;
+		orderName = orderNameIN;
 	}
 
 
 	function Execute(){
-		print("executing order");
 		sendToTeam();
-
 	}
 
 

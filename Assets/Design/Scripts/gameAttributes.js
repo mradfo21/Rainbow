@@ -15,10 +15,13 @@ var timeScale:float =1.0;
 //var timeScaleMin:float = .025;
 var timeScaleMin:float = 1.0;
 var UI:GameObject;
+var GuiWS:GameObject;
+var currentOrderGroup:orders;
 function Start () {
 	teams = gameObject.GetComponent("teams");
 	actionSM = gameObject.GetComponent("stateMachine_action");
 	UI = gameObject.Find("UI");
+	GuiWS = UI.transform.Find("OrderMenuWS").gameObject;
 }
 
 function Update () {
@@ -28,7 +31,8 @@ function Update () {
 		playerTeamOrdersAction = playerTeam.GetComponent("orders_action") as orders_action;
 
 	}
-
+	print("assaigning current order group to "+playerTeamOrdersMovement);
+	currentOrderGroup = playerTeamOrdersMovement;
 }
 function inAction(action:String):boolean{
 	if(actionSM.currentState == "action"+action){

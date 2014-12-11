@@ -76,7 +76,7 @@ function changeStateLogic(state:String){
 	currentState = state;
 	currentStateData = ConstructBaseData();
 	currentStateData[0] = state;
-	currentStateObj = gameObject.AddComponent(System.Type.GetType(state));
+	currentStateObj = gameObject.AddComponent(System.Type.GetType(currentState));
 	currentStateObj.data = currentStateData;
 	currentStateObj.Enter();
 
@@ -104,7 +104,7 @@ function changeStateLogic(state:String,data:ArrayList){
 	}
 	currentState = state;
 	currentStateData = data;
-	currentStateObj = gameObject.AddComponent(System.Type.GetType(state));
+	currentStateObj = gameObject.AddComponent(System.Type.GetType(currentState));
 	currentStateObj.data = data;
 	currentStateObj.Enter();
 
@@ -115,7 +115,7 @@ public function ConstructBaseData():ArrayList{
 	list.Add(Vector3.zero);
 	list.Add("");
 	list.Add(0.0);
-	list.Add(new GameObject());
+	list.Add(gameObject);
 	list.Add(false);
 	list.Add(new poi_data());
 	list.Add(new orderData());

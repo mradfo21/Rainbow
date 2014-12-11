@@ -17,6 +17,7 @@ var stanceMap = new Dictionary.<int,GameObject>();
 
 var clock:float = 0.0;
 function Start () {
+
  	gameData = new gameData();
 	gameData.Start();
     layerMask = 1 << 12;
@@ -32,6 +33,11 @@ function Start () {
 function changeAction(state:String){
 	gameObject.SendMessage("changeState","action_"+state,SendMessageOptions.DontRequireReceiver);
 }
+function changeCamera(state:String){
+	gameData.cameraManager.changeState(state);
+
+}
+
 function ToggleStance(){
 		nextPress = clock + resetTime;	
 		gameData.gameAttributes.playerTeam.stanceIndex += Input.GetAxisRaw("ToggleStance");
@@ -46,20 +52,6 @@ function ToggleStance(){
 }
 
 
-function toggleMovement(){
-		if (gameData.gameAttributes.inAction("Movement")== false ){
-			if (gameData.gameAttributes.inAction("Aim") == true){
-				setupPOI_Stance(stanceMap[stanceIndex]);
-			}
-			gameObject.BroadcastMessage("EnterMovement");
-
-		}else{
-			gameObject.BroadcastMessage("ExitMovement");
-		}
-		nextPress = clock + resetTime;	
-
-}
-
 function Update () {
 	playerTeam = gameData.gameAttributes.teams.playerTeam;
 	if (Input.GetButton("IssueOrder") && clock > nextPress && gameData.gameAttributes.inAction("Movement") == true){
@@ -72,6 +64,7 @@ function Update () {
 		}else{
 			changeAction("actionAim");			
 		}
+		print("crashy crashy");
 		nextPress = clock + resetTime;	
 	}
 
@@ -82,6 +75,7 @@ function Update () {
 		}else{
 			changeAction("actionMovement");			
 		}
+		print("crashy crashy");
 		nextPress = clock + resetTime;		
 	}
 
@@ -112,6 +106,36 @@ function Update () {
 		
 	}
 
+	if (Input.GetButton("one") && clock >nextPress){
+		print("ONE");
+
+		nextPress = clock + resetTime;
+		if (gameData.orderManager.orderMenu.menuOpen == true){
+			gameData.orderManager.set_one();		
+		}
+	}
+	if (Input.GetButton("two") && clock >nextPress){
+		print("TWO");
+		nextPress = clock + resetTime;
+		if (gameData.orderManager.orderMenu.menuOpen == true){
+			gameData.orderManager.set_two();		
+		}		
+	}
+	if (Input.GetButton("three") && clock >nextPress){
+		print("THREE");
+		nextPress = clock + resetTime;	
+		if (gameData.orderManager.orderMenu.menuOpen == true){
+			gameData.orderManager.set_three();		
+		}
+	}
+	if (Input.GetButton("four") && clock >nextPress){
+		print("FOUR");
+		nextPress = clock + resetTime;
+		if (gameData.orderManager.orderMenu.menuOpen == true){
+			gameData.orderManager.set_four();		
+		}
+	}
+
 	clock+=Time.unscaledDeltaTime;
 }
 
@@ -123,9 +147,6 @@ function issuePointOrder(){
 	changeAction("actionNeutral");	
 }
 function issueCodeOrder(){
-	var ordersMovement:orders_movement = gameData.gameAttributes.playerTeam.orders_movement;
-	var ordersAction:orders_action = gameData.gameAttributes.playerTeam.orders_action;
-	print("so you want to use "+ordersMovement.currentOrder);
 	gameData.orderManager.orderMenu.buildMenu("movement");
 }
 
