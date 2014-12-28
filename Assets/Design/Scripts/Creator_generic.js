@@ -2,17 +2,19 @@
 
 var thing:GameObject;
 var parentName:String = "";
+var spawnedName:String = "";
 var numCopies:int = 0;
 var radius = 1.0;
 var species:String = "";
 var enemySpecies:String = "";
 var team:team;
 var useNavMesh:boolean = true;
+var delay:float = 0.0;
+var usePrefabName:boolean = true;
 private var created = new List.<GameObject>();
 
 
-function Start () {
-
+function setup(){
 	if (numCopies >1){
 		for (var i = 0; i < numCopies; i++){
 			InstantiateThing();
@@ -20,11 +22,20 @@ function Start () {
 	}else{
 		InstantiateThing();		
 	}
-	if (transform.parent.gameObject.name== "TeamSpawner"){
-		handleTeam(transform.parent.gameObject);
+	if (transform.parent){
+		if (transform.parent.gameObject.name== "TeamSpawner"){
+			handleTeam(transform.parent.gameObject);
+		}		
 	}
 	Invoke("setupPositions",.02);
 	Invoke("setupSpecies",.03);
+}
+function Start () {
+	if (delay > 0.0){
+		Invoke("setup",delay);
+	}else{
+		setup();
+	}
 }
 function setupPositions(){
 	for (obj in created){
@@ -65,16 +76,21 @@ function InstantiateThing(){
 	if (parentName == ""){
 		obj = Instantiate(thing);
 		if(transform.parent){
-			obj.transform.parent = transform.parent;
+			obj.transform.SetParent(transform.parent);
 			created.Add(obj);
 	}
 	}else{
 		var p:GameObject = gameObject.Find(parentName);
 		obj = Instantiate(thing);
-		obj.transform.parent = p.transform;
+		obj.transform.SetParent(p.transform);
 		created.Add(obj);
 
-	}		
+	}
+	if (usePrefabName == true){
+		obj.name = thing.name;
+	}else if (spawnedName != ""){
+		obj.name = spawnedName;
+	}	
 }
 
 function randomPoint(originalPoint:Vector3):Vector3{

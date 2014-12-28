@@ -22,7 +22,7 @@ class followFriend extends state_goal{
 		move = ConstructBaseData();
 		checkFollow();
 		StartCoroutine("followThePoint");
-		StartCoroutine("checkStuck"); 
+		//StartCoroutine("checkStuck"); 
  
 	}
 
@@ -50,7 +50,7 @@ class followFriend extends state_goal{
 		while (true){
 			checkFollow();
 			followPoint = target.transform.parent.transform.position;
-			move[0] = "movement_move";
+			move[0] = attributes.team.situationalUnderstanding.getMoveType();
 			move[1] = followPoint;
 			move[5] = false;
 			gameObject.SendMessage("changeState",move,SendMessageOptions.DontRequireReceiver);

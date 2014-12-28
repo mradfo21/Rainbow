@@ -102,11 +102,5 @@
 	function Exit(){
 		super.Exit();
 	}
-	function ReachedDestination(){
-		//print("i reached my destination of "+coverDestination);
-		transform.parent.BroadcastMessage("DestinationReached",transform.position,SendMessageOptions.DontRequireReceiver);
-		transform.parent.BroadcastMessage("changeState",id+"_hold");
-		finished();
-	}
 
 }

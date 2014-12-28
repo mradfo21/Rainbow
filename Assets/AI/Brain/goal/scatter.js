@@ -36,7 +36,7 @@ class scatter extends state_goal{
 		}else{
 			point = Vector3.zero;
 		}
-		move[0] = "movement_move";
+		move[0] = attributes.team.situationalUnderstanding.getMoveType();
 		move[1] = point;
 		move[5] = false;
 

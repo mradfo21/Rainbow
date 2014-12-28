@@ -19,6 +19,8 @@ GameObject:
   - 114: {fileID: 11400008}
   - 114: {fileID: 11464168}
   - 114: {fileID: 11447206}
+  - 114: {fileID: 11459836}
+  - 114: {fileID: 11417294}
   m_Layer: 11
   m_Name: TeamBrain
   m_TagString: Untagged
@@ -84,7 +86,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -113,7 +115,6 @@ MonoBehaviour:
   leaderAttributes: {fileID: 0}
   reportedEnemiesSighted: 0
   reportedEnemiesKilled: 0
-  averagePosition: {x: 0, y: 0, z: 0}
   game: {fileID: 0}
   ready: 0
   movement_positions: []
@@ -126,6 +127,8 @@ MonoBehaviour:
     orderManager: {fileID: 0}
   orders_movement: {fileID: 0}
   orders_action: {fileID: 0}
+  stances: {fileID: 0}
+  situationalUnderstanding: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,7 +206,7 @@ MonoBehaviour:
   enemyContact: tactic_scatter
   enemiesKilled: 
   enemySighted: 
-  ambient: tactic_scan
+  ambient: tactic_patrol
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,6 +228,23 @@ MonoBehaviour:
     orderManager: {fileID: 0}
   profile_tactic: default
   tacticProfile: {fileID: 0}
+--- !u!114 &11417294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f79f1670077774faa9dbb0448a353125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementTypes:
+  - move
+  currentMoveType: 
+  enemies: 0
+  cover: 0
+  team: {fileID: 0}
 --- !u!114 &11447206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,16 +258,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orderIndex: 0
   orders:
-  - movement1
-  - movement2
-  - movement3
-  - movement4
+  - move
+  - assault
+  - scatter
+  - patrol
   ordersObj:
-  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
-  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
-  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
-  - {fileID: 172850, guid: e6e730f05c0cb4caab1989bb77b2b1d5, type: 2}
+  - {fileID: 172850, guid: 6f782c3655c8b4c91b4e5e362d9e7757, type: 2}
+  - {fileID: 172850, guid: da7e9774f2b2546cb9199c7f1da15f85, type: 2}
+  - {fileID: 172850, guid: 4771504561f83449786ea9ca269e9f0a, type: 2}
+  - {fileID: 172850, guid: 4771504561f83449786ea9ca269e9f0a, type: 2}
   currentOrder: 
+--- !u!114 &11459836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad7b2e0ed0064d2aa8468fea69e3463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData:
+    Game: {fileID: 0}
+    gameAttributes: {fileID: 0}
+    teams: {fileID: 0}
+    profileManager: {fileID: 0}
+    cameraManager: {fileID: 0}
+    orderManager: {fileID: 0}
+  stanceNames:
+  - prone
+  - crouch
+  - move
+  - sprint
+  stanceStates:
+  - prone
+  - crouch
+  - run
+  - sprint
+  stanceCameraNames:
+  - actionAimprone
+  - actionAimcrouch
+  - actionAimmove
+  - actionAimsprint
+  - actionNeutralprone
+  - actionNeutralcrouch
+  - actionNeutralmove
+  - actionNeutralsprint
+  - actionNeutralrun
+  stanceCameraStates:
+  - camAimProne
+  - camAimCrouch
+  - camAimStand
+  - camAimSprint
+  - camNeutralProne
+  - camNeutralCrouch
+  - camNeutralStand
+  - camNeutralSprint
+  - camNeutralStand
+  currentStanceIndex: 2
+  currentSMstance: 
+  currentStanceName: 
+  currentStanceState: 
+  lastIndex: 99999
+  cAction: 
+  pAction: 
+  cStance: 
+  pStance: 
+  stanceStateMachine: {fileID: 0}
+  team: {fileID: 0}
 --- !u!114 &11464168
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,17 +15,18 @@ function Start () {
 }
 
 function Setup(){
-	entity= gameObject.transform.parent.transform.parent.gameObject;
-	if (entity){
-		brain = entity.transform.Find("Brain(Clone)").gameObject; 
-		attributes = entity.GetComponent("attributes");		
-	}
+
 
 
 }
 function Update () {
 	//print(attributes);
-	if (gameData.gameAttributes.playerAttributes && entity){
+	if (gameData.gameAttributes.playerAttributes){
+		entity= gameObject.transform.parent.transform.parent.gameObject;
+		brain = entity.transform.Find("Brain").gameObject; 
+		attributes = entity.GetComponent("attributes");				
+
+	
 		currentTeam = gameData.gameAttributes.playerAttributes.team;
 		playerAttributes = gameData.gameAttributes.playerAttributes;
 		//print(brain);

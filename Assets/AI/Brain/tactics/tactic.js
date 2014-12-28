@@ -97,8 +97,8 @@ function NeedsNewRole(obj:GameObject){
 }
 function createRole(role:GameObject,entity:GameObject){
 	var entityAttributes:attributes = entity.GetComponent("attributes");
+	if (entityAttributes){
 	var host:GameObject = entityAttributes.brain;
-	if (host){
 		var r:GameObject = Instantiate(role);
 		var roleComponent:role = r.GetComponent("role");
 		roleComponent.data = data;

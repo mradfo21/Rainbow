@@ -25,6 +25,7 @@ class prone extends state_stance{
 			attributes.animator.SetTrigger("crouchToProne");			
 		}		attributes.agent.acceleration = 1;
 		attributes.agent.angularSpeed = 5;
+		attributes.agent.acceleration = 1;
 		attributes.agent.speed = 1;
 		attributes.agent.stoppingDistance = 0.0;
 		attributes.stance = "prone";

@@ -17,19 +17,20 @@
 	var attributes:attributes;
 
 
-	private var broadcastObj:GameObject;
-	private var data = new Array();
+	var broadcastObj:GameObject;
+	var data = new Array();
 
-	private var targeted = new Dictionary.<GameObject,float>();
-	private var visible = new Dictionary.<int,GameObject>();
-	private var seen = new Dictionary.<int,GameObject>();
-	private var friends = new Dictionary.<int,GameObject>();
-	var enemies = new Dictionary.<int,GameObject>();
+	var targeted = new Dictionary.<GameObject,float>();
+	var visible = new Dictionary.<int,GameObject>();
+	var seen = new Dictionary.<int,GameObject>();
+	var friends = new Dictionary.<int,GameObject>();
+	var enemy = new Dictionary.<int,GameObject>();
 	var friendlies = new List.<GameObject>();
+	var enemies = new List.<GameObject>();
 
-	private var targets = new List.<GameObject>();
+	var targets = new List.<GameObject>();
 	var currentTarget:GameObject;
-	private var entities;
+	var entities;
 
 	function EraseMemory():IEnumerator{
 		while(1){
@@ -61,11 +62,23 @@
 	function enemiesToTargets(){
 			targets.Clear();
 			currentTarget = null;
-			for ( obj in enemies.Values){
+			for ( obj in enemy.Values){
 				targets.Add(obj);
 			}
 			targets.Sort(compare_distance);
 			chooseTarget();			
+	}
+	function findEnemies(){
+			enemies.Clear();
+			for ( obj in seen.Values){
+				enemies.Add(obj);
+			}
+			enemies.Sort(compare_distance);
+			if (enemies.Count > 0){
+				attributes.nearestEnemy = friendlies[0];
+			}else{
+				attributes.nearestEnemy = null;
+			}		
 	}
 	function findFriendlies(){
 			friendlies.Clear();
@@ -96,6 +109,7 @@
 	function TransmitSpotted(obj:GameObject){
 		obj.transform.parent.BroadcastMessage("Spotted",gameObject,SendMessageOptions.DontRequireReceiver);
 		// place code here for saying to the team "HEY I SPOTTED AN ENEMY"
+		Debug.DrawLine(transform.position,obj.transform.position);
 	}
 	function FindSpottedEnemies():Dictionary.<int,GameObject>{
 		// this find enemies that are within the spotted range of the attributes
@@ -116,9 +130,10 @@
 		// loops through friendly species
 		// is a friend or enemy and then adds it to allies or enemies
 		while(1){
-		enemies = FindSpottedEnemies();
+		enemy = FindSpottedEnemies();
 		enemiesToTargets();
 		findFriendlies();
+		findEnemies();
 		yield WaitForSeconds(.2);
 
 		}
@@ -129,12 +144,12 @@
 		attributes = gameObject.transform.parent.GetComponent("attributes") as attributes;
 		agent = attributes.agent;
 		StartCoroutine(	FindSpeciesVisible());
-		//StartCoroutine(	FindSpeciesVisible());
 		if (broadcastTo!= ""){
 			broadcastObj = gameObject.Find(broadcastTo);	
 		}else{
 			broadcastObj = transform.parent.gameObject;
 		}
+		attributes.vision = this;
 
 
 	}
@@ -152,7 +167,7 @@
 
 
 		if (debug_enemies){
-			for (var obj in enemies.Values){
+			for (var obj in enemy.Values){
 				Debug.DrawLine(transform.position,obj.transform.position,Color.red);
 			}
 		}
@@ -171,7 +186,7 @@
 	}
 
 	function updateTargeting(){
-		targeting[1] = enemies;
+		targeting[1] = enemy;
 		targeting[2] = targets;
 		targeting[3] = currentTarget;
 	}

@@ -60,10 +60,5 @@ class findCover extends state_movement{
 	function Exit(){
 		super.Exit();
 	}
-	function ReachedDestination(){
-		print("cover reached");
-		transform.parent.BroadcastMessage("CoverReached",transform.position,SendMessageOptions.DontRequireReceiver);
-		finished();
-	}
 
 }

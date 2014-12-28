@@ -40,9 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   states:
-  - stance_sprint
   - goal_scatter
-  - stance_sprint
   - goal_defensivePosition
   enemyContact: 
 --- !u!1001 &100100000
@@ -56,4 +54,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

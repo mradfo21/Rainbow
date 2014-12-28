@@ -15,7 +15,7 @@ var debug:boolean;
  var relativePoint:Vector3 = Vector3.zero;
 var blocking:boolean = true;
  var poi_data:poi_data = null;
-
+var orderData:orderData = null;
 
 function NavMesh(nav:NavMesh){
 	navMesh = nav;
@@ -43,10 +43,16 @@ function Enter(){
 			argFloat = data[3];		
 			argGameObject = data[4];
 			argBoolean = data[5];
-			poi_data = data[6];		
+			poi_data = data[6];
+			orderData = data[7];		
 	}
 	if (argBoolean == true){
 		useGameObject = true;
+	}
+
+	if (orderData.active == true){
+		argVector = orderData.position;
+		useGameObject = false;
 	}
 }
 

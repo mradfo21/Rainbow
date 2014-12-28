@@ -176,6 +176,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_ImportantGI: 0
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -203,6 +204,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_ImportantGI: 0
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -230,6 +232,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_ImportantGI: 0
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -309,6 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationOffset: {x: 0, y: 0, z: 0}
+  transformOffset: {x: 0, y: 0, z: 0}
   initScale: {x: 0, y: 0, z: 0}
   xOnly: 1
 --- !u!114 &11400002
@@ -329,8 +333,8 @@ MonoBehaviour:
   eSwitchedTeam: 
   eEnterAttack: 
   eExitAttack: 
-  eEnterMovement: birth
-  eExitMovement: death
+  eEnterMovement: 
+  eExitMovement: 
   eAddedTeam: 
   eTargeted: 
   eUnTargeted: 
@@ -339,8 +343,8 @@ MonoBehaviour:
   eSpotted: 
   orderMenu_Open: 
   orderMenu_Close: 
-  eSelected: 
-  eDeselected: 
+  eSelected: birth
+  eDeselected: death
   beenSpotted: 0
 --- !u!114 &11400004
 MonoBehaviour:
@@ -353,12 +357,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d809bf9127b3474782b9c875274222c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  eEnterPlanning: {r: 0, g: 0, b: 0, a: 0}
-  eExitPlanning: {r: 0, g: 0, b: 0, a: 0}
+  baseColor: {r: 1, g: 0, b: 0, a: 1}
+  eEnterPlanning: {r: 1, g: 0, b: 0, a: 1}
+  eExitPlanning: {r: 1, g: 0, b: 0, a: 1}
   eIssuedOrder: {r: 1, g: .869080782, b: 0, a: .309803933}
-  eSwitchedTeam: {r: 0, g: 0, b: 0, a: 0}
-  eAddedTeam: {r: 0, g: 0, b: 0, a: 0}
+  eSwitchedTeam: {r: 1, g: 0, b: 0, a: 1}
+  eAddedTeam: {r: 1, g: 0, b: 0, a: 1}
   material: {fileID: 0}
 --- !u!114 &11400006
 MonoBehaviour:
@@ -389,12 +393,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d809bf9127b3474782b9c875274222c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  eEnterPlanning: {r: 0, g: 0, b: 0, a: 0}
-  eExitPlanning: {r: 0, g: 0, b: 0, a: 0}
-  eIssuedOrder: {r: 1, g: .818941534, b: 0, a: .258823544}
-  eSwitchedTeam: {r: 0, g: 0, b: 0, a: 0}
-  eAddedTeam: {r: 0, g: 0, b: 0, a: 0}
+  baseColor: {r: 1, g: 0, b: 0, a: 1}
+  eEnterPlanning: {r: 1, g: 0, b: 0, a: 1}
+  eExitPlanning: {r: 1, g: 0, b: 0, a: 1}
+  eIssuedOrder: {r: 1, g: .434482723, b: 0, a: 1}
+  eSwitchedTeam: {r: 1, g: 0, b: 0, a: 1}
+  eAddedTeam: {r: 1, g: 0, b: 0, a: 1}
   material: {fileID: 0}
 --- !u!136 &13600000
 CapsuleCollider:

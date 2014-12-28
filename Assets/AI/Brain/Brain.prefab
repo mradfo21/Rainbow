@@ -66,6 +66,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_ImportantGI: 0
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
@@ -89,7 +90,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   attributes: {fileID: 0}
   friendlies: []
+  enemies: []
   currentTarget: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -131,7 +133,7 @@ MonoBehaviour:
   previousState: 
   currentState: 
   currentStateObj: {fileID: 0}
-  defaultState: 
+  defaultState: hold
   id: movement
   gameData:
     Game: {fileID: 0}

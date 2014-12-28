@@ -18,6 +18,7 @@ class actionNeutral extends state_action{
 		gameObject.BroadcastMessage("ExitAttack",SendMessageOptions.DontRequireReceiver);
 		gameObject.BroadcastMessage("ExitMovement",SendMessageOptions.DontRequireReceiver);
 		gameObject.BroadcastMessage("EnterNeutral",SendMessageOptions.DontRequireReceiver);
+		gameData.orderManager.movementIcons.select();
 	}
 
 	function Execute(){

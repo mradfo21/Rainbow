@@ -18,9 +18,10 @@ class state_movement extends state{
 	function Enter(){
 		super.Enter();
 		id = "movement";
-		//if (attributes.alive == true){			
-		//	attributes.agent.Resume();
-		//}
+
+		if (attributes.alive == true){			
+			attributes.agent.Resume();
+		}
 
 	}
 
@@ -36,7 +37,6 @@ class state_movement extends state{
 		}
 	function setNavMeshDestination(arg:Vector3){
 		attributes.agent.SetDestination(arg);
-		attributes.destination = arg;
 	}
 	function CheckStuck(){
 		while (true){
@@ -53,7 +53,11 @@ class state_movement extends state{
 		yield WaitForSeconds(2.0);
 		}
 	}
-
+	function ReachedDestination(){
+		gameObject.SendMessage("DestinationReached",transform.position,SendMessageOptions.DontRequireReceiver);
+		gameObject.SendMessage("changeState","movement_hold");
+		//finished();
+	}
 
 }
 

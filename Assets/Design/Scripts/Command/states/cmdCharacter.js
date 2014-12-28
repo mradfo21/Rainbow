@@ -23,10 +23,6 @@ class cmdCharacter extends state_command{
 		super.Exit();
 	}
 
-	function test(){
-		changeState("cmdAim");
-		//issueCodeOrder();
-	}
 	function SwitchTeams(){
 		super.SwitchTeams();
 	}

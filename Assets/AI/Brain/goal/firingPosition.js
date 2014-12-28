@@ -38,7 +38,7 @@ class firingPosition extends state_goal{
 
 	}
 	function issueCurrentDestination(p:Vector3){
-		move[0] = ("movement_move");
+		move[0] = attributes.team.situationalUnderstanding.getMoveType();
 		move[1] = p;
 		move[5] = false;
 		transform.parent.BroadcastMessage("changeState",move);

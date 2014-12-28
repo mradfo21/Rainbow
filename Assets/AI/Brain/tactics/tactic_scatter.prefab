@@ -52,7 +52,7 @@ MonoBehaviour:
   roleCount: 0
   leaderRoleCount: 0
   maxRoles: 10
-  nextTactic: tactic_assault
+  nextTactic: tactic_regroup
   friendsLiving: 0
   friendsLivingRatio: 0
   enemiesKilled: 
@@ -70,4 +70,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

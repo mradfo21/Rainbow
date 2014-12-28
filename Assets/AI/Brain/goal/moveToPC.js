@@ -14,7 +14,7 @@ class moveToPC extends state_goal{
 	}
 	function Enter():void{
 		super.Enter();
-		point = attributes.team.movement_positions[attributes.teamSpot];
+		point = orderData.movement_positions[attributes.teamSpot];
 		move = ConstructBaseData();
 		issueCurrentDestination();
 	}
@@ -29,7 +29,7 @@ class moveToPC extends state_goal{
 	}
 
 	function issueCurrentDestination():IEnumerator{
-			move[0]="movement_move";
+			move[0]=attributes.team.situationalUnderstanding.getMoveType();
 			move[1]=point;
 			transform.parent.BroadcastMessage("changeState",move);
 			

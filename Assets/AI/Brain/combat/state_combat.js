@@ -16,7 +16,7 @@ var holdfire:boolean = false;
 	function Enter(){
 		super.Enter();
 		id = "combat";
-		attributes.combat = this.GetType().ToString();
+		attributes.combat = this.name;
 	}
 
 	function Execute(){
@@ -29,7 +29,8 @@ var holdfire:boolean = false;
 				cachedGun = true;
 			}
 		}
-		if (attributes.readyToFire == true && holdfire == false){
+
+		if (holdfire == false){
 			fireWeapon();
 		}
 	}

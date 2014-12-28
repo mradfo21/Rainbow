@@ -11,6 +11,8 @@ var team:team;
 var teammateTarget:GameObject;
 var teammateTargetAttributes:attributes;
 var teamSpot:int;
+var teamAngle:float;
+var teamPosSpherical:Vector3;
 var brain:GameObject;
 var acceleration:float = 1;
 var angularSpeed:float = 20;
@@ -28,7 +30,6 @@ var lastContactTimerMax:float = 100.0;
 var lastContactTimer:float = lastContactTimerMax;
 
 
-var readyToFire:boolean = false;
 var stance:String;
 var combat:String;
 var goal:String;
@@ -39,11 +40,14 @@ var destination:Vector3;
 
 var coverTarget:Vector3 = Vector3.zero;
 var coveringFire:boolean = false;
-var visionRange_spotted:float = 20.0;
-var visionRange_attacked:float = 10.0;
-var visionRange:float = 14.0;
+var visionRange_spotted:float = 60.0;
+var visionRange_attacked:float = 1.0;
+var visionRange:float = 140.0;
+var vision:vision;
 var follower:GameObject = null;
 var nearestFriend:GameObject;
+var nearestEnemy:GameObject;
+
 var friendlies = new List.<GameObject>();
 
 var agent:NavMeshAgent;
@@ -72,6 +76,7 @@ function Start () {
 	lastContactTimerMax = 100+ Random.value*100;
 	target = null;
 	agent = gameObject.GetComponent("NavMeshAgent");
+	vision = gameObject.GetComponent("vision");
 }
 
 
@@ -93,8 +98,12 @@ function Contact(pd:poi_data){
 	//print("attributes received a contact");
 }
 function Update () {
+	if (team){
+
 	lastContactTimer-= Time.deltaTime;
 	lastHintTimer -= Time.deltaTime;
+	teamAngle = utils.getAngleInCircle(parseFloat(team.members.Count),team.members.Count - parseFloat(teamSpot));
+	teamPosSpherical = gameObject.transform.position + utils.polarToVectorXZ(500,teamAngle);
 	if (lastHintTimer <= 0){
 		hint = false;
 	}
@@ -124,6 +133,7 @@ function Update () {
 		health = 0;
 		gameObject.BroadcastMessage("changeState","movement_dead");
 
+	}
 	}
 }
 

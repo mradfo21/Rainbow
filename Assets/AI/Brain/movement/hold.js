@@ -13,6 +13,9 @@ class hold extends state_movement{
 	function Enter(){
 		super.Enter();
 		attributes.agent.Stop();
+		if (Random.value > .5){
+			gameObject.SendMessage("changeState","stance_crouch");
+		}
 	}
 
 	function Execute(){

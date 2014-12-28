@@ -30,8 +30,9 @@ class run extends state_stance{
 		}else if (attributes.stance == "crouch"){
 			attributes.animator.SetTrigger("crouchToStand");			
 		}		attributes.agent.acceleration = 2.0;
-		attributes.agent.angularSpeed = 60;
-		attributes.agent.speed = 3.15;
+		attributes.agent.angularSpeed = 160;
+		attributes.agent.acceleration = 3;
+		attributes.agent.speed = 2.7;
 		attributes.agent.stoppingDistance = .5;
 		attributes.stance = "stand";
 	}

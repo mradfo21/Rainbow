@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/teamMovement.unity
-  - enabled: 1
+    path: Assets/Levels/teamMovement/teamMovement.unity
+  - enabled: 0
     path: Assets/lightTest.unity
+  - enabled: 1
+    path: Assets/test2.unity

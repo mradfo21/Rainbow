@@ -6,6 +6,7 @@ function Start(){
 	super.Start();
 	attributes = gameObject.transform.parent.GetComponent("attributes");
 	id = "movement";
+	Invoke("executeDefaultState",3.0);
 
 }
 function Update(){
@@ -19,11 +20,18 @@ function changeState(data:ArrayList){
 }
 function changeStateLogic(state:String){
 	super.changeStateLogic(state);
+	if (! attributes){
+		attributes = gameObject.transform.parent.GetComponent("attributes");
+	}
+
 	attributes.movement = id+"_"+state;
 
 }
 function changeStateLogic(state:String,data:ArrayList){
 	super.changeStateLogic(state,data);
+	if (! attributes){
+		attributes = gameObject.transform.parent.GetComponent("attributes");
+	}
 	attributes.movement = data[0];
 
 }

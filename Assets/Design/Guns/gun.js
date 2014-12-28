@@ -62,7 +62,7 @@
 				}
 			}else{
 				bulletDest = ray.GetPoint(1000);
-				//notifyFired();
+				notifyFired();
 			}
 			if (enemy == true){
 				var b:GameObject = Instantiate(bullet,bulletDest,Quaternion.identity);	
@@ -81,7 +81,7 @@
 
 	}
 	function notifyFired(){
-		//host.BroadcastMessage("ShotWeapon");
+		host.BroadcastMessage("ShotWeapon");
 	}
 	function GunShake():Vector3{
 		var gunShake:Vector3 = Vector3.zero;

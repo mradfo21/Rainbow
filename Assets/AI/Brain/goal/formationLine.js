@@ -17,56 +17,34 @@ class formationLine extends state_goal{
 	function Enter():void{
 		super.Enter();
 		move = ConstructBaseData();
-		attributes.agent.updateRotation = false;
 		if (attributes.leader == true || attributes.teammateTarget == null){
 			finished();
 		}
+		StartCoroutine("renewFormation");
 
 
 	}
 
-	function startFormation(){
-		if (attributes.teammateTarget){
-			var offset:Vector3 = -(attributes.team.leader.transform.parent.transform.forward * 2 * attributes.teamSpot);
-			point = attributes.teammateTarget.transform.position + offset;
-			var hit:NavMeshHit;
-			if (navMesh.SamplePosition(point,hit,2,-1)){
-				point = hit.position;
-				}else{
-				point = transform.position;
-			}
-			move[0] = "movement_move";
-			move[1] = point;
-			move[5] = false;
-			gameObject.SendMessage("changeState",move,SendMessageOptions.DontRequireReceiver);
-			started = true;
-		}
-	
-	}
 	function renewFormation(){
-		var offset:Vector3 = -(attributes.teammateTargetAttributes.agent.velocity * offset) * 1/attributes.teammateTargetAttributes.agent.velocity.magnitude;
-		point = attributes.teammateTarget.transform.position + offset;
+		while(true){
+
+		//var offset:Vector3 = -(attributes.teammateTargetAttributes.agent.velocity * offset) * 1/attributes.teammateTargetAttributes.agent.velocity.magnitude;
+
+		point = attributes.teammateTarget.transform.position + attributes.teammateTarget.transform.forward;
 		var hit:NavMeshHit;
 			if (navMesh.SamplePosition(point,hit,2,-1)){
 				point = hit.position;
-				}else{
-				point = transform.position;
-			}
-		move[0] = "movement_move";
+				}
+		move[0] =attributes.team.situationalUnderstanding.getMoveType();
 		move[1] = point;
 		move[5] = false;
 		gameObject.SendMessage("changeState",move,SendMessageOptions.DontRequireReceiver);
+		yield WaitForSeconds(2.0);
+		}
 	}
 	function Execute():void{
 		super.Execute();
-		if (started == false){
-			startFormation();
-		}
-		if (attributes.teammateTargetAttributes){
-			if ( attributes.teammateTargetAttributes.agent.velocity.magnitude > .3 && formed == true){
-				renewFormation();			
-			}			
-		}
+		Debug.DrawLine(transform.position,point,Color.red);
 
 	}
 

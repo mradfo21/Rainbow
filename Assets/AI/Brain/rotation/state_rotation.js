@@ -48,19 +48,27 @@ var gameData:gameData;
 		return transform.position + point;
 	}
 
-	function lookAtTarget(){
+	function lookAtTarget():boolean{
 		readyToFire = false;
-		if (attributes.target){
-					var lookAtPos = Vector3(attributes.target.transform.position.x,gameObject.transform.position.y,attributes.target.transform.position.z);
-					var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
-					attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,rotationSpeed* 50* Time.deltaTime);
-					var toVector:Vector3 = (attributes.target.transform.parent.transform.position - attributes.gameObject.transform.position).normalized;
-					var rotationFactor = Vector3.Dot(attributes.gameObject.transform.forward,toVector);
-					if (rotationFactor > rotationThreshold || rotationSpeed* 50* Time.deltaTime < rotationThreshold*-1){
-						readyToFire = true;
-					}
+		if (attributes.vision){
+			if (attributes.target){
+				var lookAtPos = Vector3(attributes.target.transform.position.x,gameObject.transform.position.y,attributes.target.transform.position.z);
+				var newRot = Quaternion.LookRotation(lookAtPos-transform.position);
+				attributes.gameObject.transform.rotation = Quaternion.Lerp(transform.rotation,newRot,rotationSpeed* 50* Time.deltaTime);
+				var toVector:Vector3 = (attributes.target.transform.parent.transform.position - attributes.gameObject.transform.position).normalized;
+				var rotationFactor = Vector3.Dot(attributes.gameObject.transform.forward,toVector);
+				if (rotationFactor > rotationThreshold || rotationSpeed* 50* Time.deltaTime < rotationThreshold*-1){
+					readyToFire = true;
 				}
+				return true;
+			}else if(attributes.vision.enemies.Count > 0){
+				lookAtTarget(attributes.vision.enemies[0].transform.position,1);
+				return true;
+			}
+		}else{
+			return false;
 		}
+	}
 	function lookAtTarget(point:Vector3){
 		var lookAtPos = point;
 		var newRot = Quaternion.LookRotation(lookAtPos-attributes.gameObject.transform.position);
@@ -69,15 +77,23 @@ var gameData:gameData;
 	function lookAtTarget(point:Vector3,speed:float){
 		var lookAtPos = point;
 		var newRot = Quaternion.LookRotation(lookAtPos-attributes.gameObject.transform.position);
-		attributes.gameObject.transform.rotation = Quaternion.Lerp(attributes.gameObject.transform.rotation,newRot,speed* 50*Time.deltaTime);
+		attributes.gameObject.transform.rotation = Quaternion.Lerp(attributes.gameObject.transform.rotation,newRot,speed* 1*Time.deltaTime);
 		}
 	function lookAtVelocity(){
-		if (agent.velocity.magnitude > .5){
-			//lookAtTarget(attributes.gameObject.transform.position+agent.velocity*100,Random.Range(.1,.3));
-			attributes.gameObject.transform.LookAt(attributes.gameObject.transform.position + agent.velocity);
-		}else{
-			attributes.gameObject.transform.LookAt(attributes.gameObject.transform.position + attributes.gameObject.transform.forward);			
+		agent.updateRotation = true;
+		if ( attributes.target){
+			agent.updateRotation = false;
+			lookAtTarget();
+		}else if (attributes.hint == true){
+			agent.updateRotation = false;
+			lookAtTarget(attributes.lastHint,.7);
 		}
+	//	if (agent.velocity.magnitude > .5){
+	//		lookAtTarget(attributes.gameObject.transform.position+agent.velocity*100,Random.Range(.1,.3));
+	//	}else{
+	//		lookAtTarget(attributes.gameObject.transform.position + attributes.gameObject.transform.forward*100,Random.Range(.1,.3));
+	//	}
+
 	}
 
 	function lookDownCamera(){

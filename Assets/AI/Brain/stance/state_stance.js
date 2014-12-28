@@ -33,6 +33,7 @@ class state_stance extends state{
 			randomAnimSpeed();
 			Invoke("normalAnimSpeed",.1);
 		};
+		attributes.stance = this.name;
 	}
 
 	function Execute(){

@@ -2,6 +2,7 @@
 
 public class orderData{
 
+	var active:boolean = false;
 	var leader:GameObject;
 	var position:Vector3;
 	var team:team;
@@ -11,19 +12,23 @@ public class orderData{
 	var id:int;
 	var list:ArrayList = new ArrayList();
 	var orderName:String = "an empty order";
-
-	function Setup(lead:GameObject,pos:Vector3,orderNameIN:String){
+	var movement_positions = new List.<Vector3>();
+	var useMovement_positions:boolean = false;
+	//var teamPoints:
+	function Setup(lead:GameObject,pos:Vector3,orderNameIN:String,t:team){
 		id = Random.value * 10000000;
 		leader = lead;
 		position = pos;
 		orderName = orderNameIN;
+		team =  t;
+
 	}
 
 
 	function Execute(){
+		active = true;
 		sendToTeam();
 	}
-
 
 function sendToTeam(){
 	list = ConstructBaseData();

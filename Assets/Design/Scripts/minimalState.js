@@ -20,7 +20,7 @@ class minimalState extends state{
 
 	}
 
-	function changeState(state:String){
-		gameObject.SendMessage("changeState",id+"_"+state);
-	}
+	//function changeState(state:String){
+	//	gameObject.SendMessage("changeState",id+"_"+state);
+	//}
 }

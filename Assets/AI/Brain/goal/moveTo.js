@@ -15,7 +15,7 @@ class moveTo extends state_goal{
 	function Enter():void{
 		super.Enter();
 		point = argVector;
-		move = ConstructBaseData();
+		move = utils.ConstructBaseData();
 		issueCurrentDestination();
 	}
 
@@ -29,8 +29,11 @@ class moveTo extends state_goal{
 	}
 
 	function issueCurrentDestination():IEnumerator{
-			move[0]="movement_move";
+			move[0]=attributes.team.situationalUnderstanding.getMoveType();
 			move[1]=point;
+			if (orderData.active == true){
+				point = orderData.position;
+			}
 			transform.parent.BroadcastMessage("changeState",move);
 			
 	}
@@ -57,12 +60,5 @@ class moveTo extends state_goal{
 			return Vector3.zero;
 		}
 	}
-
-	function DestinationReached(){
-		print("target has reached moveTo point");
-		transform.parent.BroadcastMessage("changeState","movement_hold");
-		finished();
-	}	
-
 
 }

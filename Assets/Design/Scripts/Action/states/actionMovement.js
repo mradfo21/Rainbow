@@ -16,6 +16,7 @@ class actionMovement extends state_action{
 		super.Enter();
 		id = "Movement";
 		gameObject.BroadcastMessage("EnterMovement",SendMessageOptions.DontRequireReceiver);
+		gameData.orderManager.orderMenu.openMenu("movement");
 
 	}
 
@@ -26,6 +27,7 @@ class actionMovement extends state_action{
 	function Exit(){
 		super.Exit();
 		gameObject.BroadcastMessage("ExitMovement",SendMessageOptions.DontRequireReceiver);
+		gameData.orderManager.orderMenu.closeMenu();
 		Destroy(this);
 	}
 

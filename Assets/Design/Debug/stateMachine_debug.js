@@ -20,7 +20,7 @@ function changeStateLogic(state:String){
 	super.changeStateLogic(state);
 }
 function changeStateLogic(state:String,data:ArrayList){
-	//super.changeStateLogic(state,data);
+	super.changeStateLogic(state,data);
 }
 
 

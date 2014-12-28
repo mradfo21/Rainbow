@@ -37,7 +37,7 @@ var point:Vector3 = Vector3.zero;
 	}
 
 	function issueCurrentDestination(){
-		move[0] = ("movement_move");
+		move[0] = attributes.team.situationalUnderstanding.getMoveType();
 		move[1] = point;
 		move[5] = false;
 		transform.parent.BroadcastMessage("changeState",move);

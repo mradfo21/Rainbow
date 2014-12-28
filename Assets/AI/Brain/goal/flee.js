@@ -27,7 +27,7 @@ class flee extends state_goal{
 	}
 
 	function issueCurrentDestination(){
-		move[0]="movement_move";
+		move[0]=attributes.team.situationalUnderstanding.getMoveType();
 		move[1]=point;
 		transform.parent.BroadcastMessage("changeState",move);
 	}

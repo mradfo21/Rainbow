@@ -48,7 +48,7 @@ MonoBehaviour:
   enemyContact: tactic_scatter
   enemiesKilled: 
   enemySighted: 
-  ambient: tactic_scatter
+  ambient: tactic_patrol
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

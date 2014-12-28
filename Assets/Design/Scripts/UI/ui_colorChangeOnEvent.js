@@ -20,7 +20,7 @@ function Update () {
 function Reset(){
 		GetComponent.<Renderer>().material.SetColor("_TintColor",baseColor);	
 }
-function EnterPlanning(){
+function Selected(){
 		if (eEnterPlanning!= Color.clear){
 			GetComponent.<Renderer>().material.SetColor("_TintColor",eEnterPlanning);	
 		}else{
@@ -28,7 +28,7 @@ function EnterPlanning(){
 		}
 
 }
-function ExitPlanning(){
+function Deselected(){
 		if (eExitPlanning!= Color.clear){
 			//material.color = eExitPlanning;	
 		}else{

@@ -25,7 +25,6 @@ class camAimStand extends state_camera{
 		t_camFov = 40;
 		t_camOffset = Vector3(.44,-.1,0);
 		t_camRot = Vector3(0,0,0);
-		speed = 1;
 	}
 
 	function Execute(){

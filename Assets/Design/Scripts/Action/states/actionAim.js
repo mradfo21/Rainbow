@@ -15,8 +15,9 @@ class actionAim extends state_action{
 	function Enter(){
 		super.Enter();
 		id = "Aim";
-		gameObject.BroadcastMessage("EnterAim",SendMessageOptions.DontRequireReceiver);
 		gameData.gameAttributes.playerAttributes.gameObject.BroadcastMessage("changeState","rotation_lookCamera");
+		gameData.orderManager.movementIcons.deselect();
+
 	}
 
 	function Execute(){
@@ -25,7 +26,6 @@ class actionAim extends state_action{
 
 	function Exit(){
 		super.Exit();
-		gameObject.BroadcastMessage("ExitAim",SendMessageOptions.DontRequireReceiver);
 		gameData.gameAttributes.playerAttributes.gameObject.BroadcastMessage("changeState","rotation_lookVelocity");
 		Destroy(this);
 	}

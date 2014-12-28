@@ -13,9 +13,10 @@ class sprint extends state_stance{
 		}else if (attributes.stance == "prone"){
 			attributes.animator.SetTrigger("proneToStand");			
 		}
-		attributes.agent.angularSpeed = 10;
+		attributes.agent.acceleration = 4;
+		attributes.agent.angularSpeed = 120;
 		attributes.agent.speed = 6.5;
-		attributes.agent.stoppingDistance = 6.0;
+		attributes.agent.stoppingDistance = 2.0;
 		attributes.stance = "sprint";
 
 	}

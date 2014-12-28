@@ -9,7 +9,7 @@ class state_camera extends minimalState{
 	var cam:Camera;
 
 
-	var speed:float = 1.0;
+	var speed:float = 3.0;
 	var lerpTime:float = 0.0;
 	var lerpClock:float = 0.0;
 	var s_orbitDistance:float;

@@ -38,7 +38,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 172850}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -109,6 +109,8 @@ MonoBehaviour:
     code: 0
     obj: {fileID: 0}
     id: 0
+    orderName: an empty order
+  tactic: 
 --- !u!114 &11407518
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -20,6 +20,7 @@ var fireClock:float = 0;
 		attributes.coveringFire = true;
 		print("changing role to coverFire");
 		fireTime = 2+Random.value*2;
+		point = argVector;
 
 	}
 
@@ -39,7 +40,7 @@ var fireClock:float = 0;
 	}
 
 	function issueCurrentDestination(){
-		move[0] = ("movement_move");
+		move[0] = attributes.team.situationalUnderstanding.getMoveType();
 		move[1] = point;
 		move[5] = false;
 		transform.parent.BroadcastMessage("changeState",move);

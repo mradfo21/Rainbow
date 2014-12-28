@@ -32,10 +32,6 @@ class state_command extends minimalState{
 			nextPress = clock + resetTime;
 			ToggleStance();		
 		}
-		if (Input.GetButton("ToggleMovement") && clock > nextPress){
-			nextPress = clock + resetTime;
-			ToggleMovement();		
-		}
 		if (Input.GetButton("ToggleAttack")&& clock >nextPress){
 			nextPress = clock + resetTime;	
 			ToggleAim();
@@ -80,7 +76,7 @@ class state_command extends minimalState{
 		var ordersAction:orders_action = gameData.gameAttributes.playerTeam.orders_action;
 
 		print("so you want to use "+ordersMovement.currentOrder);
-		gameData.orderManager.orderMenu.buildMenu("action");
+		gameData.orderManager.orderMenu.openMenu("action");
 	}
 
 }

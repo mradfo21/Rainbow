@@ -21,7 +21,6 @@ var currentTactic:GameObject = null;
 var leaderAttributes:attributes;
 var reportedEnemiesSighted:boolean = false;
 var reportedEnemiesKilled:boolean = false;
-var averagePosition:Vector3;
 var game:GameObject;
 var ready:boolean = false;
 var movement_positions:List.<Vector3>;
@@ -29,6 +28,9 @@ var gameData:gameData;
 
 var orders_movement:orders_movement;
 var orders_action:orders_action;
+
+var stances:stances;
+var situationalUnderstanding:situationalUnderstanding;
 
 function CheckLeader(){
 	if (members.Count >= 1){
@@ -40,13 +42,6 @@ function CheckLeader(){
 	}
 }
 
-function findAveragePosition():Vector3{
-	var pos:Vector3 = Vector3.zero;
-	for (i in members){
-		pos+= i.transform.position;
-	}
-	return pos/members.Count;
-}
 function changeStateTeam(from:GameObject,data:ArrayList){
 	// here i cache this information so things like "contact" or
 	// other poi state changes only get sent to the team one time
@@ -63,21 +58,6 @@ function changeStateTeam(from:GameObject,data:ArrayList){
 }
 function Contact(pd:poi_data){
 	poi.Add(pd);
-}
-
-function GeneratePosition():Vector3{
-	var n:int = 1;
-	var p:Vector3 = Vector3.zero;
-	for (var i = 0; i < members.Count; i++){
-		p+= members[i].transform.position;
-		n+=1;
-	}
-	if (n > 0){
-		p/=n;
-		return p;
-	}else{
-		return transform.position;
-	}
 }
 
 function CheckForEnemies(){
@@ -115,12 +95,12 @@ function RemoveDeadEnemies(){
 function CollectVision(){
 		enemiesDistance.Clear();
 		for (v in visions.Keys){
-			for (eKey in visions[v].enemies.Keys){
-				var attrib:attributes = visions[v].enemies[eKey].transform.parent.GetComponent("attributes");
+			for (eKey in visions[v].enemy.Keys){
+				var attrib:attributes = visions[v].enemy[eKey].transform.parent.GetComponent("attributes");
 				if (attrib.alive == true){
-					enemies[eKey] =visions[v].enemies[eKey];
-					enemiesAlive[eKey] =visions[v].enemies[eKey];
-					enemiesDistance.Add(visions[v].enemies[eKey]);				
+					enemies[eKey] =visions[v].enemy[eKey];
+					enemiesAlive[eKey] =visions[v].enemy[eKey];
+					enemiesDistance.Add(visions[v].enemy[eKey]);				
 				}else{
 					enemies.Remove(eKey);
 				}
@@ -177,8 +157,9 @@ function Start () {
 	gameData.Start();
 	orders_movement = gameObject.GetComponent("orders_movement") as orders_movement;
 	orders_action = gameObject.GetComponent("orders_action") as orders_action;
+	stances = gameObject.GetComponent("stances") as stances;
 	
-
+	situationalUnderstanding = gameObject.GetComponent("situationalUnderstanding");
 }
 function Setup(){
 	CheckTeamMembers();
@@ -207,7 +188,6 @@ function ManageUnits(){
 		}
 	}
 	CheckLeader();
-	averagePosition = findAveragePosition();
 
 }
 function Update () {
@@ -217,5 +197,16 @@ function Update () {
 
 	for (var i = 0; i < movement_positions.Count; i++){
 		Debug.DrawLine(members[i].transform.position,movement_positions[i]);
+	}
+}
+
+function changeStances(stanceChange:ArrayList){
+	for (member in members){
+		member.BroadcastMessage("changeState",stanceChange);
+	}
+}
+function changeRotationState(str:String){
+	for (teammate in members){
+		teammate.BroadcastMessage("changeState","rotation_"+str);
 	}
 }

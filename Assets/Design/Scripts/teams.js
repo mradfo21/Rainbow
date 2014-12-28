@@ -22,19 +22,9 @@ function Update () {
 	}
 
 	if (playerTeam){
-		averagePosition = GetAveragePosition();
 		MakePlayer();		
 	}
 
-}
-function GetAveragePosition():Vector3{
-	var pos:Vector3 = Vector3.zero;
-	if (teams.ContainsKey(gameData.gameAttributes.playerSpecies) == true){
-		for (t in teams[gameData.gameAttributes.playerSpecies]){
-			pos+=t.averagePosition;
-		}
-	}
-	return pos/ (teams[gameData.gameAttributes.playerSpecies].Count);
 }
 function SwitchTeams():boolean{
 	var t = List.<team>();

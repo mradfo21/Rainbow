@@ -39,16 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eecde15dea68e4a658b99a7afedeb252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 0}
-  attributes: {fileID: 0}
-  lastExecutedStateNum: 0
-  currentStateNum: 0
-  maxStateNum: 0
   states:
-  - stance_sprint
-  - movement_findCover
-  - movement_hide
   - movement_move
+  - movement_findCover
   enemyContact: 
 --- !u!1001 &100100000
 Prefab:
@@ -61,4 +54,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

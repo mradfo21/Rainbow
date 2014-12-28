@@ -49,10 +49,6 @@ MonoBehaviour:
   - regroup
   - move
   - movePC
-  - pronePC
-  - crouchPC
-  - runPC
-  - sprintPC
   tacticObjects:
   - {fileID: 100000, guid: f591efd96f14e499faa9d793947561a9, type: 2}
   - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
@@ -63,10 +59,6 @@ MonoBehaviour:
   - {fileID: 100000, guid: 3107278ba86c04187b1b171ffd78eaa6, type: 2}
   - {fileID: 100000, guid: b38af5ea4200d427eab51e7eb8cb80da, type: 2}
   - {fileID: 100000, guid: 02d74a71f7f6b4c758dae573c9df7d83, type: 2}
-  - {fileID: 100000, guid: ffae899d6836f40c0ba7d82e1f0e11d6, type: 2}
-  - {fileID: 100000, guid: 27854ef51fe0f40fa9a060d8398db61f, type: 2}
-  - {fileID: 100000, guid: 2d541fcfe521d4dd885ca85b460a7ecd, type: 2}
-  - {fileID: 100000, guid: a2c1d3e395a4c4d19892a29619710c3f, type: 2}
   enemyContact: tactic_scatter
   enemiesKilled: 
   enemySighted: 

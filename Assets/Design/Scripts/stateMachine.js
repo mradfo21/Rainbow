@@ -10,12 +10,19 @@ var defaultState: String = null;
 var id:String=null;
 
 var gameData:gameData;
+function executeDefaultState(){
+	if (defaultState){
+		changeState(id+"_"+defaultState);
+	}	
+}
 function Start () {
 	if (defaultState){
 		changeState(id+"_"+defaultState);
 	}
  	gameData = new gameData();
 	gameData.Start();
+	Invoke("executeDefaultState",2.0);
+
 
 }
 
@@ -52,7 +59,6 @@ function changeState(data:ArrayList){
 	// spot 5 is argBoolean
 
 	var sinfo:String = data[0];
-	
 	var words = sinfo.Split("_"[0]);
 	var state:String = words[1];
 	var sID = words[0];
@@ -76,6 +82,7 @@ function changeStateLogic(state:String){
 	currentState = state;
 	currentStateData = ConstructBaseData();
 	currentStateData[0] = state;
+	
 	currentStateObj = gameObject.AddComponent(System.Type.GetType(currentState));
 	currentStateObj.data = currentStateData;
 	currentStateObj.Enter();

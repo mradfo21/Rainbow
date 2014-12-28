@@ -34,7 +34,8 @@ class flankSide extends state_goal{
 	}
 	function Enter():void{
 		super.Enter();
-		interestPoint = attributes.team.poi[0].origin;
+		//interestPoint = attributes.team.poi[0].origin;
+		interestPoint = argVector;
 		interestRay = new Ray(transform.position + (transform.forward * -3),(interestPoint-transform.position).normalized);
 		interestRayLength = (interestPoint-transform.position).magnitude;
 		var flankStart:float = interestRayLength/4;
@@ -65,7 +66,7 @@ class flankSide extends state_goal{
 
 	}
 	function issueCurrentDestination(point:Vector3){
-		move[0] = ("movement_move");
+		move[0] = attributes.team.situationalUnderstanding.getMoveType();
 		move[1] = point;
 		move[5] = false;
 		transform.parent.BroadcastMessage("changeState",move);

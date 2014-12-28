@@ -1,6 +1,6 @@
 ﻿#pragma strict
 class move extends state_movement{
-	var distanceToCompletion = .5;
+	var distanceToCompletion = 2.2;
 	var point:Vector3 = Vector3.zero;
 	function Start () {
 		super.Start();
@@ -10,10 +10,6 @@ class move extends state_movement{
 
 	function Update () {
 		super.Update();
-		if (stuck == true){
-			ReachedDestination();
-			stuck = false;
-		}
 
 	}
 
@@ -30,24 +26,19 @@ class move extends state_movement{
 
 	function Execute(){
 		super.Execute();
-		if (argBoolean == false){
-			point = argVector;
-		}else{
-			point = argGameObject.transform.position;						
-		}
 		setNavMeshDestination(point);	
 		var distance:float = Vector3.Distance(transform.position,point);
 		if (distance <= distanceToCompletion){
 				ReachedDestination();								
 		}
+		if (stuck == true){
+			ReachedDestination();
+			stuck = false;
+		}
+		Debug.DrawLine(transform.position,point);	
 	}
 	function Exit(){
 		super.Exit();
-	}
-	function ReachedDestination(){
-
-		gameObject.SendMessage("DestinationReached",transform.position,SendMessageOptions.DontRequireReceiver);
-		//finished();
 	}
 	function CheckStuck(){
 		while (true){
