@@ -44,7 +44,6 @@ MonoBehaviour:
   roles:
   - {fileID: 100000, guid: 23e817d4e67c1493dbe88bfc69b9ef4a, type: 2}
   - {fileID: 100000, guid: ed993c5413f1f4e998fd027307884cd2, type: 2}
-  - {fileID: 100000, guid: 42cd8c1beaf364e04b645e0196640255, type: 2}
   leaderRoles: []
   argVector: {x: 0, y: 0, z: 0}
   argString: 
@@ -72,4 +71,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

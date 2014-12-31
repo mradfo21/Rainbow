@@ -18,7 +18,7 @@ var UI:GameObject;
 var Gui:GameObject;
 var GuiWS:GameObject;
 var currentOrderGroup:orders;
-
+var stances:stances;
 function setup(){
 	teams = gameObject.GetComponent("teams");
 	actionSM = gameObject.GetComponent("stateMachine_action");

@@ -7,9 +7,15 @@ class crouch extends state_stance{
 
 	function Enter(){
 		super.Enter();
-		//attributes.agent.velocity/= 3;
+		if (attributes.stance != "crouch"){
 		stopAgent();
-		
+			if (attributes.stance == "stand"){
+				attributes.animator.SetTrigger("standToCrouch");
+			}else if (attributes.stance == "prone"){
+				attributes.animator.SetTrigger("proneToCrouch");			
+			}
+		}
+		attributes.stance = "crouch";		
 	}
 	function Execute(){
 		super.Execute();
@@ -20,16 +26,10 @@ class crouch extends state_stance{
 
 	function agentStopped(){
 		super.agentStopped();
-		if (attributes.stance == "stand" || attributes.stance == "sprint"){
-			attributes.animator.SetTrigger("standToCrouch");			
-		}else if (attributes.stance == "prone"){
-			attributes.animator.SetTrigger("proneToCrouch");			
-		}
-		attributes.agent.angularSpeed = 30;
-		attributes.agent.acceleration = 1;
-		attributes.agent.speed = 2.5;
-		attributes.agent.stoppingDistance = 0.0;
-		attributes.stance = "crouch";
+		//attributes.agent.angularSpeed = 30;
+		//attributes.agent.acceleration = 1;
+		//attributes.agent.speed = 2.5;
+		//attributes.agent.stoppingDistance = 0.0;
 	}
 
 }

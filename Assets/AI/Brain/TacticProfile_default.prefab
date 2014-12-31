@@ -50,7 +50,7 @@ MonoBehaviour:
   - move
   - movePC
   tacticObjects:
-  - {fileID: 100000, guid: f591efd96f14e499faa9d793947561a9, type: 2}
+  - {fileID: 0}
   - {fileID: 100000, guid: 1c3ca1de06a214178820f8c0480b573b, type: 2}
   - {fileID: 100000, guid: 59d3214ab3aaa44eda584997f716e38f, type: 2}
   - {fileID: 100000, guid: 99b2ab443001944179f1fc9c1b918ee1, type: 2}

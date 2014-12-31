@@ -247,20 +247,18 @@
 		var species:String = data[2];
 		var id = obj.GetInstanceID();
 		if (species == "poi"){
-			//print("found a point of interest");
+			print("found a point of interest");
 		}else{
 			var entity = obj.transform.parent;
 			var attribs:attributes = entity.GetComponent("attributes");
 			if (attribs.alive == true){
-				if (species!= "poi"){
-							if (attributes.species != species){
-								gameObject.transform.parent.BroadcastMessage("Hint",obj.transform.position);
-								seen[id] = obj;
-							}else{
-								if (obj != gameObject){
-									friends[id] = obj;
-								}
-							}
+				if (attributes.species != species){
+					gameObject.transform.parent.BroadcastMessage("Hint",obj.transform.position);
+					seen[id] = obj;
+				}else{
+					//if (obj != gameObject){
+						friends[id] = obj;
+					//}
 				}
 			}
 

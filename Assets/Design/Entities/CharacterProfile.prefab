@@ -46,7 +46,7 @@ MonoBehaviour:
   accuracy: 1
   damageMod: 1
   stealthiness: 1
-  character: {fileID: 100360, guid: 16790d35215dd4baf9e8dd5aad3a4ae2, type: 2}
+  character: {fileID: 100014, guid: b68b26c2316fa41ff8aef4c16dc680a7, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

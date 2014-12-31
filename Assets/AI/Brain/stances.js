@@ -21,7 +21,6 @@ var cAction:String;
 var pAction:String;
 
 var cStance:String;
-var pStance:String;
 
 var stanceStateMachine:stateMachine_stance;
 var team:team;
@@ -45,7 +44,6 @@ function Update () {
 		stanceStateMachine = gameData.gameAttributes.playerAttributes.brain.GetComponent("stateMachine_stance");
 		cAction = gameData.gameAttributes.getCurrentAction();
 		cStance = stanceStateMachine.currentState;
-		currentSMstance = cStance;
 		if (currentStanceIndex > stanceNames.Count-1){
 			currentStanceIndex = stanceNames.Count-1;
 		}
@@ -61,10 +59,7 @@ function Update () {
 		lastIndex = currentStanceIndex;
 		if (pAction!=cAction){
 			changeCamera(false);
-		}else if (cStance != pStance){
-			changeCamera(true);
-		}
-		pStance = cStance;
+		};
 		pAction = cAction;
 	}
 }
@@ -75,8 +70,7 @@ function changeCamera(sm:boolean){
 		action = gameData.gameAttributes.getCurrentAction() + currentStanceName;
 		gameData.cameraManager.changeState(stanceCameraDict[action]);
 	}else{
-		action = gameData.gameAttributes.getCurrentAction() + currentSMstance;
-		print("trying to get something from "+stanceCameraDict[action]);
+		action = gameData.gameAttributes.getCurrentAction() + cStance;
 		gameData.cameraManager.changeState(stanceCameraDict[action]);
 
 	}

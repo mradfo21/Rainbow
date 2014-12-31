@@ -19,7 +19,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;UNITY_64;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_OBSOLETE_API_UPDATING;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_PRO_LICENSE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_0;UNITY_5_0;UNITY_5;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_OBSOLETE_API_UPDATING;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_OSX;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_GAMECENTER;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_OSX;UNITY_PRO_LICENSE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -50,9 +50,9 @@
      <Compile Include="Assets\AI\Brain\TacticProfile.js" />
      <Compile Include="Assets\AI\Brain\UseTacticProfile.js" />
      <Compile Include="Assets\AI\Brain\assaignEntityBrain.js" />
-     <Compile Include="Assets\AI\Brain\combat\deffensive.js" />
-     <Compile Include="Assets\AI\Brain\combat\offensive.js" />
-     <Compile Include="Assets\AI\Brain\combat\passive.js" />
+     <Compile Include="Assets\AI\Brain\combat\fireFree.js" />
+     <Compile Include="Assets\AI\Brain\combat\fireHold.js" />
+     <Compile Include="Assets\AI\Brain\combat\fireTight.js" />
      <Compile Include="Assets\AI\Brain\combat\stateMachine_combat.js" />
      <Compile Include="Assets\AI\Brain\combat\state_combat.js" />
      <Compile Include="Assets\AI\Brain\deactivateOnDeath.js" />
@@ -75,14 +75,13 @@
      <Compile Include="Assets\AI\Brain\goal\stateMachine_goal.js" />
      <Compile Include="Assets\AI\Brain\goal\state_goal.js" />
      <Compile Include="Assets\AI\Brain\goal\wander.js" />
+     <Compile Include="Assets\AI\Brain\movement\bounding.js" />
      <Compile Include="Assets\AI\Brain\movement\dead.js" />
-     <Compile Include="Assets\AI\Brain\movement\findCover.js" />
-     <Compile Include="Assets\AI\Brain\movement\hide.js" />
      <Compile Include="Assets\AI\Brain\movement\hold.js" />
-     <Compile Include="Assets\AI\Brain\movement\move.js" />
      <Compile Include="Assets\AI\Brain\movement\moveCover.js" />
      <Compile Include="Assets\AI\Brain\movement\stateMachine_movement.js" />
      <Compile Include="Assets\AI\Brain\movement\state_movement.js" />
+     <Compile Include="Assets\AI\Brain\movement\travelling.js" />
      <Compile Include="Assets\AI\Brain\orders\order.js" />
      <Compile Include="Assets\AI\Brain\orders\orderManager.js" />
      <Compile Include="Assets\AI\Brain\orders\orders.js" />
@@ -91,17 +90,16 @@
      <Compile Include="Assets\AI\Brain\orders\ui_orderMenu.js" />
      <Compile Include="Assets\AI\Brain\roles\role.js" />
      <Compile Include="Assets\AI\Brain\rotation\lookCamera.js" />
-     <Compile Include="Assets\AI\Brain\rotation\lookCameraDirection.js" />
-     <Compile Include="Assets\AI\Brain\rotation\lookRandom.js" />
+     <Compile Include="Assets\AI\Brain\rotation\lookSector.js" />
      <Compile Include="Assets\AI\Brain\rotation\lookTarget.js" />
+     <Compile Include="Assets\AI\Brain\rotation\lookTeamSector.js" />
      <Compile Include="Assets\AI\Brain\rotation\lookVelocity.js" />
      <Compile Include="Assets\AI\Brain\rotation\stateMachine_rotation.js" />
      <Compile Include="Assets\AI\Brain\rotation\state_rotation.js" />
      <Compile Include="Assets\AI\Brain\situationalUnderstanding.js" />
      <Compile Include="Assets\AI\Brain\stance\crouch.js" />
      <Compile Include="Assets\AI\Brain\stance\prone.js" />
-     <Compile Include="Assets\AI\Brain\stance\run.js" />
-     <Compile Include="Assets\AI\Brain\stance\sprint.js" />
+     <Compile Include="Assets\AI\Brain\stance\stand.js" />
      <Compile Include="Assets\AI\Brain\stance\stateMachine_stance.js" />
      <Compile Include="Assets\AI\Brain\stance\state_stance.js" />
      <Compile Include="Assets\AI\Brain\stances.js" />
@@ -191,6 +189,8 @@
      <Compile Include="Assets\Design\Scripts\UI\ui_set_text.js" />
      <Compile Include="Assets\Design\Scripts\attributes.js" />
      <Compile Include="Assets\Design\Scripts\cameraManager.js" />
+     <Compile Include="Assets\Design\Scripts\disableColliderOnDeath.js" />
+     <Compile Include="Assets\Design\Scripts\freeze.js" />
      <Compile Include="Assets\Design\Scripts\gameAttributes.js" />
      <Compile Include="Assets\Design\Scripts\gameData.js" />
      <Compile Include="Assets\Design\Scripts\minimalState.js" />

@@ -42,7 +42,7 @@ MonoBehaviour:
   team: {fileID: 0}
   id: 
   roles:
-  - {fileID: 100000, guid: f5accd1eac9d149e9b296abeeae8f4f3, type: 2}
+  - {fileID: 100000, guid: bd4ab26389b444aad9da10ecd35139d6, type: 2}
   leaderRoles:
   - {fileID: 100000, guid: bd4ab26389b444aad9da10ecd35139d6, type: 2}
   argVector: {x: 0, y: 0, z: 0}

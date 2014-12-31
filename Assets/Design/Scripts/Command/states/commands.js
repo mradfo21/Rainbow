@@ -126,7 +126,7 @@ function Update () {
 		//}else{
 		//	changeAction("actionMovement");			
 		//}
-		gameData.gameAttributes.teams.playerTeam.changeRotationState("lookCameraDirection");
+		gameData.gameAttributes.teams.playerTeam.changeRotationState("lookSector");
 		nextPress = clock + resetTime;		
 	}
 

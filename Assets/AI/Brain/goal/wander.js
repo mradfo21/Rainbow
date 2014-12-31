@@ -11,16 +11,22 @@ var point:Vector3 = Vector3.zero;
 	}
 	function Update () {
 		super.Update();
-		//if (debug == true){
-			Debug.DrawLine(transform.position,point,Color.green);
-	//	}
+		if (debug == true){
+			if (attributes.boundingIndex > 0){
+				Debug.DrawLine(transform.position,point,Color.blue);
+
+			}else{
+				Debug.DrawLine(transform.position,point,Color.green);
+			}
+		}
+
 
 	}
 
 	function Enter():void{
 		super.Enter();
 		timesWandered = 0;
-		maxTimesWandered = 1+ Random.value*4;
+		maxTimesWandered = 10;
 
 		move = ConstructBaseData();
 		generateDestination();
@@ -53,7 +59,8 @@ var point:Vector3 = Vector3.zero;
 	function generatePointInRadius2D(radius:float):Vector3{
 		var newPosition:Vector3 = (Random.insideUnitSphere * radius);
 		var hit:NavMeshHit;
-		if (navMesh.SamplePosition(newPosition,hit,1,-1)){
+		if (navMesh.SamplePosition(newPosition,hit,3,-1)){
+			hit.position.y =0;
 			return hit.position;
 		}else{
 			return Vector3.zero;
@@ -62,28 +69,13 @@ var point:Vector3 = Vector3.zero;
 
 	function DestinationReached(point:Vector3){
 		timesWandered+=1;
-		if (timesWandered < maxTimesWandered){
-		 Invoke("generateDestination",2.0);			
-		}else{
-			finished();
-		}
+		//if (timesWandered < maxTimesWandered){
+		Invoke("generateDestination",2.0);			
+		//}else{
+		//	finished();
+		//}
 
 	}	
-	function CheckStuck(){
-		while (true){
-			if (stuckTestCurrent!= Vector3.zero){
-				if (Vector3.Distance(transform.position,stuckTestCurrent) < 2.0){
-					stuck = true;
-					//print("im stuck");
-					stuckCount +=1;
-				}else{
-					stuck = false;
-					stuckCount = 0;
-				}			
-			}
-		yield WaitForSeconds(2.0);
-		}
-	}
 
 }
 

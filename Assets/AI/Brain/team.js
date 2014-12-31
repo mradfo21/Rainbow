@@ -1,7 +1,7 @@
 ﻿#pragma strict
 
 
-var maxMembers:int = 6;
+var maxMembers:int = 9999;
 var members = new List.<GameObject>();
 var removeList= new List.<GameObject>();
 var species:String = null;
@@ -32,6 +32,8 @@ var orders_action:orders_action;
 var stances:stances;
 var situationalUnderstanding:situationalUnderstanding;
 
+var boundingGroup = new Dictionary.<int, Dictionary.<GameObject, boolean> >();
+
 function CheckLeader(){
 	if (members.Count >= 1){
 		leader = members[0];
@@ -60,6 +62,8 @@ function Contact(pd:poi_data){
 	poi.Add(pd);
 }
 
+function updateBroundingGroup(){
+}
 function CheckForEnemies(){
 	if (enemies.Count > 0){
 		if (reportedEnemiesSighted == false){
@@ -116,6 +120,11 @@ function ClearDeadMembers(){
 	}
 	for (obj in removeList){
 		members.Remove(obj);
+		for (bgroup in boundingGroup.Keys){
+				if (boundingGroup[bgroup].ContainsKey(obj)){
+					boundingGroup[bgroup].Remove(obj);
+				}
+		}
 	}
 	removeList.Clear();
 	CheckTeamMembers();
@@ -209,4 +218,59 @@ function changeRotationState(str:String){
 	for (teammate in members){
 		teammate.BroadcastMessage("changeState","rotation_"+str);
 	}
+}
+
+function moveOutIndex(obj:GameObject,index:int){
+	var chars = new List.<GameObject>();
+		for (key in boundingGroup[index].Keys){
+			if (key!= obj && boundingGroup[index].ContainsKey(obj)){
+				chars.Add(key);
+
+			}
+
+		}
+	for (characters in chars){
+		characters.BroadcastMessage("moveOutGlobal");
+	}
+}
+function setBound(obj:GameObject,index:int,value:boolean){
+		boundingGroup[index][obj] =value;			
+}
+function getBound(obj:GameObject,index:int):boolean{
+		return boundingGroup[index][obj];			
+}
+function getBoundBool(index){
+	if (!boundingGroup.ContainsKey(index)){
+		return false;
+	}else{
+		for (key in boundingGroup[index].Keys){
+			if (boundingGroup[index][key] == false){
+				return false;
+			}
+		}
+		return true;
+	}
+}
+function hasBound(obj:GameObject,index:int){
+	if (!boundingGroup.ContainsKey(index)){
+		print("index "+index + " not found");
+		return false;
+	}
+	if (!boundingGroup[index].ContainsKey(obj)){
+		print("obj "+obj + " not found");
+		return false;
+	}
+	return true;		
+}
+function removeBound(obj:GameObject, index:int){
+	if (hasBound(obj,index)){
+		boundingGroup[index].Remove(obj);
+		print("REMOVED BOUND "+index +"   "+obj);
+	}
+}
+function setupBounding(obj:GameObject,index:int){
+	if (!boundingGroup.ContainsKey(index)){
+		boundingGroup[index] = new Dictionary.<GameObject,boolean>();
+	}
+	boundingGroup[index][obj] =false;
 }

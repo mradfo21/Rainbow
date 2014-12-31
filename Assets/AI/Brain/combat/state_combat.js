@@ -1,4 +1,4 @@
-﻿#pragma strict
+#pragma strict
 class state_combat extends state{
 
 var gun:gun = null;
@@ -16,7 +16,8 @@ var holdfire:boolean = false;
 	function Enter(){
 		super.Enter();
 		id = "combat";
-		attributes.combat = this.name;
+		attributes.combat = this.GetType().ToString();
+
 	}
 
 	function Execute(){
@@ -24,11 +25,12 @@ var holdfire:boolean = false;
 			Exit();
 		}
 		if (cachedGun == false){
-			if (attributes.gun){
-				gun = attributes.gun.GetComponent("gun");
-				cachedGun = true;
-			}
-		}
+				if (attributes.gun){
+					gun = attributes.gun.GetComponent("gun");
+					cachedGun = true;					
+				}
+
+		} 
 
 		if (holdfire == false){
 			fireWeapon();

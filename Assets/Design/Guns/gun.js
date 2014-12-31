@@ -24,7 +24,6 @@
 		var character:GameObject = obj.transform.gameObject.transform.parent.gameObject;
 		var targetAttributes:attributes = character.GetComponent("attributes");
 		// this prevents friendly fire
-		print("GUN CHARACTER: "+character);
 		if (attributes.species== targetAttributes.species){
 			return false;
 		}else{

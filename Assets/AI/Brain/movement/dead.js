@@ -1,4 +1,5 @@
-﻿class dead extends state{
+﻿#pragma strict
+class dead extends state_movement{
 
 
 	function Start () {
@@ -11,7 +12,7 @@
 
 	function Enter(){
 		super.Enter();
-		lock = true;
+		attributes.agent.Stop();
 	}
 
 	function Execute(){
@@ -20,6 +21,8 @@
 	}
 	function Exit(){
 		super.Exit();
+		gameObject.SendMessage("changeState","stance_stand");
+
 	}
 
 

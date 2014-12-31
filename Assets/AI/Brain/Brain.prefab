@@ -11,8 +11,8 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400018}
-  - 136: {fileID: 13600000}
   - 54: {fileID: 5400000}
+  - 136: {fileID: 13600000}
   - 114: {fileID: 11400016}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
@@ -25,6 +25,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11462992}
   - 114: {fileID: 11461602}
+  - 114: {fileID: 11411030}
   m_Layer: 8
   m_Name: Brain
   m_TagString: Untagged
@@ -116,8 +117,10 @@ MonoBehaviour:
   timeSinceTarget: 0
   agent: {fileID: 0}
   attributes: {fileID: 0}
+  broadcastObj: {fileID: 0}
   friendlies: []
   enemies: []
+  targets: []
   currentTarget: {fileID: 0}
 --- !u!114 &11400002
 MonoBehaviour:
@@ -133,7 +136,7 @@ MonoBehaviour:
   previousState: 
   currentState: 
   currentStateObj: {fileID: 0}
-  defaultState: hold
+  defaultState: 
   id: movement
   gameData:
     Game: {fileID: 0}
@@ -157,7 +160,7 @@ MonoBehaviour:
   previousState: 
   currentState: 
   currentStateObj: {fileID: 0}
-  defaultState: idle
+  defaultState: 
   id: goal
   gameData:
     Game: {fileID: 0}
@@ -181,7 +184,7 @@ MonoBehaviour:
   previousState: 
   currentState: 
   currentStateObj: {fileID: 0}
-  defaultState: offensive
+  defaultState: fireTight
   id: combat
   gameData:
     Game: {fileID: 0}
@@ -258,7 +261,7 @@ MonoBehaviour:
   previousState: 
   currentState: 
   currentStateObj: {fileID: 0}
-  defaultState: run
+  defaultState: 
   id: stance
   gameData:
     Game: {fileID: 0}
@@ -294,7 +297,7 @@ MonoBehaviour:
   previousState: 
   currentState: 
   currentStateObj: {fileID: 0}
-  defaultState: lookVelocity
+  defaultState: lookTeamSector
   id: rotation
   gameData:
     Game: {fileID: 0}
@@ -304,6 +307,17 @@ MonoBehaviour:
     cameraManager: {fileID: 0}
     orderManager: {fileID: 0}
   attributes: {fileID: 0}
+--- !u!114 &11411030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9a50c92c1c74c64a9f6c46226e1834, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11461602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -351,7 +365,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 18
+  m_Radius: 50
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

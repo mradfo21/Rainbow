@@ -41,11 +41,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thing: {fileID: 100000, guid: 980592dd32e834a91898989104701f1b, type: 3}
   parentName: 
+  spawnedName: 
   numCopies: 0
   radius: 1
   species: 
   enemySpecies: 
-  navMesh: {fileID: 0}
+  team: {fileID: 0}
+  useNavMesh: 1
+  delay: .200000003
+  usePrefabName: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -57,4 +61,3 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
-  m_IsExploded: 1

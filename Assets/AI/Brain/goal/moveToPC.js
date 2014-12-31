@@ -8,9 +8,9 @@ class moveToPC extends state_goal{
 	}
 	function Update () {
 		super.Update();
-		//if (debug == true){
+		if (debug == true){
 		Debug.DrawLine(transform.position,point,Color.green);
-		//}
+		}
 	}
 	function Enter():void{
 		super.Enter();

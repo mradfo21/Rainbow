@@ -7,7 +7,16 @@ class prone extends state_stance{
 
 	function Enter(){
 		super.Enter();
+		if (attributes.stance != "prone"){
 		stopAgent();
+			if (attributes.stance == "stand"){
+				attributes.animator.SetTrigger("standToProne");
+			}else if (attributes.stance == "crouch"){
+				attributes.animator.SetTrigger("crouchToProne");			
+			}
+		}
+		attributes.stance = "prone";			
+
 
 	}
 	function Execute(){
@@ -19,16 +28,16 @@ class prone extends state_stance{
 
 	function agentStopped(){
 		super.agentStopped();
-		if (attributes.stance == "stand" || attributes.stance == "sprint"){
+		if (attributes.stance == "stand"){
 			attributes.animator.SetTrigger("standToProne");			
 		}else if (attributes.stance == "crouch"){
 			attributes.animator.SetTrigger("crouchToProne");			
-		}		attributes.agent.acceleration = 1;
-		attributes.agent.angularSpeed = 5;
-		attributes.agent.acceleration = 1;
-		attributes.agent.speed = 1;
-		attributes.agent.stoppingDistance = 0.0;
-		attributes.stance = "prone";
+		}		
+		//attributes.agent.acceleration = 1;
+		//attributes.agent.angularSpeed = 5;
+		//attributes.agent.acceleration = 1;
+		//attributes.agent.speed = 1;
+		//attributes.agent.stoppingDistance = 0.0;
 	}
 
 }

@@ -202,10 +202,6 @@ GameObject:
   - 92: {fileID: 9270394}
   - 124: {fileID: 12408180}
   - 81: {fileID: 8110066}
-  - 114: {fileID: 11476440}
-  - 114: {fileID: 11458470}
-  - 114: {fileID: 11470150}
-  - 114: {fileID: 11479846}
   - 114: {fileID: 11400034}
   m_Layer: 0
   m_Name: Cam
@@ -573,7 +569,7 @@ Camera:
     height: 1
   near clip plane: .00999999978
   far clip plane: 1000
-  field of view: 44
+  field of view: 35
   orthographic: 0
   orthographic size: 100
   m_Depth: -1
@@ -651,8 +647,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd05e71c69dd4457fa205c9eea7c2326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 3
-  adaptiveTextureSize: 512
+  type: 5
+  adaptiveTextureSize: 32
   remapCurve:
     serializedVersion: 2
     m_Curve: []
@@ -660,8 +656,8 @@ MonoBehaviour:
     m_PostInfinity: 2
   exposureAdjustment: 2
   middleGrey: .400000006
-  white: 2
-  adaptionSpeed: 1.5
+  white: 4
+  adaptionSpeed: .00999999978
   tonemapper: {fileID: 4800000, guid: 003377fc2620a44939dadde6fe3f8190, type: 3}
   validRenderTextureFormat: 1
 --- !u!114 &11400646
@@ -995,6 +991,7 @@ MonoBehaviour:
   - {x: .0338475332, y: .833312869, z: -.155289203}
   - {x: .0348891243, y: -.0049656746, z: -.242997617}
   activated: 0
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &11404380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1108,6 +1105,7 @@ MonoBehaviour:
   orderMenuWSobj: {fileID: 0}
   OrderDisplayElement: {fileID: 103188, guid: 8f2743abca2ea4a1e84ad4e7aa5dd246, type: 2}
   movementIcons: {fileID: 0}
+  movement_center: {x: 0, y: 0, z: 0}
   movement_positions: []
 --- !u!114 &11417828
 MonoBehaviour:
@@ -1516,45 +1514,7 @@ MonoBehaviour:
   Gui: {fileID: 0}
   GuiWS: {fileID: 0}
   currentOrderGroup: {fileID: 0}
---- !u!114 &11458470
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140794}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a773099f140e846f7835d27351846623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tweakMode: 1
-  screenBlendMode: 1
-  hdr: 1
-  sepBlurSpread: 10
-  quality: 1
-  bloomIntensity: .100000001
-  bloomThreshhold: 1.49000001
-  bloomThreshholdColor: {r: 1, g: 1, b: 1, a: 1}
-  bloomBlurIterations: 2
-  hollywoodFlareBlurIterations: 2
-  flareRotation: 0
-  lensflareMode: 2
-  hollyStretchWidth: 4
-  lensflareIntensity: 2
-  lensflareThreshhold: 1
-  lensFlareSaturation: .75
-  flareColorA: {r: .400000006, g: .400000006, b: .800000012, a: .75}
-  flareColorB: {r: .400000006, g: .800000012, b: .800000012, a: .75}
-  flareColorC: {r: .800000012, g: .400000006, b: .800000012, a: .75}
-  flareColorD: {r: .800000012, g: .400000006, b: 0, a: .75}
-  blurWidth: 1
-  lensFlareVignetteMask: {fileID: 2800000, guid: e9a9781cad112c75d0008dfa8d76c639,
-    type: 3}
-  lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
-  screenBlendShader: {fileID: 4800000, guid: 7856cbff0a0ca45c787d5431eb805bb0, type: 3}
-  blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
-  brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c,
-    type: 3}
+  stances: {fileID: 0}
 --- !u!114 &11467604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1578,24 +1538,6 @@ MonoBehaviour:
     profileManager: {fileID: 0}
     cameraManager: {fileID: 0}
     orderManager: {fileID: 0}
---- !u!114 &11470150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140794}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c3946ab5378473cb34bedd1c8194ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fogMode: 0
-  startDistance: 1
-  globalDensity: .00800000038
-  heightScale: 100
-  height: 50
-  globalFogColor: {r: .257352948, g: .195337683, b: .155168697, a: 1}
-  fogShader: {fileID: 4800000, guid: 70d8568987ac0499f952b54c7c13e265, type: 3}
 --- !u!114 &11471204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1673,38 +1615,6 @@ MonoBehaviour:
   mapString:
   - move
   currentIcon: {fileID: 100004, guid: 70f49bad520c04030910399eefb89226, type: 2}
---- !u!114 &11476440
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140794}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7db9ec1392f34265817a55853e6ab07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filterType: 2
-  preview: 0
-  previewScale: {x: 1, y: 1, z: 1}
-  movementScale: 0
-  rotationScale: 1
-  maxVelocity: 8
-  minVelocity: .100000001
-  velocityScale: .375
-  softZDistance: .00499999989
-  velocityDownsample: 4
-  excludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  shader: {fileID: 4800000, guid: 85a88efa8c871af4a9d17c64791b6f4f, type: 3}
-  dx11MotionBlurShader: {fileID: 4800000, guid: f1b13d7a80660504a858ea24cfa418c6,
-    type: 3}
-  replacementClear: {fileID: 4800000, guid: 7699c5fbfa27745a1abe111ab7bf9785, type: 3}
-  noiseTexture: {fileID: 2800000, guid: 31f5a8611c4ed1245b18456206e798dc, type: 3}
-  jitter: .0500000007
-  showVelocity: 0
-  showVelocityScale: 1
 --- !u!114 &11477752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1728,20 +1638,6 @@ MonoBehaviour:
     profileManager: {fileID: 0}
     cameraManager: {fileID: 0}
     orderManager: {fileID: 0}
---- !u!114 &11479846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140794}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d5488e098d8f4eb492591bb089fe793, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strengthX: .0500000007
-  strengthY: .0500000007
-  fishEyeShader: {fileID: 4800000, guid: 874ceab4425f64bccb1d14032f4452b1, type: 3}
 --- !u!114 &11486612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1849,7 +1745,11 @@ MonoBehaviour:
   resetTime: .5
   layerMask: 0
   stanceIndex: 3
+  holdTime: 0
   clock: 0
+  orderHoldList: []
+  orderHoldListBools: 
+  orderHoldListHasFired: 
 --- !u!114 &11497758
 MonoBehaviour:
   m_ObjectHideFlags: 1

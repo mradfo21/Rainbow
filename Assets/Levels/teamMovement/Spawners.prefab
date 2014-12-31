@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &160888
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &169384
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &169858
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &175576
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &410378
 Transform:
   m_ObjectHideFlags: 1
@@ -215,7 +215,7 @@ MonoBehaviour:
   team: {fileID: 100000, guid: 45c827075e83645f7a0d0ba0e94713f1, type: 2}
   teamActual: {fileID: 0}
   teammate: {fileID: 100006, guid: f80ae2d175e194309a65872fda589165, type: 2}
-  numTeammates: 4
+  numTeammates: 1
   startRadius: 5
   entitiesName: Entities
   teamName: test
@@ -255,7 +255,7 @@ MonoBehaviour:
   team: {fileID: 100000, guid: 45c827075e83645f7a0d0ba0e94713f1, type: 2}
   teamActual: {fileID: 0}
   teammate: {fileID: 100006, guid: f80ae2d175e194309a65872fda589165, type: 2}
-  numTeammates: 12
+  numTeammates: 4
   startRadius: 5
   entitiesName: Entities
   teamName: test
@@ -295,7 +295,7 @@ MonoBehaviour:
   team: {fileID: 100000, guid: 45c827075e83645f7a0d0ba0e94713f1, type: 2}
   teamActual: {fileID: 0}
   teammate: {fileID: 100006, guid: f80ae2d175e194309a65872fda589165, type: 2}
-  numTeammates: 12
+  numTeammates: 4
   startRadius: 5
   entitiesName: Entities
   teamName: test
@@ -315,8 +315,8 @@ MonoBehaviour:
   team: {fileID: 100000, guid: 45c827075e83645f7a0d0ba0e94713f1, type: 2}
   teamActual: {fileID: 0}
   teammate: {fileID: 100006, guid: f80ae2d175e194309a65872fda589165, type: 2}
-  numTeammates: 4
-  startRadius: 5
+  numTeammates: 30
+  startRadius: 6
   entitiesName: Entities
   teamName: test
   species: robot

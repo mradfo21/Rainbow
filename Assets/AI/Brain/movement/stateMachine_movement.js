@@ -6,7 +6,6 @@ function Start(){
 	super.Start();
 	attributes = gameObject.transform.parent.GetComponent("attributes");
 	id = "movement";
-	Invoke("executeDefaultState",3.0);
 
 }
 function Update(){

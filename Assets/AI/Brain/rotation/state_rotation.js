@@ -28,15 +28,15 @@ var gameData:gameData;
 		id = "rotation";
 		attributes.rotation = this.GetType().ToString();
 		Invoke("softFinish",.2);
+		attributes.rotation = this.GetType().ToString();
 	}
 
 	function Execute(){
 		// remember to set attributes.readyToFire
 		super.Execute();
-		transform.rotation  =attributes.gameObject.transform.rotation;
-		transform.position.x = attributes.gameObject.transform.position.x;
-		transform.position.z = attributes.gameObject.transform.position.z;
-		transform.position.y =attributes.gameObject.transform.position.y+1.3;
+		if (attributes.target && attributes.rotation != "lookTarget"){
+			gameObject.SendMessage("changeState","rotation_lookTarget");
+		}
 
 	}
 	function Exit(){

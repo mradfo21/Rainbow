@@ -13,8 +13,8 @@ class state_stance extends state{
 	function Update () {
 		super.Update();
 		if (stoppingAgent == true){
-			attributes.agent.velocity /= 1.2;
-			if (attributes.agent.velocity.magnitude < .5){
+			attributes.agent.velocity /= 1.9;
+			if (attributes.agent.velocity.magnitude < .1){
 				if (calledStop ==false){
 					agentStopped();					
 				}
@@ -33,14 +33,14 @@ class state_stance extends state{
 			randomAnimSpeed();
 			Invoke("normalAnimSpeed",.1);
 		};
-		attributes.stance = this.name;
+
+		//if (gameData.gameAttributes.playerAttributes == attributes){
+		//	gameData.gameAttributes.stances.changeCamera(true);
+		//}
 	}
 
 	function Execute(){
 		super.Execute();
-		if (attributes.alive == false){
-			Exit();
-		}
 	}
 	function Exit(){
 		super.Exit();
@@ -60,6 +60,7 @@ class state_stance extends state{
 	function stopAgent(){
 		calledStop = false;
 		stoppingAgent = true;
+		attributes.agent.velocity = Vector3.zero;
 	}
 
 	function resumeMovement(){

@@ -21,7 +21,7 @@ function Start () {
 	}
  	gameData = new gameData();
 	gameData.Start();
-	Invoke("executeDefaultState",2.0);
+//	Invoke("executeDefaultState",2.0);
 
 
 }
@@ -60,11 +60,14 @@ function changeState(data:ArrayList){
 
 	var sinfo:String = data[0];
 	var words = sinfo.Split("_"[0]);
-	var state:String = words[1];
-	var sID = words[0];
-	if(sID == id){
-		changeStateLogic(state,data);
+	if (words.length > 1){
+		var state:String = words[1];
+		var sID = words[0];
+		if(sID == id){
+			changeStateLogic(state,data);
+		}		
 	}
+
 
 }
 function changeStateLogic(state:String){

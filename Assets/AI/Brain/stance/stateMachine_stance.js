@@ -14,14 +14,10 @@ function Update(){
 	super.Update();
 }
 function changeState(state:String){
-	if (currentState != state){
 		super.changeState(state);
-	}
 }
 function changeState(data:ArrayList){
-	if (currentState != data[0]){
 		super.changeState(data);		
-	}
 }
 function changeStateLogic(state:String){
 	super.changeStateLogic(state);

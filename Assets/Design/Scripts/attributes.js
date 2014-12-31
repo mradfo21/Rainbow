@@ -70,6 +70,7 @@ var targetAttributes:attributes;
 var targets = new List.<GameObject>();
 
 var assaignedTarget:GameObject = null;
+var boundingIndex:int = 0;
 
 function Start () {
 	lastHintTimerMax = 40+Random.value*40;
@@ -77,6 +78,8 @@ function Start () {
 	target = null;
 	agent = gameObject.GetComponent("NavMeshAgent");
 	vision = gameObject.GetComponent("vision");
+	boundingIndex = 99999;
+
 }
 
 
@@ -98,8 +101,12 @@ function Contact(pd:poi_data){
 	//print("attributes received a contact");
 }
 function Update () {
-	if (team){
-
+	if (team && alive == true){
+	boundingIndex = teamSpot%2;
+	if (team.hasBound(gameObject,boundingIndex) == false){
+		team.setupBounding(gameObject,boundingIndex);
+		print("INITIALIZED BOUND INDEX: "+boundingIndex+" for "+gameObject);
+	}
 	lastContactTimer-= Time.deltaTime;
 	lastHintTimer -= Time.deltaTime;
 	teamAngle = utils.getAngleInCircle(parseFloat(team.members.Count),team.members.Count - parseFloat(teamSpot));
@@ -140,7 +147,7 @@ function Update () {
 
 function Died(){
 	gameObject.BroadcastMessage("dead",Time.time);
-
+	team.removeBound(gameObject,boundingIndex);
 }
 
 function Attacked(dmg:float){
