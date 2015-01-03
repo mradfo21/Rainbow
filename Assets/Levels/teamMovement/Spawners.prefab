@@ -315,8 +315,8 @@ MonoBehaviour:
   team: {fileID: 100000, guid: 45c827075e83645f7a0d0ba0e94713f1, type: 2}
   teamActual: {fileID: 0}
   teammate: {fileID: 100006, guid: f80ae2d175e194309a65872fda589165, type: 2}
-  numTeammates: 30
-  startRadius: 6
+  numTeammates: 50
+  startRadius: 8
   entitiesName: Entities
   teamName: test
   species: robot
